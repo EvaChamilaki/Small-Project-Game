@@ -9,6 +9,8 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform camera;
 
     public float speed = 0.1f;
+    public float turnSmoothTime = 0.1f;
+    public float turnSmoothVel;
 
 
     // Update is called once per frame
@@ -22,7 +24,8 @@ public class ThirdPersonCamera : MonoBehaviour
         if(direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + camera.eulerAngles.y;
-            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVel, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             charcontroller.Move(moveDirection.normalized * speed * Time.deltaTime);
             
