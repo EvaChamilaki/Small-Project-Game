@@ -23,13 +23,17 @@ public class ThirdPersonCamera : MonoBehaviour
     private Camera active_camera;
     private Camera main_camera;
     private Camera computer_camera;
+    private Camera emotions_camera;
 
     void Start()
     {
         canvasClick.SetActive(false);
         main_camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         computer_camera = GameObject.FindWithTag("ComputerCamera").GetComponent<Camera>();
+        emotions_camera = GameObject.FindWithTag("EmotionsCamera").GetComponent<Camera>();
+
         computer_camera.enabled = false;
+        emotions_camera.enabled = false;
 
         active_camera = main_camera;
     }
@@ -84,11 +88,23 @@ public class ThirdPersonCamera : MonoBehaviour
             SwitchToMainCamera();
         }
 
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SwitchToEmotionsCamera();
+
+        }
+
+        if (emotions_camera.enabled && Input.GetKeyDown(KeyCode.B))
+        {
+            SwitchToComputerCamera();
+        }
+
     }
     void SwitchToComputerCamera() 
     {
         main_camera.enabled = false;
         computer_camera.enabled = true;
+        emotions_camera.enabled = false;
         canvasClick.SetActive(false);
 
         charcontroller.enabled = false;
@@ -100,11 +116,26 @@ public class ThirdPersonCamera : MonoBehaviour
     {
         computer_camera.enabled = false;
         main_camera.enabled = true;
+        emotions_camera.enabled = false;
 
         charcontroller.enabled = true;
         charControlActive = true;
 
         active_camera = main_camera;
+
+    }
+
+    void SwitchToEmotionsCamera()
+    {
+        main_camera.enabled = false;
+        computer_camera.enabled = false;
+        emotions_camera.enabled = true;
+        canvasClick.SetActive(false);
+
+        charcontroller.enabled = false;
+        charControlActive = false;
+
+        active_camera = emotions_camera;
 
     }
 }
