@@ -19,6 +19,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private bool computerHit = false;
     private bool charControlActive = true;
+    private bool hasClicked = false;
 
     private Camera active_camera;
     private Camera main_camera;
@@ -80,7 +81,8 @@ public class ThirdPersonCamera : MonoBehaviour
 
         if(computerHit && Input.GetMouseButtonDown(0))
         {
-            SwitchToComputerCamera();         
+            SwitchToComputerCamera();     
+            hasClicked = true;
         }
 
         if(!charControlActive && Input.GetKeyDown(KeyCode.Space))
@@ -94,7 +96,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
         }
 
-        if (emotions_camera.enabled && Input.GetKeyDown(KeyCode.B))
+        if (emotions_camera.enabled && hasClicked && Input.GetKeyDown(KeyCode.B))
         {
             SwitchToComputerCamera();
         }
