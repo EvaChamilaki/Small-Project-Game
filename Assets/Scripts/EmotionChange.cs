@@ -33,6 +33,10 @@ public class EmotionChange : MonoBehaviour
         {
             ChangeEmotion("Neutral");
         }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            ChangeEmotion("Furious");
+        }
     }
 
     public void ChangeEmotion(string emotion)
