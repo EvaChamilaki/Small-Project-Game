@@ -8,6 +8,7 @@ TagManager:
   - ComputerCamera
   - EmotionsCamera
   - FaceTarget
+  - emotion_screen
   layers:
   - Default
   - TransparentFX
