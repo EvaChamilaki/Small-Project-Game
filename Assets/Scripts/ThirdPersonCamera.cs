@@ -8,8 +8,9 @@ public class ThirdPersonCamera : MonoBehaviour
 {
     [Header("UI Elements")]
     public GameObject canvasClick;
-    public GameObject username;
+    public GameObject firstScreen;
     public GameObject writingText;
+    
 
     [Header("Character Control")]
     public CharacterController charcontroller;
@@ -31,7 +32,7 @@ public class ThirdPersonCamera : MonoBehaviour
     void Start()
     {
         canvasClick.SetActive(false);
-        username.SetActive(false);
+        firstScreen.SetActive(false);
 
         writingText.GetComponent<TextWriting>().enabled = false;
 
@@ -116,7 +117,7 @@ public class ThirdPersonCamera : MonoBehaviour
         emotions_camera.enabled = false;
         canvasClick.SetActive(false);
 
-        username.SetActive(true);
+        firstScreen.SetActive(true);
 
         writingText.GetComponent<TextWriting>().enabled = true;
         writingText.GetComponent<TextWriting>().StartTextTyping();
