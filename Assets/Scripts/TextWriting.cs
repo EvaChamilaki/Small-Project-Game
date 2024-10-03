@@ -11,7 +11,7 @@ public class TextWriting : MonoBehaviour
     [SerializeField] float timeBetweenCharacters;
     [SerializeField] float timeBetweenWords;
     // Start is called before the first frame update
-    void Start()
+    public void StartTextTyping()
     {
         StartCoroutine(TextVisible());
     }

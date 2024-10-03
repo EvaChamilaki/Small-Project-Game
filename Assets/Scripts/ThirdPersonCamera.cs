@@ -115,10 +115,13 @@ public class ThirdPersonCamera : MonoBehaviour
         computer_camera.enabled = true;
         emotions_camera.enabled = false;
         canvasClick.SetActive(false);
-        
-        writingText.GetComponent<TextWriting>().enabled = true;
-       
+
         username.SetActive(true);
+
+        writingText.GetComponent<TextWriting>().enabled = true;
+        writingText.GetComponent<TextWriting>().StartTextTyping();
+       
+        
         
         charcontroller.enabled = false;
         charControlActive = false;
