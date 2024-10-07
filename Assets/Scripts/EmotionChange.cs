@@ -13,27 +13,27 @@ public class EmotionChange : MonoBehaviour
 
     public void testing() 
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             ChangeEmotion("Happy");
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             ChangeEmotion("Sad");
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             ChangeEmotion("Angry");
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             ChangeEmotion("Confused");
         }
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             ChangeEmotion("Neutral");
         }
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             ChangeEmotion("Furious");
         }
