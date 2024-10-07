@@ -133,11 +133,6 @@ public class ThirdPersonCamera : MonoBehaviour
                 writingText.GetComponent<TextWriting>().StartTextTyping();
             }
         }
-
-
-       
-        
-        
         charcontroller.enabled = false;
         charControlActive = false;
 
@@ -159,6 +154,8 @@ public class ThirdPersonCamera : MonoBehaviour
 
         active_camera = main_camera;
 
+        writingText.GetComponent<TextWriting>().enabled = false;
+
     }
 
     void SwitchToEmotionsCamera()
@@ -167,6 +164,14 @@ public class ThirdPersonCamera : MonoBehaviour
         computer_camera.enabled = false;
         emotions_camera.enabled = true;
         canvasClick.SetActive(false);
+
+        
+        if(currentScreen != null)
+        {
+            currentScreen.SetActive(false);
+        }
+
+        writingText.GetComponent<TextWriting>().enabled = false;
 
         charcontroller.enabled = false;
         charControlActive = false;
