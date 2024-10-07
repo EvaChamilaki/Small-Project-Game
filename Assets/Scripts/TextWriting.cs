@@ -10,9 +10,12 @@ public class TextWriting : MonoBehaviour
     public string[] stringArray;
     [SerializeField] float timeBetweenCharacters;
     [SerializeField] float timeBetweenWords;
+
+    [SerializeField] GameObject button;
    
     public void StartTextTyping()
     {
+        button.SetActive(false); //disable the button until the text is done being written
         StartCoroutine(TextVisible());
     }
 
@@ -27,11 +30,12 @@ public class TextWriting : MonoBehaviour
             int visibleCount = counter % (totalVisibleCharacters + 1);
             _textMeshPro.maxVisibleCharacters = visibleCount;
 
-            // if (visibleCount >= totalVisibleCharacters)
-            // {
-            //     GetComponent<AudioSource>().Stop();
-            //     yield break;
-            // }
+            if (visibleCount >= totalVisibleCharacters)
+            {
+                button.SetActive(true); //enable the button after the text is done being written
+                GetComponent<AudioSource>().Stop();
+                yield break;
+            }
             counter += 1;
 
             yield return new WaitForSeconds(timeBetweenCharacters);
