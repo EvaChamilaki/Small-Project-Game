@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 100587148}
   - component: {fileID: 100587147}
   - component: {fileID: 100587146}
+  - component: {fileID: 100587149}
   m_Layer: 6
   m_Name: LoadingPlane
   m_TagString: Untagged
@@ -283,6 +284,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &100587149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100587144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f624df8e8afa6ff499b727bf26d49c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScreen: {fileID: 1917849538}
+  newScreen: {fileID: 600055640}
+  cameraScript: {fileID: 1316991728}
 --- !u!4 &175824115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 45ec40dda02c8864092fe2ca2c3c2fb5, type: 3}
@@ -313,7 +329,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209501426}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.114962794, y: 0.000000017092301, z: -0.0000000019780937, w: 0.9933698}
+  m_LocalRotation: {x: 0.114962794, y: -0.000000017092301, z: 0.0000000019780937, w: 0.9933698}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1172,7 +1188,6 @@ GameObject:
   - component: {fileID: 589026937}
   - component: {fileID: 589026936}
   - component: {fileID: 589026935}
-  - component: {fileID: 589026934}
   m_Layer: 6
   m_Name: Buttonfrom2to3
   m_TagString: Untagged
@@ -1199,20 +1214,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -292}
   m_SizeDelta: {x: 560, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &589026934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589026932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f624df8e8afa6ff499b727bf26d49c88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentScreen: {fileID: 600055640}
-  newScreen: {fileID: 1917849538}
 --- !u!114 &589026935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1257,7 +1258,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 589026934}
+      - m_Target: {fileID: 600055642}
         m_TargetAssemblyTypeName: ComputerScreenSwitch, Assembly-CSharp
         m_MethodName: SwitchScreens
         m_Mode: 1
@@ -1316,6 +1317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 600055641}
+  - component: {fileID: 600055642}
   m_Layer: 6
   m_Name: MainScreen
   m_TagString: Untagged
@@ -1340,6 +1342,21 @@ Transform:
   - {fileID: 1363669963}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180.076, z: 0}
+--- !u!114 &600055642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600055640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f624df8e8afa6ff499b727bf26d49c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScreen: {fileID: 600055640}
+  newScreen: {fileID: 1917849538}
+  cameraScript: {fileID: 1316991728}
 --- !u!1 &627318411
 GameObject:
   m_ObjectHideFlags: 3
@@ -2376,7 +2393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0844857, y: 0.00000003534504, z: -0.000000002996865, w: 0.99642473}
+  m_LocalRotation: {x: 0.0844857, y: -0.000000035345042, z: 0.0000000029968654, w: 0.99642473}
   m_LocalPosition: {x: 0, y: 1.271, z: -3.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2916,7 +2933,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164620674}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08448571, y: 0.000000017672514, z: -0.0000000014984322, w: 0.99642473}
+  m_LocalRotation: {x: 0.08448571, y: -0.000000017672525, z: 0.000000001498433, w: 0.99642473}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4088,6 +4105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1750993946}
+  - component: {fileID: 1750993947}
   m_Layer: 0
   m_Name: CreateAccountScreen
   m_TagString: Untagged
@@ -4112,6 +4130,21 @@ Transform:
   - {fileID: 930626586}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1750993947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750993945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f624df8e8afa6ff499b727bf26d49c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScreen: {fileID: 1750993945}
+  newScreen: {fileID: 600055640}
+  cameraScript: {fileID: 1316991728}
 --- !u!1 &1758517276
 GameObject:
   m_ObjectHideFlags: 0
@@ -4812,7 +4845,6 @@ GameObject:
   - component: {fileID: 2032914065}
   - component: {fileID: 2032914064}
   - component: {fileID: 2032914063}
-  - component: {fileID: 2032914066}
   m_Layer: 6
   m_Name: Buttonfrom1to2
   m_TagString: Untagged
@@ -4883,7 +4915,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2032914066}
+      - m_Target: {fileID: 1750993947}
         m_TargetAssemblyTypeName: ComputerScreenSwitch, Assembly-CSharp
         m_MethodName: SwitchScreens
         m_Mode: 1
@@ -4933,20 +4965,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032914061}
   m_CullTransparentMesh: 1
---- !u!114 &2032914066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032914061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f624df8e8afa6ff499b727bf26d49c88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentScreen: {fileID: 1750993945}
-  newScreen: {fileID: 600055640}
 --- !u!1 &2041198264
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,10 +29,14 @@ public class ThirdPersonCamera : MonoBehaviour
     private Camera computer_camera;
     private Camera emotions_camera;
 
+    [Header("Computer Screen Handling")]
+    private GameObject currentScreen;
+
     void Start()
     {
         canvasClick.SetActive(false);
         firstScreen.SetActive(false);
+        currentScreen = firstScreen;
 
         writingText.GetComponent<TextWriting>().enabled = false;
 
@@ -45,6 +49,7 @@ public class ThirdPersonCamera : MonoBehaviour
         emotions_camera.enabled = false;
 
         active_camera = main_camera;
+
     }
 
     // Update is called once per frame
@@ -117,10 +122,19 @@ public class ThirdPersonCamera : MonoBehaviour
         emotions_camera.enabled = false;
         canvasClick.SetActive(false);
 
-        firstScreen.SetActive(true);
+        // firstScreen.SetActive(true);
+        if (currentScreen != null)
+        {
+            currentScreen.SetActive(true);
 
-        writingText.GetComponent<TextWriting>().enabled = true;
-        writingText.GetComponent<TextWriting>().StartTextTyping();
+            if(currentScreen.name == "CreateAccountScreen") //make the writing thingy for the create account screen
+            {
+                writingText.GetComponent<TextWriting>().enabled = true;
+                writingText.GetComponent<TextWriting>().StartTextTyping();
+            }
+        }
+
+
        
         
         
@@ -134,6 +148,11 @@ public class ThirdPersonCamera : MonoBehaviour
         computer_camera.enabled = false;
         main_camera.enabled = true;
         emotions_camera.enabled = false;
+
+        if(currentScreen != null)
+        {
+            currentScreen.SetActive(false);
+        }
 
         charcontroller.enabled = true;
         charControlActive = true;
@@ -154,5 +173,10 @@ public class ThirdPersonCamera : MonoBehaviour
 
         active_camera = emotions_camera;
 
+    }
+
+    public void ControlComputerScreens(GameObject screen) //used to control the current screen so it does not go back to the first screen every time we change cameras
+    {
+       currentScreen = screen;
     }
 }

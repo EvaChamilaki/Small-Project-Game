@@ -10,7 +10,7 @@ public class TextWriting : MonoBehaviour
     public string[] stringArray;
     [SerializeField] float timeBetweenCharacters;
     [SerializeField] float timeBetweenWords;
-    // Start is called before the first frame update
+   
     public void StartTextTyping()
     {
         StartCoroutine(TextVisible());
@@ -27,11 +27,11 @@ public class TextWriting : MonoBehaviour
             int visibleCount = counter % (totalVisibleCharacters + 1);
             _textMeshPro.maxVisibleCharacters = visibleCount;
 
-            if (visibleCount >= totalVisibleCharacters)
-            {
-                GetComponent<AudioSource>().Stop();
-                yield break;
-            }
+            // if (visibleCount >= totalVisibleCharacters)
+            // {
+            //     GetComponent<AudioSource>().Stop();
+            //     yield break;
+            // }
             counter += 1;
 
             yield return new WaitForSeconds(timeBetweenCharacters);

@@ -7,6 +7,8 @@ public class ComputerScreenSwitch : MonoBehaviour
     public GameObject currentScreen;
     public GameObject newScreen;
 
+    public ThirdPersonCamera cameraScript;
+
     public void LoadingScreenStarts() //animation even to check when the loading screen has been activated
     {
         Debug.Log("Loading Screen Starts");
@@ -18,6 +20,8 @@ public class ComputerScreenSwitch : MonoBehaviour
         {
             currentScreen.SetActive(false);
             newScreen.SetActive(true);
+
+            cameraScript.ControlComputerScreens(newScreen);
         }
       
     }
@@ -28,6 +32,8 @@ public class ComputerScreenSwitch : MonoBehaviour
         {
             currentScreen.SetActive(false);
             newScreen.SetActive(true);
+
+            cameraScript.ControlComputerScreens(newScreen);
         }
     }
 }
