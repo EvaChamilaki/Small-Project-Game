@@ -29,8 +29,11 @@ public class ThirdPersonCamera : MonoBehaviour
     private Camera computer_camera;
     private Camera emotions_camera;
 
-    [Header("Computer Screen Handling")]
     private GameObject currentScreen;
+
+    private bool hasBeenTyped = false;
+
+
 
     void Start()
     {
@@ -127,10 +130,11 @@ public class ThirdPersonCamera : MonoBehaviour
         {
             currentScreen.SetActive(true);
 
-            if(currentScreen.name == "CreateAccountScreen") //make the writing thingy for the create account screen
+            if(currentScreen.name == "CreateAccountScreen" && !hasBeenTyped) //make the writing thingy for the create account screen
             {
                 writingText.GetComponent<TextWriting>().enabled = true;
                 writingText.GetComponent<TextWriting>().StartTextTyping();
+                hasBeenTyped = true;
             }
         }
         charcontroller.enabled = false;
