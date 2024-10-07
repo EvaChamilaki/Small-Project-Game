@@ -31,7 +31,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private GameObject currentScreen;
 
-    private bool hasBeenTyped = false;
+    private bool hasBeenTyped = false; //to check whether the text has been typed or not
 
 
 
