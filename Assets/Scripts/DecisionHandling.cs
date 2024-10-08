@@ -6,9 +6,6 @@ public class DecisionHandling : MonoBehaviour
 {
     public Animator animController;
     
-  
-
-
     public void DecisionA()
     {
         ChangeEmotionalState("Happy");
