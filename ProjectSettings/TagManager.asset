@@ -9,6 +9,7 @@ TagManager:
   - EmotionsCamera
   - FaceTarget
   - emotion_screen
+  - DecisionA
   layers:
   - Default
   - TransparentFX

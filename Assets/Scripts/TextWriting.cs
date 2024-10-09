@@ -12,18 +12,28 @@ public class TextWriting : MonoBehaviour
     [SerializeField] float timeBetweenWords;
 
     [SerializeField] GameObject button;
-   
-    public void StartTextTyping()
+
+    public void StartTextTyping(int startCharIdx)
     {
-        button.SetActive(false); //disable the button until the text is done being written
-        StartCoroutine(TextVisible());
+        if (button != null)
+        {
+            button.SetActive(false); //disable the button until the text is done being written
+        }
+        StartCoroutine(TextVisible(startCharIdx));
     }
 
-    private IEnumerator TextVisible()
+    private IEnumerator TextVisible(int startCharIdx)
     {
         _textMeshPro.ForceMeshUpdate();
         int totalVisibleCharacters = _textMeshPro.textInfo.characterCount;
-        int counter = 0;
+
+        if (startCharIdx >= totalVisibleCharacters)
+        {
+            Debug.Log("Start Character larger than total characters.");
+            yield break;
+        }
+
+        int counter = startCharIdx;
 
         while (true)
         {
@@ -32,7 +42,10 @@ public class TextWriting : MonoBehaviour
 
             if (visibleCount >= totalVisibleCharacters)
             {
-                button.SetActive(true); //enable the button after the text is done being written
+                if (button != null)
+                {
+                    button.SetActive(true); //enable the button after the text is done being written
+                }
                 GetComponent<AudioSource>().Stop();
                 yield break;
             }

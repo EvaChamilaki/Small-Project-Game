@@ -133,7 +133,7 @@ public class ThirdPersonCamera : MonoBehaviour
             if(currentScreen.name == "CreateAccountScreen" && !hasBeenTyped) //make the writing thingy for the create account screen
             {
                 writingText.GetComponent<TextWriting>().enabled = true;
-                writingText.GetComponent<TextWriting>().StartTextTyping();
+                writingText.GetComponent<TextWriting>().StartTextTyping(0);
                 hasBeenTyped = true;
             }
         }
