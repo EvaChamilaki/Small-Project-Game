@@ -12,6 +12,7 @@ public class DecisionHandling : MonoBehaviour
     public List<GameObject> decisionButtons;
     public GameObject decisionGameObject;
     public GameObject screens;
+    public bool decisionAText = false;
     private GameObject tempgo;
 
     void Start()
@@ -35,7 +36,7 @@ public class DecisionHandling : MonoBehaviour
     public void DecisionA()
     {
         disableDecisionButtons(decisionButtons);
-
+        decisionAText = true;
         if (decisionGameObject != null)
         {
             decisionGameObject.SetActive(true);
@@ -69,15 +70,19 @@ public class DecisionHandling : MonoBehaviour
 
     public void DecisionB()
     {
+        disableDecisionButtons(decisionButtons);
+        StartCoroutine(DecisionBSwitch());
+    }
+
+    private IEnumerator DecisionBSwitch()
+    {
         ChangeEmotionalState("Sad");
         computer_camera.enabled = false;
         emotions_camera.enabled = true;
 
-        if (emotions_camera.enabled)
-        {
-            disableDecisionButtons(decisionButtons);
-        }
-
+        yield return new WaitForSeconds(2f);
+        computer_camera.enabled = true;
+        emotions_camera.enabled = false;
     }
 
     public void ChangeEmotionalState(string emotion)
