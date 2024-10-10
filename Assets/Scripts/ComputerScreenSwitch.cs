@@ -9,10 +9,10 @@ public class ComputerScreenSwitch : MonoBehaviour
 
     public ThirdPersonCamera cameraScript;
 
-    public void LoadingScreenStarts() //animation even to check when the loading screen has been activated
-    {
-        Debug.Log("Loading Screen Starts");
-    }
+    //public void LoadingScreenStarts() //animation even to check when the loading screen has been activated
+    //{
+    //    Debug.Log("Loading Screen Starts");
+    //}
 
    public void SwitchScreens() //for the button to change between screens
     {

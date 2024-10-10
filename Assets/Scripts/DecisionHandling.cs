@@ -11,12 +11,25 @@ public class DecisionHandling : MonoBehaviour
 
     public List<GameObject> decisionButtons;
     public GameObject decisionGameObject;
+    public GameObject screens;
     private GameObject tempgo;
 
     void Start()
     {
         computer_camera = GameObject.FindWithTag("ComputerCamera").GetComponent<Camera>();
         emotions_camera = GameObject.FindWithTag("EmotionsCamera").GetComponent<Camera>();
+    }
+
+    void Update()
+    {
+        if (emotions_camera.enabled == true)
+        {
+            screens.SetActive(false);
+        }
+        else
+        {
+            screens.SetActive(true);
+        }
     }
 
     public void DecisionA()
@@ -35,7 +48,7 @@ public class DecisionHandling : MonoBehaviour
         {
             Debug.Log("null");
         }
-        //StartCoroutine(SwitchBackAfterDelay());
+        StartCoroutine(SwitchBackAfterDelay());
     }
 
     private IEnumerator SwitchBackAfterDelay()
