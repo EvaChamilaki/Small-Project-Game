@@ -10,7 +10,7 @@ public class DecisionHandling : MonoBehaviour
     private Camera emotions_camera;
 
     public List<GameObject> decisionButtons;
-    public GameObject decisionGameObject;
+    public GameObject decisionGameObject; //which one is this? the one that has the answer that the player gives?
     public GameObject screens;
     public bool decisionAText = false;
     private GameObject tempgo;
@@ -36,36 +36,48 @@ public class DecisionHandling : MonoBehaviour
     public void DecisionA()
     {
         disableDecisionButtons(decisionButtons);
-        decisionAText = true;
+        decisionAText = true; //so that the text can start typing
+
+        //na to ksanadoume ligaki
         if (decisionGameObject != null)
-        {
-            decisionGameObject.SetActive(true);
+        { 
+            decisionGameObject.SetActive(true); //to show the answer
             tempgo = decisionGameObject.transform.Find("Canvas").gameObject;
-            tempgo.SetActive(true);
-            tempgo.GetComponent<TextWriting>().enabled = true;
-            tempgo.GetComponent<TextWriting>().StartTextTyping(4);
+            tempgo.SetActive(false);
+            // tempgo.SetActive(true);
+            // tempgo.GetComponent<TextWriting>().enabled = true;
+            // tempgo.GetComponent<TextWriting>().StartTextTyping(4);
         }
         else
         {
             Debug.Log("null");
         }
+
+        
         StartCoroutine(SwitchBackAfterDelay());
+        
     }
 
     private IEnumerator SwitchBackAfterDelay()
     {
-        yield return new WaitForSeconds(4f);
-
         ChangeEmotionalState("Furious");
         computer_camera.enabled = false;
         emotions_camera.enabled = true;
+
+        yield return new WaitForSeconds(2f);
+
+
         tempgo.SetActive(false);
 
         yield return new WaitForSeconds(2f);
 
         computer_camera.enabled = true;
         emotions_camera.enabled = false;
+
         tempgo.SetActive(true);
+        tempgo.GetComponent<TextWriting>().enabled = true;
+        tempgo.GetComponent<TextWriting>().StartTextTyping(4);
+        
     }
 
     public void DecisionB()
