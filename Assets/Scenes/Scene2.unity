@@ -1223,8 +1223,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.5, y: -166}
-  m_SizeDelta: {x: 350, y: 100}
+  m_AnchoredPosition: {x: 38, y: -91}
+  m_SizeDelta: {x: 244.5, y: 55.8717}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &674399055
 MonoBehaviour:
@@ -2565,13 +2565,13 @@ PrefabInstance:
       objectReference: {fileID: 1140904454}
     - target: {fileID: 6150912291827781353, guid: 95dedf42d6d8ed54f8eeac61bcc3f43f, type: 3}
       propertyPath: m_text
-      value: 'kingofthegame
+      value: 'iamthebestone
 
         ***********'
       objectReference: {fileID: 0}
     - target: {fileID: 6150912291827781353, guid: 95dedf42d6d8ed54f8eeac61bcc3f43f, type: 3}
       propertyPath: m_fontSize
-      value: 34
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6150912291827781353, guid: 95dedf42d6d8ed54f8eeac61bcc3f43f, type: 3}
       propertyPath: m_margin.z
@@ -2579,7 +2579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6150912291827781353, guid: 95dedf42d6d8ed54f8eeac61bcc3f43f, type: 3}
       propertyPath: m_fontSizeBase
-      value: 34
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6383163302405192723, guid: 95dedf42d6d8ed54f8eeac61bcc3f43f, type: 3}
       propertyPath: cameraScript
@@ -2707,11 +2707,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8412016780527640462, guid: 95dedf42d6d8ed54f8eeac61bcc3f43f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 128.6
+      value: 148
       objectReference: {fileID: 0}
     - target: {fileID: 8412016780527640462, guid: 95dedf42d6d8ed54f8eeac61bcc3f43f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2.6
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 9172723960631923743, guid: 95dedf42d6d8ed54f8eeac61bcc3f43f, type: 3}
       propertyPath: m_Size.x
