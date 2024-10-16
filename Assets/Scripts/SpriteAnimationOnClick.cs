@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpriteAnimationOnClick : MonoBehaviour
 {
     private Animator animController;
+    private string trigger_button = "pressed_button";
 
     public void PlayButtonAnim()
     {
@@ -16,12 +17,17 @@ public class SpriteAnimationOnClick : MonoBehaviour
             return;
         }
 
-        StartCoroutine(WaitForAnimation());
+        if(this.gameObject.tag == "toxic")
+        {
+            trigger_button = "toxic_pressed_button";
+        }
+
+        StartCoroutine(WaitForAnimation(trigger_button));
     }
 
-    private IEnumerator WaitForAnimation()
+    private IEnumerator WaitForAnimation(string _trbut_name)
     {
-        animController.SetTrigger("pressed_button");
+        animController.SetTrigger(_trbut_name);
 
         yield return new WaitForSeconds(0.5f);
         GameObject go = GameObject.Find("MainScreen");

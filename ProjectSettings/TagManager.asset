@@ -10,6 +10,7 @@ TagManager:
   - FaceTarget
   - emotion_screen
   - DecisionA
+  - toxic
   layers:
   - Default
   - TransparentFX
