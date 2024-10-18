@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToxicPlayerDecisions : MonoBehaviour
+public class NeutralPlayerDecisions : MonoBehaviour
 {
     public Animator animController;
     
@@ -20,7 +20,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     private bool hasStartedTyping = false;
     private bool emotionupdated = false;
-    public bool hasloggedOut;
+    private bool hasloggedOut;
 
     public GameObject emotionUpdate;
     
@@ -57,7 +57,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
     }
 
 
-    public void DecisionA_Neutral()
+    public void DecisionA_Choice()
     {
         question.SetActive(false);
 
@@ -113,7 +113,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public IEnumerator EmotionUpdateText()
     {
         emotionUpdate.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
     }
     
