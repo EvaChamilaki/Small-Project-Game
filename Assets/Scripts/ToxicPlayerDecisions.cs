@@ -15,12 +15,15 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public GameObject decisionA3;
 
     public GameObject panel;
+    public GameObject logOut;
 
 
     private bool hasStartedTyping = false;
     private bool emotionupdated = false;
+    public bool hasloggedOut;
 
     public GameObject emotionUpdate;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +48,11 @@ public class ToxicPlayerDecisions : MonoBehaviour
         if(panel.activeSelf && !emotionupdated)
         {
             StartCoroutine(TroubledEmotion());
+        }
+
+        if(logOut.activeSelf && !hasloggedOut)
+        {
+            StartCoroutine(HappyEmotion());
         }
     }
 
@@ -77,6 +85,17 @@ public class ToxicPlayerDecisions : MonoBehaviour
         ChangeEmotionalState("Troubled");
         yield return StartCoroutine(EmotionUpdateText());
     }
+
+    
+    public IEnumerator HappyEmotion()
+    {
+        hasloggedOut = true;
+        ChangeEmotionalState("Happy");
+        yield return StartCoroutine(EmotionUpdateText());
+    }
+
+
+
 
     public void DecisionA_Result()
     {
