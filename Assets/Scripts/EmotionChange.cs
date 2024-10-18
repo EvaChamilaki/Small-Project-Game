@@ -27,7 +27,7 @@ public class EmotionChange : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            ChangeEmotion("Confused");
+            ChangeEmotion("Troubled");
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {

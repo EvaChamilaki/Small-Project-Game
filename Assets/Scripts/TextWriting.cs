@@ -53,8 +53,10 @@ public class TextWriting : MonoBehaviour
                         button.SetActive(true); //enable the button after the text is done being written
                     }
                 }
-                GetComponent<AudioSource>().Stop();
+                // GetComponent<AudioSource>().Stop();
                 yield break;
+
+
             }
             counter += 1;
 
