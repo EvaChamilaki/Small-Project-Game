@@ -7,18 +7,22 @@ public class TextWriting : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI _textMeshPro;
-    public string[] stringArray;
+    // public string[] stringArray;
     [SerializeField] float timeBetweenCharacters;
     [SerializeField] float timeBetweenWords;
 
-    [SerializeField] GameObject button;
+    [SerializeField] List<GameObject> buttons;
 
     public void StartTextTyping(int startCharIdx)
     {
-        if (button != null)
+        foreach (GameObject button in buttons)
         {
-            button.SetActive(false); //disable the button until the text is done being written
+            if (button != null)
+            {
+                button.SetActive(false); //disable the button until the text is done being written
+            }
         }
+        
         StartCoroutine(TextVisible(startCharIdx));
     }
 
@@ -42,9 +46,12 @@ public class TextWriting : MonoBehaviour
 
             if (visibleCount >= totalVisibleCharacters)
             {
-                if (button != null)
+                foreach (GameObject button in buttons)
                 {
-                    button.SetActive(true); //enable the button after the text is done being written
+                    if (button != null)
+                    {
+                        button.SetActive(true); //enable the button after the text is done being written
+                    }
                 }
                 GetComponent<AudioSource>().Stop();
                 yield break;
