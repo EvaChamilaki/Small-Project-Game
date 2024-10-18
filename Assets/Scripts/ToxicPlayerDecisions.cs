@@ -12,12 +12,13 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public GameObject decisionA1;
     public GameObject decisionA2;
+    public GameObject decisionA3;
 
     public GameObject panel;
 
 
     private bool hasStartedTyping = false;
-    private bool neutral = false;
+    private bool emotionupdated = false;
 
     public GameObject emotionUpdate;
     // Start is called before the first frame update
@@ -41,7 +42,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
             question.GetComponent<TextWriting>().StartTextTyping(0);
         }
 
-        if(panel.activeSelf)
+        if(panel.activeSelf && !emotionupdated)
         {
             StartCoroutine(TroubledEmotion());
         }
@@ -72,14 +73,20 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public IEnumerator TroubledEmotion()
     {
-        yield return null;
-
+        emotionupdated = true;
         ChangeEmotionalState("Troubled");
-        StartCoroutine(EmotionUpdateText());
+        yield return StartCoroutine(EmotionUpdateText());
+    }
 
-        yield return new WaitForSeconds(1.5f);
-
+    public void DecisionA_Result()
+    {
         panel.SetActive(false);
+        decisionA3.SetActive(true);
+
+        decisionA3.GetComponent<TextWriting>().enabled = true;
+        decisionA3.GetComponent<TextWriting>().StartTextTyping(4);
+
+
     }
 
 
