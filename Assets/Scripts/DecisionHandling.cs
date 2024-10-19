@@ -12,6 +12,7 @@ public class DecisionHandling : MonoBehaviour
     public List<GameObject> decisionButtons;
     public GameObject decisionGameObject; //which one is this? the one that has the answer that the player gives?
     public GameObject screens;
+    public GameObject firstIncident;
     public bool decisionAText = false;
     private GameObject tempgo;
 
@@ -33,6 +34,10 @@ public class DecisionHandling : MonoBehaviour
         }
     }
 
+    public void Starting()
+    {
+        firstIncident.SetActive(true);
+    }
     public void DecisionA()
     {
         disableDecisionButtons(decisionButtons);
