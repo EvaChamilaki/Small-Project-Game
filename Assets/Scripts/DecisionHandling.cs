@@ -36,9 +36,9 @@ public class DecisionHandling : MonoBehaviour
 
     public void Starting()
     {
-        firstIncident.SetActive(true);
+        firstIncident.SetActive(true); //first toxic incident is enabled
     }
-    public void DecisionA()
+    public void DecisionA() //Angry
     {
         disableDecisionButtons(decisionButtons);
         decisionAText = true; //so that the text can start typing
