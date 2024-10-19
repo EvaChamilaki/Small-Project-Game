@@ -57,7 +57,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
     }
 
 
-    public void DecisionA_Choice()
+    public void DecisionA_Choice() //chooses the neutral emotion
     {
         question.SetActive(false);
 
@@ -68,7 +68,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
     }
 
-    public void DecisionA_Reaction()
+    public void DecisionA_Reaction() //
     {
         decisionA1.SetActive(false);
         decisionA2.SetActive(true);
@@ -77,6 +77,17 @@ public class NeutralPlayerDecisions : MonoBehaviour
         decisionA2.GetComponent<TextWriting>().enabled = true;
         decisionA2.GetComponent<TextWriting>().StartTextTyping(11);
         
+    }
+
+    public void DecisionA_Result()
+    {
+        panel.SetActive(false);
+        decisionA3.SetActive(true);
+
+        decisionA3.GetComponent<TextWriting>().enabled = true;
+        decisionA3.GetComponent<TextWriting>().StartTextTyping(4);
+
+
     }
 
     public IEnumerator TroubledEmotion()
@@ -93,22 +104,6 @@ public class NeutralPlayerDecisions : MonoBehaviour
         ChangeEmotionalState("Happy");
         yield return StartCoroutine(EmotionUpdateText());
     }
-
-
-
-
-    public void DecisionA_Result()
-    {
-        panel.SetActive(false);
-        decisionA3.SetActive(true);
-
-        decisionA3.GetComponent<TextWriting>().enabled = true;
-        decisionA3.GetComponent<TextWriting>().StartTextTyping(4);
-
-
-    }
-
-
 
     public IEnumerator EmotionUpdateText()
     {
