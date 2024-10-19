@@ -12,6 +12,7 @@ public class AngryPlayerDecisions : MonoBehaviour
     public GameObject decisionB1; 
     public GameObject decisionB2; //act on the angry emotion
     public GameObject decisionB3; //not act on the angry emotion
+    public GameObject decisionB4; //repeat the action
 
     public GameObject emotionUpdate;
 
@@ -51,6 +52,7 @@ public class AngryPlayerDecisions : MonoBehaviour
     public void DecisionB_Act() //act on the angry emotion
     {
         decisionB1.SetActive(false);
+        decisionB4.SetActive(false);
         decisionB2.SetActive(true);
 
         decisionB2.GetComponent<TextWriting>().enabled = true;
@@ -61,6 +63,16 @@ public class AngryPlayerDecisions : MonoBehaviour
     {
         decisionB1.SetActive(false);
         decisionB3.SetActive(true);
+    }
+
+    public void DecisionB_Repeat()
+    {
+        decisionB3.SetActive(false);
+        decisionB4.SetActive(true);
+
+        ChangeEmotionalState("Furious");
+        StartCoroutine(EmotionUpdateText());
+
     }
 
     public IEnumerator HappyEmotion()
