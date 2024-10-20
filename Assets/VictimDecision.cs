@@ -9,7 +9,9 @@ public class VictimDecision : MonoBehaviour
     public GameObject emotionUpdate;
     public GameObject firstIncident;
 
-    public GameObject decisionA;
+    public GameObject question;
+    public GameObject panel;
+    public GameObject decisionA1;
     public List<GameObject> decisionButtons;
     // Start is called before the first frame update
     void Start()
@@ -29,10 +31,32 @@ public class VictimDecision : MonoBehaviour
         ChangeEmotionalState("Angry");
         StartCoroutine(EmotionUpdateText());
 
-        decisionA.SetActive(true);
-        decisionA.GetComponent<TextWriting>().enabled = true;
-        decisionA.GetComponent<TextWriting>().StartTextTyping(4);
+        question.SetActive(true);
+       
     }
+
+    public void DecisionB() //Sad
+    {
+        disableDecisionButtons(decisionButtons);
+        ChangeEmotionalState("Sad");
+        StartCoroutine(EmotionUpdateText());
+        panel.SetActive(true);
+    }
+
+    public void DecisionA_Act() //act on the angry emotion
+    {
+        decisionA1.SetActive(true);
+        decisionA1.GetComponent<TextWriting>().enabled = true;
+        decisionA1.GetComponent<TextWriting>().StartTextTyping(4);
+    }
+
+    public void DecisionA_Ignore() //ignore the angry emotion
+    {
+        question.SetActive(false);
+        panel.SetActive(true);
+    }
+
+
 
     // Update is called once per frame
     void Update()
