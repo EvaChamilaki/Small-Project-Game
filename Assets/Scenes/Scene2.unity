@@ -9961,7 +9961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1170670492828046295
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12832,18 +12832,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 214278762190544846, guid: f99533e64b4118548bdd1d1600226479, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 214278762190544846, guid: f99533e64b4118548bdd1d1600226479, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 2795488568165756257, guid: f99533e64b4118548bdd1d1600226479, type: 3}
-      propertyPath: m_TagString
-      value: Bars
-      objectReference: {fileID: 0}
     - target: {fileID: 5449862205129341731, guid: f99533e64b4118548bdd1d1600226479, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -12924,30 +12912,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7680581752050202468, guid: f99533e64b4118548bdd1d1600226479, type: 3}
-      propertyPath: toximeterValue
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7680581752050202468, guid: f99533e64b4118548bdd1d1600226479, type: 3}
-      propertyPath: images_emotionBarTFF.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7680581752050202468, guid: f99533e64b4118548bdd1d1600226479, type: 3}
-      propertyPath: images_emotionBarTFF.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 61561492448a5d64682f0c1cbaf43f82, type: 3}
-    - target: {fileID: 7680581752050202468, guid: f99533e64b4118548bdd1d1600226479, type: 3}
-      propertyPath: images_emotionBarTFF.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 319b17e8d87a0fc4e9e87084b254e6ca, type: 3}
-    - target: {fileID: 7680581752050202468, guid: f99533e64b4118548bdd1d1600226479, type: 3}
-      propertyPath: images_emotionBarTFF.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: 474f3c21b4e953243b31003f18d88001, type: 3}
-    - target: {fileID: 7680581752050202468, guid: f99533e64b4118548bdd1d1600226479, type: 3}
-      propertyPath: images_emotionBarTFF.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: 3fa5210084fa03f40940122e69e53408, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

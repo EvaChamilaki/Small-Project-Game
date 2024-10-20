@@ -44,7 +44,7 @@ public class AngryPlayerDecisions : MonoBehaviour
 
         _bHandler.toximeterValue = 3;
         _bHandler.emotionBarSNHValue = 1;
-        _bHandler.emotionBarTFFValue = 1;
+        _bHandler.emotionBarTFFValue = 2;
 
         ChangeEmotionalState("Angry");
         StartCoroutine(EmotionUpdateText());
@@ -61,6 +61,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         decisionB4.SetActive(false);
         decisionB2.SetActive(true);
 
+        _bHandler.toximeterValue = 3;
         decisionB2.GetComponent<TextWriting>().enabled = true;
         decisionB2.GetComponent<TextWriting>().StartTextTyping(4);
     }
@@ -76,6 +77,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         decisionB3.SetActive(false);
         decisionB4.SetActive(true);
 
+        _bHandler.emotionBarTFFValue = 3;
         ChangeEmotionalState("Furious");
         StartCoroutine(EmotionUpdateText());
 
