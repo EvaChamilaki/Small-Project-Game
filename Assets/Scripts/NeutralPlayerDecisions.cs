@@ -23,10 +23,14 @@ public class NeutralPlayerDecisions : MonoBehaviour
     private bool hasloggedOut;
 
     public GameObject emotionUpdate;
+    public GameObject emotionBarsCanvas;
+
+    private BarsHandler _bHandler;
     
     // Start is called before the first frame update
     void Start()
     {
+        _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
         emotionUpdate.SetActive(false);
         question.SetActive(false);
         panel.SetActive(false);
@@ -61,6 +65,8 @@ public class NeutralPlayerDecisions : MonoBehaviour
     {
         question.SetActive(false);
 
+        _bHandler.emotionBarSNHValue = 1;
+        _bHandler.emotionBarTFFValue = 0;
 
         ChangeEmotionalState("Neutral");
         StartCoroutine(EmotionUpdateText());
@@ -87,12 +93,15 @@ public class NeutralPlayerDecisions : MonoBehaviour
         decisionA3.GetComponent<TextWriting>().enabled = true;
         decisionA3.GetComponent<TextWriting>().StartTextTyping(4);
 
-
+        _bHandler.toximeterValue = 4;
+        _bHandler.emotionBarSNHValue = 2;
+        _bHandler.emotionBarTFFValue = 0;
     }
 
     public IEnumerator TroubledEmotion()
     {
         emotionupdated = true;
+        _bHandler.emotionBarTFFValue = 1;
         ChangeEmotionalState("Troubled");
         yield return StartCoroutine(EmotionUpdateText());
     }
@@ -101,6 +110,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public IEnumerator HappyEmotion()
     {
         hasloggedOut = true;
+        _bHandler.emotionBarSNHValue = 2;
         ChangeEmotionalState("Happy");
         yield return StartCoroutine(EmotionUpdateText());
     }

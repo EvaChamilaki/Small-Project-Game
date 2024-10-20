@@ -11,6 +11,7 @@ TagManager:
   - emotion_screen
   - DecisionA
   - toxic
+  - Bars
   layers:
   - Default
   - TransparentFX

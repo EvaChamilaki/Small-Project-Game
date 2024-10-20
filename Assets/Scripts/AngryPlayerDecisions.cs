@@ -5,31 +5,34 @@ using UnityEngine;
 public class AngryPlayerDecisions : MonoBehaviour
 {
     public Animator animController;
-    
+
     [Header("Decision Screens")]
     public GameObject question;
 
-    public GameObject decisionB1; 
+    public GameObject decisionB1;
     public GameObject decisionB2; //act on the angry emotion
     public GameObject decisionB3; //not act on the angry emotion
     public GameObject decisionB4; //repeat the action
 
     public GameObject emotionUpdate;
+    public GameObject emotionBarsCanvas;
 
     public GameObject muted;
 
     private bool hasmuted;
+    private BarsHandler _bHandler;
 
 
     void Start()
     {
+        _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
         question.SetActive(false);
         muted.SetActive(false);
     }
 
     void Update()
     {
-        if(muted.activeSelf && !hasmuted)
+        if (muted.activeSelf && !hasmuted)
         {
             StartCoroutine(HappyEmotion());
         }
@@ -39,6 +42,9 @@ public class AngryPlayerDecisions : MonoBehaviour
     {
         question.SetActive(false);
 
+        _bHandler.toximeterValue = 3;
+        _bHandler.emotionBarSNHValue = 1;
+        _bHandler.emotionBarTFFValue = 1;
 
         ChangeEmotionalState("Angry");
         StartCoroutine(EmotionUpdateText());
@@ -89,7 +95,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
     }
-    
+
     public void ChangeEmotionalState(string emotion)
     {
         GameObject obj = GameObject.FindWithTag("emotion_screen");
