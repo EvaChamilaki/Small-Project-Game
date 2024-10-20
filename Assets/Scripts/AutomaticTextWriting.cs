@@ -12,7 +12,7 @@ public class AutomaticTextWriting : MonoBehaviour
     [SerializeField] List<GameObject> buttons;
 
     private bool hasStartedTyping = false;
-    public int startCharIdx = 0;
+    public int startCharIdx;
 
     private void OnEnable()
     {

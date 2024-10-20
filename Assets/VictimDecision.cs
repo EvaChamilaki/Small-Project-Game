@@ -12,7 +12,12 @@ public class VictimDecision : MonoBehaviour
     public GameObject question;
     public GameObject panel;
     public GameObject decisionA1;
+    public GameObject decisionA2;
+    public GameObject decisionB1;
     public List<GameObject> decisionButtons;
+
+    private enum EmotionalState{Neutral, Angry, Sad, Furious, Troubled};
+    private EmotionalState currentEmotion = EmotionalState.Neutral;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,18 +34,11 @@ public class VictimDecision : MonoBehaviour
         disableDecisionButtons(decisionButtons);
   
         ChangeEmotionalState("Angry");
+        currentEmotion = EmotionalState.Angry;
         StartCoroutine(EmotionUpdateText());
 
         question.SetActive(true);
        
-    }
-
-    public void DecisionB() //Sad
-    {
-        disableDecisionButtons(decisionButtons);
-        ChangeEmotionalState("Sad");
-        StartCoroutine(EmotionUpdateText());
-        panel.SetActive(true);
     }
 
     public void DecisionA_Act() //act on the angry emotion
@@ -56,15 +54,42 @@ public class VictimDecision : MonoBehaviour
         panel.SetActive(true);
     }
 
-
-
-    // Update is called once per frame
-    void Update()
+    public void DecisionB() //Sad
     {
-        
+        disableDecisionButtons(decisionButtons);
+        ChangeEmotionalState("Sad");
+        currentEmotion = EmotionalState.Sad;
+        StartCoroutine(EmotionUpdateText());
+        panel.SetActive(true);
     }
 
+    public void SecondIncident()
+    {
+       decisionA2.SetActive(true);
 
+       if(currentEmotion == EmotionalState.Angry) //if the current state is angry (has ignored the first toxic incident but was angry)
+       {
+           ChangeEmotionalState("Furious");
+           currentEmotion = EmotionalState.Furious;
+           StartCoroutine(EmotionUpdateText());
+       }
+       else if(currentEmotion == EmotionalState.Sad) //if in the first decision the player chose sad
+       {
+           ChangeEmotionalState("Angry");
+           currentEmotion = EmotionalState.Angry;
+           StartCoroutine(EmotionUpdateText());
+       }
+    }
+
+    public void DecisionB_Act()
+    {
+        decisionB1.SetActive(true);
+
+        decisionB1.GetComponent<TextWriting>().enabled = true;
+        decisionB1.GetComponent<TextWriting>().StartTextTyping(4);
+    }
+
+    
     public IEnumerator EmotionUpdateText()
     {
         emotionUpdate.SetActive(true);
