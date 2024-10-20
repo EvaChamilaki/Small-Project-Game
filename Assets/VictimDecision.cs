@@ -16,12 +16,25 @@ public class VictimDecision : MonoBehaviour
     public GameObject decisionB1;
     public List<GameObject> decisionButtons;
 
+    public GameObject emptyPanel;
+
     private enum EmotionalState{Neutral, Angry, Sad, Furious, Troubled};
     private EmotionalState currentEmotion = EmotionalState.Neutral;
     // Start is called before the first frame update
     void Start()
     {
-        
+        emptyPanel.SetActive(false);
+    }
+
+    void Update()
+    {
+        if(emptyPanel.activeSelf)
+        {   
+            ChangeEmotionalState("Troubled");
+            currentEmotion = EmotionalState.Troubled;
+            StartCoroutine(EmotionUpdateText());
+            emptyPanel.SetActive(false);
+        }
     }
 
     public void Starting() 
@@ -89,7 +102,6 @@ public class VictimDecision : MonoBehaviour
         decisionB1.GetComponent<TextWriting>().StartTextTyping(4);
     }
 
-    
     public IEnumerator EmotionUpdateText()
     {
         emotionUpdate.SetActive(true);
