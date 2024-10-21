@@ -15,6 +15,7 @@ public class InteractColDetection : MonoBehaviour
         outline = interactableGO.GetComponent<Outline>();
         DisableOutline();
         inspectText.SetActive(false);
+        isInRange = false;
     }
 
     void Update()
@@ -31,11 +32,9 @@ public class InteractColDetection : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        isInRange = true;
-
         if (other.gameObject.tag == ("InteractablePlayer"))
         {
-            Debug.Log("Player in range");
+            isInRange = true;
             EnableOutline();
             inspectText.SetActive(true);
         }
@@ -43,11 +42,9 @@ public class InteractColDetection : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        isInRange = false;
-
         if (other.gameObject.tag == ("InteractablePlayer"))
         {
-            Debug.Log("Player out of range");
+            isInRange = false;
             DisableOutline();
             inspectText.SetActive(false);
         }

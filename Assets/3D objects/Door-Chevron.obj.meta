@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Door_Frame001Mat
-    second: {fileID: 2100000, guid: 04f7e826013b11f428df14b1b567013c, type: 2}
+    second: {fileID: 2100000, guid: 532e0a41d0a7b104bbeb26bf0f59f08d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
