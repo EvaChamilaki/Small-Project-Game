@@ -12,6 +12,8 @@ TagManager:
   - DecisionA
   - toxic
   - Bars
+  - Interactable
+  - InteractablePlayer
   layers:
   - Default
   - TransparentFX
