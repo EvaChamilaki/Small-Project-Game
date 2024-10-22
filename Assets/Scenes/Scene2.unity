@@ -4850,7 +4850,12 @@ MonoBehaviour:
   tutorial: {fileID: 1565382107}
   tutorialText: {fileID: 24054464}
   tutorialkey: 
-  otherUIElements: []
+  isTutorialshown: 0
+  otherUIElements:
+  - {fileID: 49197306}
+  - {fileID: 219093845}
+  - {fileID: 1971280506}
+  - {fileID: 1366586668}
 --- !u!4 &851436615
 Transform:
   m_ObjectHideFlags: 0
@@ -13080,6 +13085,7 @@ MonoBehaviour:
   emotionBarsCanvas: {fileID: 3603454677273617061}
   muted: {fileID: 1960855397}
   tutorial: {fileID: 851436614}
+  tutorialPanel: {fileID: 1565382107}
 --- !u!4 &2536237769387847974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3764867968120471220, guid: f2be17800adeb0e48969a7220a621efd, type: 3}
