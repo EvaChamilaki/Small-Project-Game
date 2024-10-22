@@ -20,6 +20,8 @@ public class VictimDecision : MonoBehaviour
 
     private enum EmotionalState{Neutral, Angry, Sad, Furious, Troubled};
     private EmotionalState currentEmotion = EmotionalState.Neutral;
+
+    public Tutorial tutorial;
     // Start is called before the first frame update
     void Start()
     {
@@ -105,6 +107,7 @@ public class VictimDecision : MonoBehaviour
     public IEnumerator EmotionUpdateText()
     {
         emotionUpdate.SetActive(true);
+        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion");
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
     }
