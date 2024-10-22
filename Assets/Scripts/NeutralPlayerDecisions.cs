@@ -17,6 +17,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public GameObject panel;
     public GameObject logOut;
 
+    public Tutorial tutorial;
 
     private bool hasStartedTyping = false;
     private bool emotionupdated = false;
@@ -118,6 +119,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public IEnumerator EmotionUpdateText()
     {
         emotionUpdate.SetActive(true);
+        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion");
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
     }
