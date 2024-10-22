@@ -56,6 +56,8 @@ public class ThirdPersonCamera : MonoBehaviour
 
         active_camera = main_camera;
 
+        tutorial.ShowTutorial("Move your character with the WASD keys or the arrow keys, interact with objects with left mouse click", "movement");
+
     }
 
     // Update is called once per frame
