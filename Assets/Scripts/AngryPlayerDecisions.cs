@@ -19,6 +19,8 @@ public class AngryPlayerDecisions : MonoBehaviour
 
     public GameObject muted;
 
+    public Tutorial tutorial;
+
     private bool hasmuted;
     private BarsHandler _bHandler;
 
@@ -41,18 +43,15 @@ public class AngryPlayerDecisions : MonoBehaviour
     public void DecisionB_Choice()
     {
         question.SetActive(false);
-
+        decisionB1.SetActive(true);
+        StartCoroutine(EmotionUpdateText());
+        ChangeEmotionalState("Angry");
+        decisionB1.GetComponent<TextWriting>().enabled = true;
+        decisionB1.GetComponent<TextWriting>().StartTextTyping(0);
         _bHandler.toximeterValue = 3;
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 2;
-
-        ChangeEmotionalState("Angry");
-        StartCoroutine(EmotionUpdateText());
-        decisionB1.SetActive(true);
-
-        decisionB1.GetComponent<TextWriting>().enabled = true;
-        decisionB1.GetComponent<TextWriting>().StartTextTyping(0);
-
+        
     }
 
     public void DecisionB_Act() //act on the angry emotion
@@ -94,6 +93,7 @@ public class AngryPlayerDecisions : MonoBehaviour
     public IEnumerator EmotionUpdateText()
     {
         emotionUpdate.SetActive(true);
+        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion");
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
     }

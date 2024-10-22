@@ -34,7 +34,7 @@ public class Tutorial : MonoBehaviour
            element.SetActive(false);
        }
 
-       Time.timeScale = 0; //pauses the game so no input can be done until the next button is pressed
+    //    Time.timeScale = 0; //pauses the game so no input can be done until the next button is pressed
 
 
     }
@@ -49,7 +49,7 @@ public class Tutorial : MonoBehaviour
             element.SetActive(true);
         }
 
-        Time.timeScale = 1; //resumes the game
+        // Time.timeScale = 1; //resumes the game
     }
 
    private bool notfirstTimeShown(string key)

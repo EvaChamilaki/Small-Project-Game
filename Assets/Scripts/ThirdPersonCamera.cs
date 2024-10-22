@@ -34,6 +34,8 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private bool hasBeenTyped = false; //to check whether the text has been typed or not
 
+    public Tutorial tutorial;
+
 
 
     void Start()
@@ -172,6 +174,7 @@ public class ThirdPersonCamera : MonoBehaviour
         emotions_camera.enabled = true;
         canvasClick.SetActive(false);
         canvasEmotionBars.SetActive(true);
+        tutorial.ShowTutorial("Press the B key to go back to the computer screen, or the Space key to go back to the room", "screens");
 
 
         if (currentScreen != null)
