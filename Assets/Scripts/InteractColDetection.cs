@@ -22,7 +22,7 @@ public class InteractColDetection : MonoBehaviour
     {
         if (isInRange)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.V))
             {
                 inspectText.SetActive(false);
                 inspectCamera.SetActive(true);
