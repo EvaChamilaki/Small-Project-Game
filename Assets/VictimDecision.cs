@@ -16,7 +16,7 @@ public class VictimDecision : MonoBehaviour
     public GameObject decisionB1;
     public List<GameObject> decisionButtons;
 
-    public GameObject emptyPanel;
+    public GameObject switchtrigger;
 
     private enum EmotionalState{Neutral, Angry, Sad, Furious, Troubled};
     private EmotionalState currentEmotion = EmotionalState.Neutral;
@@ -26,21 +26,25 @@ public class VictimDecision : MonoBehaviour
     public GameObject emotionBarsCanvas;
     private BarsHandler _bHandler;
 
+    public GameObject currentScreen;
+
     // Start is called before the first frame update
     void Start()
     {
-        emptyPanel.SetActive(false);
+        switchtrigger.SetActive(false);
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
+        
     }
 
     void Update() //the panel that shows the username change
     {
-        if(emptyPanel.activeSelf)
+        if(switchtrigger.activeSelf)
         {   
             ChangeEmotionalState("Troubled");
             currentEmotion = EmotionalState.Troubled;
             StartCoroutine(EmotionUpdateText());
-            emptyPanel.SetActive(false);
+            currentScreen.GetComponent<ComputerScreenSwitch>().SwitchScreens();
+            switchtrigger.SetActive(false);
         }
     }
 
