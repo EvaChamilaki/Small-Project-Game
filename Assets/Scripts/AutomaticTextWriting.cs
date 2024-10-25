@@ -12,15 +12,21 @@ public class AutomaticTextWriting : MonoBehaviour
     [SerializeField] List<GameObject> buttons;
 
     private bool hasStartedTyping = false;
-    public int startCharIdx;
+    // public int startCharIdx;
+
+    
+    public int currentCharIdx;
+    private bool isWriting;
 
     private void Awake()
     {
         if(!hasStartedTyping)   
         {
             hasStartedTyping = true;
+            isWriting = true;
             StartCoroutine(TextVisible(0));
         }
+
 
         foreach (GameObject button in buttons)
         {
@@ -28,6 +34,14 @@ public class AutomaticTextWriting : MonoBehaviour
             {
                 button.SetActive(false); //disable the button until the text is done being written
             }
+        }
+    }
+
+    private void OnEnable()
+    {
+        if(isWriting)
+        {
+            ResumeWriting();
         }
     }
 
@@ -45,29 +59,34 @@ public class AutomaticTextWriting : MonoBehaviour
 
         int counter = startCharIdx;
 
-        while (true)
+        while (isWriting && currentCharIdx < totalVisibleCharacters)
         {
-            int visibleCount = counter % (totalVisibleCharacters + 1);
-            _textMeshPro.maxVisibleCharacters = visibleCount;
-
-            if (visibleCount >= totalVisibleCharacters)
+            if(!gameObject.activeInHierarchy || !_textMeshPro.gameObject.activeInHierarchy)
             {
-                foreach (GameObject button in buttons)
-                {
-                    if (button != null)
-                    {
-                        button.SetActive(true); //enable the button after the text is done being written
-                    }
-                }
-                // GetComponent<AudioSource>().Stop();
-                yield break;
-
-
+                yield return new WaitUntil(() => gameObject.activeInHierarchy && _textMeshPro.gameObject.activeInHierarchy);
             }
-            counter += 1;
 
-            yield return new WaitForSeconds(timeBetweenCharacters);
+        _textMeshPro.maxVisibleCharacters = currentCharIdx  + 1;
+        currentCharIdx += 1;
+
+        yield return new WaitForSeconds(timeBetweenCharacters);
         }
+
+        isWriting = false;
+
+        foreach (GameObject button in buttons)
+        {
+            if (button != null)
+            {
+                button.SetActive(true); //enable the button after the text is done being written
+            }
+        }
+    }
+
+    private void ResumeWriting()
+    {
+        isWriting = true;
+        StartCoroutine(TextVisible(currentCharIdx));
     }
 }
 

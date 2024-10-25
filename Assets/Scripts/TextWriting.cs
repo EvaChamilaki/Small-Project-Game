@@ -1,6 +1,6 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
 
 public class TextWriting : MonoBehaviour
@@ -13,8 +13,21 @@ public class TextWriting : MonoBehaviour
 
     [SerializeField] List<GameObject> buttons;
 
+    public int currentCharIdx;
+    private bool isWriting;
+
+    private void OnEnable()
+    {
+        if(isWriting)
+        {
+            ResumeWriting();
+        }
+    }
+
     public void StartTextTyping(int startCharIdx)
     {
+        currentCharIdx = startCharIdx;
+        isWriting = true;
         foreach (GameObject button in buttons)
         {
             if (button != null)
@@ -39,30 +52,48 @@ public class TextWriting : MonoBehaviour
 
         int counter = startCharIdx;
 
-        while (true)
+        while (isWriting && currentCharIdx < totalVisibleCharacters)
         {
-            int visibleCount = counter % (totalVisibleCharacters + 1);
-            _textMeshPro.maxVisibleCharacters = visibleCount;
-
-            if (visibleCount >= totalVisibleCharacters)
+            if(!gameObject.activeInHierarchy || !_textMeshPro.gameObject.activeInHierarchy)
             {
-                foreach (GameObject button in buttons)
-                {
+                yield return new WaitUntil(() => gameObject.activeInHierarchy && _textMeshPro.gameObject.activeInHierarchy);
+            }
+
+        _textMeshPro.maxVisibleCharacters = currentCharIdx  + 1;
+        currentCharIdx += 1;
+
+        yield return new WaitForSeconds(timeBetweenCharacters);
+        }
+
+        isWriting = false;
+            // int visibleCount = counter % (totalVisibleCharacters + 1);
+            // _textMeshPro.maxVisibleCharacters = visibleCount;
+
+            // if (visibleCount >= totalVisibleCharacters)
+            // {
+            foreach (GameObject button in buttons)
+            {
                     if (button != null)
                     {
                         button.SetActive(true); //enable the button after the text is done being written
                     }
-                }
+            }
                 // GetComponent<AudioSource>().Stop();
-                yield break;
+                // yield break;
 
 
             }
-            counter += 1;
 
-            yield return new WaitForSeconds(timeBetweenCharacters);
+            private void ResumeWriting()
+            {
+                isWriting = true;
+                StartCoroutine(TextVisible(currentCharIdx));
+            }
+            // counter += 1;
+
+            // yield return new WaitForSeconds(timeBetweenCharacters);
         }
-    }
-}
+//     }
+// }
 
 
