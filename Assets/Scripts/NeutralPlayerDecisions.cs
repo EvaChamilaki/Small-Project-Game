@@ -119,7 +119,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public IEnumerator EmotionUpdateText()
     {
         emotionUpdate.SetActive(true);
-        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion1");
+        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion");
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
     }
