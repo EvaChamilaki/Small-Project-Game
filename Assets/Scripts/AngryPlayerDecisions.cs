@@ -52,7 +52,6 @@ public class AngryPlayerDecisions : MonoBehaviour
         
         decisionB1.GetComponent<TextWriting>().enabled = true;
         decisionB1.GetComponent<TextWriting>().StartTextTyping(0); //it starts typing even though the tutorial is active, it is annoying
-        _bHandler.toximeterValue = 3;
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 2;
         
@@ -71,17 +70,18 @@ public class AngryPlayerDecisions : MonoBehaviour
         decisionB2.GetComponent<TextWriting>().StartTextTyping(4);
     }
 
-    public void DecisionB_Ignore()
+    public void DecisionB_Ignore() //do not act on the angry emotion
     {
         decisionB1.SetActive(false);
         decisionB3.SetActive(true);
     }
 
-    public void DecisionB_Repeat()
+    public void DecisionB_Repeat() //a mistake happens again, player is furious
     {
         decisionB3.SetActive(false);
         decisionB4.SetActive(true);
-
+        
+        _bHandler.toximeterValue = 3;
         _bHandler.emotionBarTFFValue = 3;
         ChangeEmotionalState("Furious");
         StartCoroutine(EmotionUpdateText());
@@ -92,6 +92,10 @@ public class AngryPlayerDecisions : MonoBehaviour
     {
         hasmuted = true;
         ChangeEmotionalState("Happy");
+
+        _bHandler.emotionBarTFFValue = 0;
+        _bHandler.emotionBarSNHValue = 2;
+        _bHandler.toximeterValue = 3;
         yield return StartCoroutine(EmotionUpdateText());
     }
 

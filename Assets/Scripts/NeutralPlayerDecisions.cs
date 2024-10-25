@@ -75,7 +75,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
     }
 
-    public void DecisionA_Reaction() //
+    public void DecisionA_Reaction() //others are toxic to the mistake
     {
         decisionA1.SetActive(false);
         decisionA2.SetActive(true);
@@ -86,7 +86,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
         
     }
 
-    public void DecisionA_Result()
+    public void DecisionA_Result() //player feels left out
     {
         panel.SetActive(false);
         decisionA3.SetActive(true);
@@ -94,7 +94,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
         decisionA3.GetComponent<TextWriting>().enabled = true;
         decisionA3.GetComponent<TextWriting>().StartTextTyping(4);
 
-        _bHandler.toximeterValue = 4;
+        _bHandler.toximeterValue = 3;
         _bHandler.emotionBarSNHValue = 2;
         _bHandler.emotionBarTFFValue = 0;
     }
