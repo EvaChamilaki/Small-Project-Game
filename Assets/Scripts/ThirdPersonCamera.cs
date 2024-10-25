@@ -44,7 +44,7 @@ public class ThirdPersonCamera : MonoBehaviour
         firstScreen.SetActive(false);
         currentScreen = firstScreen;
 
-        writingText.GetComponent<TextWriting>().enabled = false;
+        // writingText.GetComponent<TextWriting>().enabled = false;
 
 
         main_camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
@@ -143,6 +143,11 @@ public class ThirdPersonCamera : MonoBehaviour
                 hasBeenTyped = true;
             }
         }
+
+        else
+        {
+            currentScreen.SetActive(true);
+        }
         charcontroller.enabled = false;
         charControlActive = false;
 
@@ -165,7 +170,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
         active_camera = main_camera;
 
-        writingText.GetComponent<TextWriting>().enabled = false;
+        // writingText.GetComponent<TextWriting>().enabled = false;
 
     }
 
@@ -184,7 +189,7 @@ public class ThirdPersonCamera : MonoBehaviour
             currentScreen.SetActive(false);
         }
 
-        writingText.GetComponent<TextWriting>().enabled = false;
+        // writingText.GetComponent<TextWriting>().enabled = false;
 
         charcontroller.enabled = false;
         charControlActive = false;

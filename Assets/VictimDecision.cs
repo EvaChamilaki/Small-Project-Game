@@ -22,13 +22,18 @@ public class VictimDecision : MonoBehaviour
     private EmotionalState currentEmotion = EmotionalState.Neutral;
 
     public Tutorial tutorial;
+
+    public GameObject emotionBarsCanvas;
+    private BarsHandler _bHandler;
+
     // Start is called before the first frame update
     void Start()
     {
         emptyPanel.SetActive(false);
+        _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
     }
 
-    void Update()
+    void Update() //the panel that shows the username change
     {
         if(emptyPanel.activeSelf)
         {   
@@ -44,10 +49,11 @@ public class VictimDecision : MonoBehaviour
         firstIncident.SetActive(true); //first toxic incident is enabled
     }
 
-    public void DecisionA() //Angry
+    public void DecisionA() //first emotion is angry
     {
         disableDecisionButtons(decisionButtons);
-  
+        _bHandler.emotionBarTFFValue = 2;
+        _bHandler.emotionBarSNHValue = 1;
         ChangeEmotionalState("Angry");
         currentEmotion = EmotionalState.Angry;
         StartCoroutine(EmotionUpdateText());
@@ -57,7 +63,8 @@ public class VictimDecision : MonoBehaviour
     }
 
     public void DecisionA_Act() //act on the angry emotion
-    {
+    {   _bHandler.toximeterValue = 1;
+        StartCoroutine(EmotionUpdateText());
         decisionA1.SetActive(true);
         decisionA1.GetComponent<TextWriting>().enabled = true;
         decisionA1.GetComponent<TextWriting>().StartTextTyping(4);
@@ -69,9 +76,10 @@ public class VictimDecision : MonoBehaviour
         panel.SetActive(true);
     }
 
-    public void DecisionB() //Sad
+    public void DecisionB() //first emotion is sad
     {
         disableDecisionButtons(decisionButtons);
+        _bHandler.emotionBarSNHValue = 1;
         ChangeEmotionalState("Sad");
         currentEmotion = EmotionalState.Sad;
         StartCoroutine(EmotionUpdateText());
@@ -85,12 +93,14 @@ public class VictimDecision : MonoBehaviour
        if(currentEmotion == EmotionalState.Angry) //if the current state is angry (has ignored the first toxic incident but was angry)
        {
            ChangeEmotionalState("Furious");
+           _bHandler.emotionBarTFFValue = 3;
            currentEmotion = EmotionalState.Furious;
            StartCoroutine(EmotionUpdateText());
        }
        else if(currentEmotion == EmotionalState.Sad) //if in the first decision the player chose sad
        {
            ChangeEmotionalState("Angry");
+           _bHandler.emotionBarTFFValue = 2;
            currentEmotion = EmotionalState.Angry;
            StartCoroutine(EmotionUpdateText());
        }
@@ -99,7 +109,7 @@ public class VictimDecision : MonoBehaviour
     public void DecisionB_Act()
     {
         decisionB1.SetActive(true);
-
+        _bHandler.toximeterValue = 2;
         decisionB1.GetComponent<TextWriting>().enabled = true;
         decisionB1.GetComponent<TextWriting>().StartTextTyping(4);
     }

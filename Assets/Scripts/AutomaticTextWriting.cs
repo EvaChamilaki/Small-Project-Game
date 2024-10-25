@@ -14,7 +14,7 @@ public class AutomaticTextWriting : MonoBehaviour
     private bool hasStartedTyping = false;
     public int startCharIdx;
 
-    private void OnEnable()
+    private void Awake()
     {
         if(!hasStartedTyping)   
         {
