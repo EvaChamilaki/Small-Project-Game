@@ -195,8 +195,15 @@ public class ThirdPersonCamera : MonoBehaviour
         emotions_camera.enabled = true;
         canvasClick.SetActive(false);
         canvasEmotionBars.SetActive(true);
-        tutorial.ShowTutorial("Press the B key to go back to the computer screen, or the Space key to go back to the room", "screens");
 
+        if(tutorial.notfirstTimeShown("screens"))
+        {
+            charControlActive = true;
+        }
+        else
+        {
+        tutorial.ShowTutorial("Press the B key to go back to the computer screen, or the Space key to go back to the room", "screens");
+        }
 
         if (currentScreen != null)
         {

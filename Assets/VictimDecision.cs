@@ -21,7 +21,7 @@ public class VictimDecision : MonoBehaviour
     private enum EmotionalState{Neutral, Angry, Sad, Furious, Troubled};
     private EmotionalState currentEmotion = EmotionalState.Neutral;
 
-    public Tutorial tutorial;
+    // public Tutorial tutorial;
 
     public GameObject emotionBarsCanvas;
     private BarsHandler _bHandler;
@@ -61,7 +61,6 @@ public class VictimDecision : MonoBehaviour
         ChangeEmotionalState("Angry");
         currentEmotion = EmotionalState.Angry;
         StartCoroutine(EmotionUpdateText());
-
         question.SetActive(true);
        
     }
@@ -121,7 +120,7 @@ public class VictimDecision : MonoBehaviour
     public IEnumerator EmotionUpdateText()
     {
         emotionUpdate.SetActive(true);
-        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion");
+        // tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion");
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
     }
