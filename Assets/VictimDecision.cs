@@ -43,7 +43,7 @@ public class VictimDecision : MonoBehaviour
             ChangeEmotionalState("Troubled");
             currentEmotion = EmotionalState.Troubled;
             StartCoroutine(EmotionUpdateText());
-            currentScreen.GetComponent<ComputerScreenSwitch>().SwitchScreens();
+            StartCoroutine(SwitchScreensWithDelay(3.0f));
             switchtrigger.SetActive(false);
         }
     }
@@ -142,5 +142,11 @@ public class VictimDecision : MonoBehaviour
                 button.SetActive(false);
             }
         }
+    }
+
+    private IEnumerator SwitchScreensWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        currentScreen.GetComponent<ComputerScreenSwitch>().SwitchScreens();
     }
 }
