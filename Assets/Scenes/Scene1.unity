@@ -4005,7 +4005,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0844857, y: -0.000000035345042, z: 0.0000000029968654, w: 0.99642473}
+  m_LocalRotation: {x: 0.0844857, y: 0.00000003534504, z: -0.000000002996865, w: 0.99642473}
   m_LocalPosition: {x: 2.716, y: 1.271, z: -2.912}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4637,7 +4637,8 @@ MonoBehaviour:
   _textMeshPro: {fileID: 1110878027}
   timeBetweenCharacters: 0.25
   timeBetweenWords: 0.1
-  buttons: []
+  buttons:
+  - {fileID: 1596051293}
   currentCharIdx: 0
 --- !u!114 &1110878027
 MonoBehaviour:
@@ -5048,7 +5049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164620674}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08448571, y: -0.000000017672525, z: 0.000000001498433, w: 0.99642473}
+  m_LocalRotation: {x: 0.08448571, y: 0.000000017672514, z: -0.0000000014984322, w: 0.99642473}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7700,7 +7701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1596051294
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10772,7 +10773,7 @@ PrefabInstance:
     - target: {fileID: 2860752572795965700, guid: f8204c48ee50e8647bd59dc0f31efb1a, type: 3}
       propertyPath: firstScreen
       value: 
-      objectReference: {fileID: 68885464}
+      objectReference: {fileID: 7548284395280804886}
     - target: {fileID: 2860752572795965700, guid: f8204c48ee50e8647bd59dc0f31efb1a, type: 3}
       propertyPath: writingText
       value: 
