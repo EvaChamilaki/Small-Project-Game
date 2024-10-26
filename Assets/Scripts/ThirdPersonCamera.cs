@@ -56,7 +56,15 @@ public class ThirdPersonCamera : MonoBehaviour
 
         active_camera = main_camera;
 
-        tutorial.ShowTutorial("Move your character with the WASD keys or the arrow keys, interact with objects with left mouse click, inspect with the V key", "start");
+        if(tutorial.notfirstTimeShown("start"))
+        {
+            charControlActive = true;
+        }
+        else
+        {
+             tutorial.ShowTutorial("Move your character with the WASD keys or the arrow keys, interact with objects with left mouse click, inspect with the V key", "start");
+        }
+       
 
     }
 

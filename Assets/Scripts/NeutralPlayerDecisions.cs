@@ -28,17 +28,16 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
     private BarsHandler _bHandler;
     
-    // Start is called before the first frame update
+
     void Start()
     {
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
-        emotionUpdate.SetActive(false);
         question.SetActive(false);
         panel.SetActive(false);
         
     }
 
-    // Update is called once per frame
+ 
     void Update()
     {
         if(currentScreen.activeSelf && !hasStartedTyping) //checks if the "current screen" is active
@@ -64,13 +63,12 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
     public void DecisionA_Choice() //chooses the neutral emotion
     {
+        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion2");
         question.SetActive(false);
-
+        StartCoroutine(EmotionUpdateText());
+        ChangeEmotionalState("Neutral");
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 0;
-
-        ChangeEmotionalState("Neutral");
-        StartCoroutine(EmotionUpdateText());
         decisionA1.SetActive(true);
 
     }
@@ -119,7 +117,6 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public IEnumerator EmotionUpdateText()
     {
         emotionUpdate.SetActive(true);
-        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion");
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
     }

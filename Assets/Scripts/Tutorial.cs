@@ -56,7 +56,7 @@ public class Tutorial : MonoBehaviour
     Time.timeScale = 1; //resumes the game
     }
 
-   private bool notfirstTimeShown(string key)
+   public bool notfirstTimeShown(string key)
    {
     return PlayerPrefs.GetInt(key, 0) == 1; //if the tutorial has not been shown before, the key will be 0, if it has been shown the key will be 1
    }

@@ -45,17 +45,13 @@ public class AngryPlayerDecisions : MonoBehaviour
 
     public void DecisionB_Choice() //the angry button was chosen
     {
+        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion1");
         question.SetActive(false);
-        decisionB1.SetActive(true);
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
-        
-        decisionB1.GetComponent<TextWriting>().enabled = true;
-        decisionB1.GetComponent<TextWriting>().StartTextTyping(0); //it starts typing even though the tutorial is active, it is annoying
         _bHandler.emotionBarSNHValue = 1;
-        _bHandler.emotionBarTFFValue = 2;
-        
-        
+        _bHandler.emotionBarTFFValue = 2;    
+        StartCoroutine(StartTyping());
         
     }
 
@@ -102,13 +98,17 @@ public class AngryPlayerDecisions : MonoBehaviour
     public IEnumerator EmotionUpdateText()
     {
         emotionUpdate.SetActive(true);
-        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion");
-        // if(tutorial.isTutorialshown)
-        // {
-        //     tutorialshown = true;
-        // }
+ 
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
+    }
+
+    private IEnumerator StartTyping()
+    {
+        yield return new WaitUntil(() => !tutorial.isTutorialActive);
+        decisionB1.SetActive(true);
+        decisionB1.GetComponent<TextWriting>().enabled = true;
+        decisionB1.GetComponent<TextWriting>().StartTextTyping(0); 
     }
 
     public void ChangeEmotionalState(string emotion)
