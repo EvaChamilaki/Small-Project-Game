@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpriteAnimationOnClick : MonoBehaviour
 {
     private Animator animController;
-    private string trigger_button = "pressed_button";
+    private string trigger_button;
 
     public void PlayButtonAnim()
     {
@@ -20,6 +20,14 @@ public class SpriteAnimationOnClick : MonoBehaviour
         if(this.gameObject.tag == "toxic")
         {
             trigger_button = "toxic_pressed_button";
+        }
+        else if (this.gameObject.tag == "victim")
+        {
+            trigger_button = "pressed_button";
+        }
+        else
+        {
+            trigger_button = "username_button";
         }
 
         StartCoroutine(WaitForAnimation(trigger_button));
