@@ -15,6 +15,7 @@ public class VictimDecision : MonoBehaviour
     public GameObject decisionA2;
     public GameObject decisionB1;
     public List<GameObject> decisionButtons;
+    public GameObject ChatManagerObject;
 
     public GameObject switchtrigger;
 
@@ -25,6 +26,7 @@ public class VictimDecision : MonoBehaviour
 
     public GameObject emotionBarsCanvas;
     private BarsHandler _bHandler;
+    private ChatBehaviorManager _chatManager;
 
     public GameObject currentScreen;
 
@@ -33,7 +35,7 @@ public class VictimDecision : MonoBehaviour
     {
         switchtrigger.SetActive(false);
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
-        
+        _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
     }
 
     void Update() //the panel that shows the username change
@@ -55,6 +57,10 @@ public class VictimDecision : MonoBehaviour
 
     public void DecisionA() //first emotion is angry
     {
+        _chatManager.SendMessageToChat("I am angry");
+        _chatManager.SendMessageToChat("You are not helping ibiri ibiri bi");
+
+        _chatManager.SendMessageToChat("mimimi");
         disableDecisionButtons(decisionButtons);
         _bHandler.emotionBarTFFValue = 2;
         _bHandler.emotionBarSNHValue = 1;
