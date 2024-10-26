@@ -12,12 +12,12 @@ public class Tutorial : MonoBehaviour
     public string tutorialkey; //the key that will track if the tutorial has been shown
     
     public bool isTutorialshown;
+    public bool isTutorialActive;
 
-    public List<GameObject> otherUIElements;
-    // Start is called before the first frame update
     void Start()
     {
         tutorial.SetActive(false);
+        isTutorialActive = false;
         
     }
 
@@ -28,6 +28,7 @@ public class Tutorial : MonoBehaviour
        {
        tutorialText.text = message;
        tutorial.SetActive(true);
+       isTutorialActive = true;
        }
 
     //    foreach(GameObject element in otherUIElements)
@@ -35,7 +36,7 @@ public class Tutorial : MonoBehaviour
     //        element.SetActive(false);
     //    }
 
-    //    Time.timeScale = 0; //pauses the game so no input can be done until the next button is pressed
+    Time.timeScale = 0; //pauses the game so no input can be done until the next button is pressed
 
 
     }
@@ -45,13 +46,14 @@ public class Tutorial : MonoBehaviour
         tutorial.SetActive(false);
         saveShown(tutorialkey);
         isTutorialshown = true;
+        isTutorialActive = false;
 
         // foreach(GameObject element in otherUIElements)
         // {
         //     element.SetActive(true);
         // }
 
-        Time.timeScale = 1; //resumes the game
+    Time.timeScale = 1; //resumes the game
     }
 
    private bool notfirstTimeShown(string key)

@@ -103,10 +103,10 @@ public class AngryPlayerDecisions : MonoBehaviour
     {
         emotionUpdate.SetActive(true);
         tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion");
-        if(tutorial.isTutorialshown)
-        {
-            tutorialshown = true;
-        }
+        // if(tutorial.isTutorialshown)
+        // {
+        //     tutorialshown = true;
+        // }
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
     }
