@@ -13,15 +13,17 @@ public class ChatBehaviorManager : MonoBehaviour
 
     public GameObject chatPanel, textObject;
 
+    public TextWriting textWritingScript;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            SendMessageToChat("Hello");
+            //SendMessageToChat("Hello");
         }
     }
 
-    public void SendMessageToChat(string text)
+    public void SendMessageToChat(string text, bool slowWriting, int startIdx)
     {
         if (chatPanel == null || textObject == null)
         {
@@ -32,7 +34,7 @@ public class ChatBehaviorManager : MonoBehaviour
         if (messageList.Count >= maxMessages)
         {
             Destroy(messageList[0].textObj.gameObject);
-            messageList.Remove(messageList[0]);
+            messageList.RemoveAt(0);
         }
 
         Message newMessage = new Message();
@@ -43,7 +45,16 @@ public class ChatBehaviorManager : MonoBehaviour
         newMessage.textObj = newText.GetComponent<TextMeshProUGUI>();
         newMessage.textObj.text = newMessage.text;
 
-        messageList.Add(newMessage);
+        if(slowWriting)
+        {
+            newMessage.textObj.maxVisibleCharacters = 0; // Start with no characters visible
+            messageList.Add(newMessage);
+            newText.GetComponent<TextWriting>().StartTextTyping(startIdx); //enable text writing for the specific text
+        }
+        else
+        {
+            messageList.Add(newMessage);
+        }
     }
 
 }

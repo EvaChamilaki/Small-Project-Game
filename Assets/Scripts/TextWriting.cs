@@ -7,7 +7,6 @@ public class TextWriting : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI _textMeshPro;
-    // public string[] stringArray;
     [SerializeField] float timeBetweenCharacters;
     [SerializeField] float timeBetweenWords;
 
@@ -15,16 +14,17 @@ public class TextWriting : MonoBehaviour
 
     public int currentCharIdx;
     private bool isWriting;
+    public bool textCompleted = false;
 
     private void OnEnable()
     {
-        if(isWriting)
+        if (isWriting)
         {
             ResumeWriting();
         }
     }
 
-    public void StartTextTyping(int startCharIdx)
+    public Coroutine StartTextTyping(int startCharIdx)
     {
         currentCharIdx = startCharIdx;
         isWriting = true;
@@ -35,8 +35,8 @@ public class TextWriting : MonoBehaviour
                 button.SetActive(false); //disable the button until the text is done being written
             }
         }
-        
-        StartCoroutine(TextVisible(startCharIdx));
+
+        return StartCoroutine(TextVisible(startCharIdx));
     }
 
     private IEnumerator TextVisible(int startCharIdx)
@@ -54,46 +54,38 @@ public class TextWriting : MonoBehaviour
 
         while (isWriting && currentCharIdx < totalVisibleCharacters)
         {
-            if(!gameObject.activeInHierarchy || !_textMeshPro.gameObject.activeInHierarchy)
+            if (!gameObject.activeInHierarchy || !_textMeshPro.gameObject.activeInHierarchy)
             {
                 yield return new WaitUntil(() => gameObject.activeInHierarchy && _textMeshPro.gameObject.activeInHierarchy);
             }
 
-        _textMeshPro.maxVisibleCharacters = currentCharIdx  + 1;
-        currentCharIdx += 1;
+            _textMeshPro.maxVisibleCharacters = currentCharIdx + 1;
+            currentCharIdx += 1;
 
-        yield return new WaitForSeconds(timeBetweenCharacters);
+            yield return new WaitForSeconds(timeBetweenCharacters);
+        }
+
+        if (currentCharIdx == totalVisibleCharacters)
+        {
+            textCompleted = true;
         }
 
         isWriting = false;
-            // int visibleCount = counter % (totalVisibleCharacters + 1);
-            // _textMeshPro.maxVisibleCharacters = visibleCount;
 
-            // if (visibleCount >= totalVisibleCharacters)
-            // {
-            foreach (GameObject button in buttons)
+        foreach (GameObject button in buttons)
+        {
+            if (button != null)
             {
-                    if (button != null)
-                    {
-                        button.SetActive(true); //enable the button after the text is done being written
-                    }
+                button.SetActive(true); //enable the button after the text is done being written
             }
-                // GetComponent<AudioSource>().Stop();
-                // yield break;
-
-
-            }
-
-            private void ResumeWriting()
-            {
-                isWriting = true;
-                StartCoroutine(TextVisible(currentCharIdx));
-            }
-            // counter += 1;
-
-            // yield return new WaitForSeconds(timeBetweenCharacters);
         }
-//     }
-// }
+    }
+
+    private void ResumeWriting()
+    {
+        isWriting = true;
+        StartCoroutine(TextVisible(currentCharIdx));
+    }
+}
 
 

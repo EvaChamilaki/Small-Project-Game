@@ -2327,7 +2327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animController: {fileID: 2077741599}
   emotionUpdate: {fileID: 1496746929824528354}
-  firstIncident: {fileID: 1052267184}
+  firstIncident: {fileID: 1639877535}
   question: {fileID: 2031824479}
   panel: {fileID: 723411518}
   decisionA1: {fileID: 1340458297}
@@ -4188,7 +4188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0844857, y: -0.000000035345042, z: 0.0000000029968654, w: 0.99642473}
+  m_LocalRotation: {x: 0.0844857, y: 0.00000003534504, z: -0.000000002996865, w: 0.99642473}
   m_LocalPosition: {x: 2.716, y: 1.271, z: -2.912}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4353,7 +4353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &998006495
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4836,7 +4836,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 5
+  m_Spacing: 3
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -5309,7 +5309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164620674}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08448571, y: -0.000000017672525, z: 0.000000001498433, w: 0.99642473}
+  m_LocalRotation: {x: 0.08448571, y: 0.000000017672514, z: -0.0000000014984322, w: 0.99642473}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5914,6 +5914,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 495817894}
   currentCharIdx: 0
+  textCompleted: 0
 --- !u!114 &1277253355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6393,6 +6394,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1468351999}
   currentCharIdx: 0
+  textCompleted: 0
 --- !u!114 &1340458299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6899,7 +6901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1433015359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8534,6 +8536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1652515864}
   - component: {fileID: 1652515863}
+  - component: {fileID: 1652515865}
   m_Layer: 0
   m_Name: ChatManager
   m_TagString: Untagged
@@ -8553,10 +8556,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d00e04bfe4b054f827f6e07efb650d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMessages: 6
+  maxMessages: 8
   messageList: []
   chatPanel: {fileID: 1087814371}
   textObject: {fileID: 5797387240083130099, guid: bfc7d1ec2602a144d953db86107c1d80, type: 3}
+  textWritingScript: {fileID: 0}
 --- !u!4 &1652515864
 Transform:
   m_ObjectHideFlags: 0
@@ -8572,6 +8576,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3063471613849046201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1652515865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652515862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f66568946625b94f870e5c8db474170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMeshPro: {fileID: 0}
+  timeBetweenCharacters: 0.5
+  timeBetweenWords: 0.1
+  buttons: []
+  currentCharIdx: 0
+  textCompleted: 0
 --- !u!1001 &1705679539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9039,7 +9061,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1816640800
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13623,6 +13645,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 7631329350547969035}
   currentCharIdx: 0
+  textCompleted: 0
 --- !u!223 &5065913557489207830
 Canvas:
   m_ObjectHideFlags: 0
