@@ -28,6 +28,8 @@ public class VictimDecision : MonoBehaviour
 
     public GameObject currentScreen;
 
+    public List<Light> lights;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,10 @@ public class VictimDecision : MonoBehaviour
             ChangeEmotionalState("Troubled");
             currentEmotion = EmotionalState.Troubled;
             StartCoroutine(EmotionUpdateText());
+            foreach (Light light in lights)
+            {
+                StartCoroutine(ChangeLightColor(light, new Color(0.5f, 0.1f, 0.5f), 0.5f, 2.0f)); //purple color for the troubled emotion but does not work very well, it's too similar to the room light
+            }
             StartCoroutine(SwitchScreensWithDelay(3.0f));
             switchtrigger.SetActive(false);
         }
@@ -62,6 +68,10 @@ public class VictimDecision : MonoBehaviour
         currentEmotion = EmotionalState.Angry;
         StartCoroutine(EmotionUpdateText());
         question.SetActive(true);
+        foreach (Light light in lights)
+        {
+            StartCoroutine(ChangeLightColor(light, Color.red, 0.5f, 2.0f));
+        }
        
     }
 
@@ -87,6 +97,11 @@ public class VictimDecision : MonoBehaviour
         currentEmotion = EmotionalState.Sad;
         StartCoroutine(EmotionUpdateText());
         panel.SetActive(true);
+        foreach (Light light in lights)
+        {
+            StartCoroutine(ChangeLightColor(light, Color.blue, 0.5f, 2.0f));
+        }
+
     }
 
     public void SecondIncident()
@@ -99,6 +114,11 @@ public class VictimDecision : MonoBehaviour
            _bHandler.emotionBarTFFValue = 3;
            currentEmotion = EmotionalState.Furious;
            StartCoroutine(EmotionUpdateText());
+           foreach(Light light in lights)
+           {
+               StartCoroutine(ChangeLightColor(light, new Color (0.5f, 0f, 0f), 0.5f, 2.0f)); //darkRed for the furious state
+           }
+      
        }
        else if(currentEmotion == EmotionalState.Sad) //if in the first decision the player chose sad
        {
@@ -106,6 +126,10 @@ public class VictimDecision : MonoBehaviour
            _bHandler.emotionBarTFFValue = 2;
            currentEmotion = EmotionalState.Angry;
            StartCoroutine(EmotionUpdateText());
+           foreach (Light light in lights)
+            {
+            StartCoroutine(ChangeLightColor(light, Color.red, 0.5f, 2.0f));
+            }
        }
     }
 
@@ -147,5 +171,25 @@ public class VictimDecision : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         currentScreen.GetComponent<ComputerScreenSwitch>().SwitchScreens();
+    }
+
+    //i wanted to make the color change gradually
+    private IEnumerator ChangeLightColor(Light light, Color targetcolor, float targetIntensity, float duration)
+    {
+        Color startColor = light.color;
+        float startIntensity = light.intensity;
+
+        float t = 0; 
+
+        while (t<duration)
+        {
+            t += Time.deltaTime;
+            light.color = Color.Lerp(startColor, targetcolor, t/duration);
+            light.intensity = Mathf.Lerp(startIntensity, targetIntensity, t/duration);
+            yield return null;
+        }
+
+        light.color = targetcolor;
+        light.intensity = targetIntensity;
     }
 }
