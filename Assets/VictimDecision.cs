@@ -42,6 +42,7 @@ public class VictimDecision : MonoBehaviour
     {
         if(switchtrigger.activeSelf)
         {   
+            _bHandler.emotionBarTFFValue = 1;
             ChangeEmotionalState("Troubled");
             currentEmotion = EmotionalState.Troubled;
             StartCoroutine(EmotionUpdateText());
