@@ -25,6 +25,8 @@ public class AngryPlayerDecisions : MonoBehaviour
     private bool hasmuted;
     private bool tutorialshown;
     private BarsHandler _bHandler;
+
+    public List<Light> lights;
     
 
 
@@ -45,10 +47,15 @@ public class AngryPlayerDecisions : MonoBehaviour
 
     public void DecisionB_Choice() //the angry button was chosen
     {
-        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion1");
+         if(!tutorial.notfirstTimeShown("emotion2"))
+        {
+            tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion1");
+        }
         question.SetActive(false);
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 2;    
         StartCoroutine(StartTyping());
@@ -76,10 +83,13 @@ public class AngryPlayerDecisions : MonoBehaviour
     {
         decisionB3.SetActive(false);
         decisionB4.SetActive(true);
-        
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.3f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 0.0f, 0.2f), 1.5f, 2.0f)); // orange
         _bHandler.toximeterValue = 3;
         _bHandler.emotionBarTFFValue = 3;
         ChangeEmotionalState("Furious");
+
+
         StartCoroutine(EmotionUpdateText());
 
     }
@@ -88,7 +98,8 @@ public class AngryPlayerDecisions : MonoBehaviour
     {
         hasmuted = true;
         ChangeEmotionalState("Happy");
-
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
         _bHandler.emotionBarTFFValue = 0;
         _bHandler.emotionBarSNHValue = 2;
         _bHandler.toximeterValue = 3;
@@ -116,6 +127,25 @@ public class AngryPlayerDecisions : MonoBehaviour
         GameObject obj = GameObject.FindWithTag("emotion_screen");
         animController = obj.GetComponent<Animator>();
         animController.SetTrigger(emotion);
+    }
+
+    private IEnumerator ChangeLightColor(Light light, Color targetcolor, float targetIntensity, float duration)
+    {
+        Color startColor = light.color;
+        float startIntensity = light.intensity;
+
+        float t = 0; 
+
+        while (t<duration)
+        {
+            t += Time.deltaTime;
+            light.color = Color.Lerp(startColor, targetcolor, t/duration);
+            light.intensity = Mathf.Lerp(startIntensity, targetIntensity, t/duration);
+            yield return null;
+        }
+
+        light.color = targetcolor;
+        light.intensity = targetIntensity;
     }
 
 

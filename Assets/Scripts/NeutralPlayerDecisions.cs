@@ -27,6 +27,8 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public GameObject emotionBarsCanvas;
 
     private BarsHandler _bHandler;
+
+    public List<Light> lights;
     
 
     void Start()
@@ -63,10 +65,16 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
     public void DecisionA_Choice() //chooses the neutral emotion
     {
-        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion2");
+        if(!tutorial.notfirstTimeShown("emotion2"))
+        {
+            tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion2");
+        }
+        
         question.SetActive(false);
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Neutral");
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.95f, 0.85f, 0.4f),1.5f, 2.0f));  //pale yellow
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.5f, 0.6f, 0.7f), 1.5f, 2.0f)); // graysih blue
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 0;
         decisionA1.SetActive(true);
@@ -102,6 +110,8 @@ public class NeutralPlayerDecisions : MonoBehaviour
         emotionupdated = true;
         _bHandler.emotionBarTFFValue = 1;
         ChangeEmotionalState("Troubled");
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.9f, 0.55f, 0.2f),1.5f, 2.0f));  //orange
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.15f, 0.2f, 0.5f), 1.5f, 2.0f)); //blue
         yield return StartCoroutine(EmotionUpdateText());
     }
 
@@ -111,6 +121,8 @@ public class NeutralPlayerDecisions : MonoBehaviour
         hasloggedOut = true;
         _bHandler.emotionBarSNHValue = 2;
         ChangeEmotionalState("Happy");
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
         yield return StartCoroutine(EmotionUpdateText());
     }
 
@@ -126,6 +138,25 @@ public class NeutralPlayerDecisions : MonoBehaviour
         GameObject obj = GameObject.FindWithTag("emotion_screen");
         animController = obj.GetComponent<Animator>();
         animController.SetTrigger(emotion);
+    }
+
+    private IEnumerator ChangeLightColor(Light light, Color targetcolor, float targetIntensity, float duration)
+    {
+        Color startColor = light.color;
+        float startIntensity = light.intensity;
+
+        float t = 0; 
+
+        while (t<duration)
+        {
+            t += Time.deltaTime;
+            light.color = Color.Lerp(startColor, targetcolor, t/duration);
+            light.intensity = Mathf.Lerp(startIntensity, targetIntensity, t/duration);
+            yield return null;
+        }
+
+        light.color = targetcolor;
+        light.intensity = targetIntensity;
     }
 
 

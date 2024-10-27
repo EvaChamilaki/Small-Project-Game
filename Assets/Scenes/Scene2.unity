@@ -1687,6 +1687,112 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &343598923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 343598924}
+  - component: {fileID: 343598927}
+  - component: {fileID: 343598926}
+  - component: {fileID: 343598925}
+  m_Layer: 0
+  m_Name: ceiling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &343598924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343598923}
+  serializedVersion: 2
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: -0.28, y: 1.82, z: -0.34}
+  m_LocalScale: {x: 0.5049369, y: 0.3396175, z: 0.3396175}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2022459083}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!64 &343598925
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343598923}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &343598926
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343598923}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c6b254293a0fb414e97ba1941615b89a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &343598927
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343598923}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &353138391
 GameObject:
   m_ObjectHideFlags: 0
@@ -4151,7 +4257,7 @@ GameObject:
   - component: {fileID: 784829017}
   - component: {fileID: 784829016}
   m_Layer: 0
-  m_Name: Point Light (1)
+  m_Name: Ceiling Light 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4228,7 +4334,7 @@ Transform:
   m_GameObject: {fileID: 784829015}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3704433, y: 0.88032675, z: -1.5948987}
+  m_LocalPosition: {x: -1.3704433, y: 1.123, z: -1.597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5714,7 +5820,7 @@ GameObject:
   - component: {fileID: 1092779989}
   - component: {fileID: 1092779988}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: Ceiling Light 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5791,7 +5897,7 @@ Transform:
   m_GameObject: {fileID: 1092779987}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6234434, y: 1.2133267, z: -0.3798988}
+  m_LocalPosition: {x: -1.765, y: 1.253, z: -0.763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10815,6 +10921,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1947106398}
+  - {fileID: 343598924}
   - {fileID: 1844985103}
   - {fileID: 1846431967}
   - {fileID: 1082130674}
@@ -12462,6 +12569,9 @@ MonoBehaviour:
   tutorial: {fileID: 851436614}
   emotionUpdate: {fileID: 5261484104557550037}
   emotionBarsCanvas: {fileID: 3603454677273617061}
+  lights:
+  - {fileID: 1092779988}
+  - {fileID: 784829016}
 --- !u!114 &2486466153057099253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12485,6 +12595,9 @@ MonoBehaviour:
   muted: {fileID: 1960855397}
   tutorial: {fileID: 851436614}
   tutorialPanel: {fileID: 1565382107}
+  lights:
+  - {fileID: 1092779988}
+  - {fileID: 784829016}
 --- !u!4 &2536237769387847974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3764867968120471220, guid: f2be17800adeb0e48969a7220a621efd, type: 3}
