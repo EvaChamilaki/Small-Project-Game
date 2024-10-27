@@ -5,7 +5,8 @@ using UnityEngine;
 public class AngryPlayerDecisions : MonoBehaviour
 {
     public Animator animController;
-
+    public GameObject currentScreen;
+    
     [Header("Decision Screens")]
     public GameObject question;
 
@@ -104,6 +105,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         _bHandler.emotionBarSNHValue = 2;
         _bHandler.toximeterValue = 3;
         yield return StartCoroutine(EmotionUpdateText());
+        StartCoroutine(SwitchScreensWithDelay(5.0f));
     }
 
     public IEnumerator EmotionUpdateText()
@@ -146,6 +148,12 @@ public class AngryPlayerDecisions : MonoBehaviour
 
         light.color = targetcolor;
         light.intensity = targetIntensity;
+    }
+
+    private IEnumerator SwitchScreensWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        currentScreen.GetComponent<ComputerScreenSwitch>().SwitchScreens();
     }
 
 

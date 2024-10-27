@@ -124,6 +124,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
         yield return StartCoroutine(EmotionUpdateText());
+        StartCoroutine(SwitchScreensWithDelay(5.0f));
     }
 
     public IEnumerator EmotionUpdateText()
@@ -157,6 +158,12 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
         light.color = targetcolor;
         light.intensity = targetIntensity;
+    }
+
+    private IEnumerator SwitchScreensWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        currentScreen.GetComponent<ComputerScreenSwitch>().SwitchScreens();
     }
 
 
