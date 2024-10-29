@@ -60,7 +60,7 @@ public class VictimDecision : MonoBehaviour
 
     public IEnumerator CoroutStarting()
     {
-        _chatManager.SendMessageToChat("otherPlayer12!: get yout head out of your a$$", false, 0);
+        _chatManager.SendMessageToChat("otherPlayer12!: get yout head out of your a$$", "message", false, 0);
         yield return new WaitForSeconds(1.0f);
         firstIncident.SetActive(true);
     }
@@ -87,14 +87,14 @@ public class VictimDecision : MonoBehaviour
 
     private IEnumerator CoroutDecisionA_Act()
     {
-        _chatManager.SendMessageToChat("me: grow some skill and then speak", true, 4);
+        _chatManager.SendMessageToChat("me: grow some skill and then speak", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 
-        _chatManager.SendMessageToChat("king9791!: do they have pcs in the kitchen?", false, 0);
+        _chatManager.SendMessageToChat("king9791!: do they have pcs in the kitchen?", "message", false, 0);
         yield return new WaitForSeconds(0.5f);
 
-        _chatManager.SendMessageToChat("epicguy: just go make a sandwich", false, 0);
+        _chatManager.SendMessageToChat("epicguy: just go make a sandwich", "message", false, 0);
         yield return new WaitForSeconds(2.0f);
 
         switchtrigger.SetActive(true);
@@ -118,10 +118,10 @@ public class VictimDecision : MonoBehaviour
 
     public IEnumerator CoroutSecondIncident()
     {
-        _chatManager.SendMessageToChat("king9791!: @iamafemale maybe this game isnt for u", false, 0);
+        _chatManager.SendMessageToChat("king9791!: @iamafemale maybe this game isnt for u", "message", false, 0);
         //play a message sound
         yield return new WaitForSeconds(1.0f);
-        _chatManager.SendMessageToChat("epicguy: @iamafemale u would be better afk", false, 0);
+        _chatManager.SendMessageToChat("epicguy: @iamafemale u would be better afk", "message", false, 0);
         //play a message sound
 
         if (currentEmotion == EmotionalState.Angry) //if the current state is angry (has ignored the first toxic incident but was angry)
@@ -150,14 +150,14 @@ public class VictimDecision : MonoBehaviour
 
     public IEnumerator CoroutDecisionBAct()
     {
-        _chatManager.SendMessageToChat("me: woof woof, stop barking", true, 4);
+        _chatManager.SendMessageToChat("me: woof woof, stop barking", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 
-        _chatManager.SendMessageToChat("king9791!: @iamafemale just go make a sandwich", false, 0);
+        _chatManager.SendMessageToChat("king9791!: @iamafemale just go make a sandwich", "message", false, 0);
         yield return new WaitForSeconds(0.5f);
 
-        _chatManager.SendMessageToChat("epicguy: @iamafemale do they put pcs in the kitchen?", false, 0);
+        _chatManager.SendMessageToChat("epicguy: @iamafemale do they put pcs in the kitchen?", "message", false, 0);
         yield return new WaitForSeconds(2.0f);
 
         switchtrigger.SetActive(true);

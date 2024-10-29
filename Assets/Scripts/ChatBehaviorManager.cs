@@ -4,6 +4,7 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class ChatBehaviorManager : MonoBehaviour
 {
@@ -11,9 +12,9 @@ public class ChatBehaviorManager : MonoBehaviour
     [SerializeField]
     public List<Message> messageList = new List<Message>();
 
-    public GameObject chatPanel, textObject;
+    public GameObject chatPanel, textObject, infoTextObj;
 
-    public TextWriting textWritingScript;
+    private GameObject newText = null;
 
     void Update()
     {
@@ -23,11 +24,11 @@ public class ChatBehaviorManager : MonoBehaviour
         }
     }
 
-    public void SendMessageToChat(string text, bool slowWriting, int startIdx)
+    public void SendMessageToChat(string text, string typeObj, bool slowWriting, int startIdx) //type obj: message or info
     {
-        if (chatPanel == null || textObject == null)
+        if (chatPanel == null || textObject == null || infoTextObj == null)
         {
-            Debug.LogError("ChatPanel or TextObject is not assigned in the inspector.");
+            Debug.LogError("ChatPanel or Text Object(s) not assigned in the inspector.");
             return;
         }
 
@@ -40,7 +41,14 @@ public class ChatBehaviorManager : MonoBehaviour
         Message newMessage = new Message();
         newMessage.text = text;
 
-        GameObject newText = Instantiate(textObject, chatPanel.transform);
+        if (typeObj == "message")
+        {
+            newText = Instantiate(textObject, chatPanel.transform);
+        }
+        else if (typeObj == "info")
+        {
+            newText = Instantiate(infoTextObj, chatPanel.transform);
+        }
 
         newMessage.textObj = newText.GetComponent<TextMeshProUGUI>();
         newMessage.textObj.text = newMessage.text;

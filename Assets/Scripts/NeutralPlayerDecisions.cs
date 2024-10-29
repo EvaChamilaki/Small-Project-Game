@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class NeutralPlayerDecisions : MonoBehaviour
 {
@@ -11,13 +12,12 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public GameObject question;
 
     public GameObject decisionA1;
-    public GameObject decisionA2;
-    public GameObject decisionA3;
 
     public GameObject panel;
     public GameObject logOut;
 
     public Tutorial tutorial;
+    public GameObject ChatManagerObject;
 
     private bool hasStartedTyping = false;
     private bool emotionupdated = false;
@@ -27,14 +27,16 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public GameObject emotionBarsCanvas;
 
     private BarsHandler _bHandler;
-    
+    private ChatBehaviorManager _chatManager;
+
 
     void Start()
     {
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
         question.SetActive(false);
         panel.SetActive(false);
-        
+
+        _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
     }
 
  
@@ -63,38 +65,56 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
     public void DecisionA_Choice() //chooses the neutral emotion
     {
-        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion2");
+        if (!tutorial.notfirstTimeShown("emotion2"))
+        {
+            tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion1");
+        }
         question.SetActive(false);
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Neutral");
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 0;
         decisionA1.SetActive(true);
-
     }
 
     public void DecisionA_Reaction() //others are toxic to the mistake
     {
-        decisionA1.SetActive(false);
-        decisionA2.SetActive(true);
+        StartCoroutine(CoroutDecisionA_Reaction());
+    }
 
-        
-        decisionA2.GetComponent<TextWriting>().enabled = true;
-        decisionA2.GetComponent<TextWriting>().StartTextTyping(11);
-        
+    public IEnumerator CoroutDecisionA_Reaction()
+    {
+        _chatManager.SendMessageToChat("king9791!: @thebest_ r ur parents proud of u? @BlameTheTank can u babysit this piece of trash?", "message", false, 0);
+
+        panel.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
     }
 
     public void DecisionA_Result() //player feels left out
     {
-        panel.SetActive(false);
-        decisionA3.SetActive(true);
-
-        decisionA3.GetComponent<TextWriting>().enabled = true;
-        decisionA3.GetComponent<TextWriting>().StartTextTyping(4);
-
         _bHandler.toximeterValue = 3;
         _bHandler.emotionBarSNHValue = 2;
         _bHandler.emotionBarTFFValue = 0;
+        ChangeEmotionalState("Happy");
+        StartCoroutine(EmotionUpdateText());
+
+        StartCoroutine(CoroutDecisionA_Result());
+    }
+
+    private IEnumerator CoroutDecisionA_Result()
+    { 
+        _chatManager.SendMessageToChat("me: right, i didnt know we were playing with a toddler, get your sht together @thebest_", "message", true, 4);
+        yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("whiffedmyUlt: lol love the sass", "message", false, 0);
+
+        yield return new WaitForSeconds(0.8f);
+
+        _chatManager.SendMessageToChat("OopsIFlopped: brutal but true, @thebest_ give up", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("thebest_ has disconnected", "info", false, 0);
     }
 
     public IEnumerator TroubledEmotion()

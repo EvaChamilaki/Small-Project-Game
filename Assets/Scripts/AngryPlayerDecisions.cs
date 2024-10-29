@@ -45,7 +45,10 @@ public class AngryPlayerDecisions : MonoBehaviour
 
     public void DecisionB_Choice() //the angry button was chosen
     {
-        tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion1");
+        if (!tutorial.notfirstTimeShown("emotion2"))
+        {
+            tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion1");
+        }
         question.SetActive(false);
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
