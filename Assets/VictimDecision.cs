@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class VictimDecision : MonoBehaviour
 {
@@ -15,16 +16,18 @@ public class VictimDecision : MonoBehaviour
     public GameObject decisionA2;
     public GameObject decisionB1;
     public List<GameObject> decisionButtons;
+    public GameObject ChatManagerObject;
 
     public GameObject switchtrigger;
 
-    private enum EmotionalState{Neutral, Angry, Sad, Furious, Troubled};
+    private enum EmotionalState { Neutral, Angry, Sad, Furious, Troubled };
     private EmotionalState currentEmotion = EmotionalState.Neutral;
 
     // public Tutorial tutorial;
 
     public GameObject emotionBarsCanvas;
     private BarsHandler _bHandler;
+    private ChatBehaviorManager _chatManager;
 
     public GameObject currentScreen;
 
@@ -35,16 +38,16 @@ public class VictimDecision : MonoBehaviour
     {
         switchtrigger.SetActive(false);
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
-        
+        _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
     }
 
     void Update() //the panel that shows the username change
     {
         if(switchtrigger.activeSelf)
         {   
-            _bHandler.emotionBarTFFValue = 1;
             ChangeEmotionalState("Troubled");
             currentEmotion = EmotionalState.Troubled;
+            _bHandler.emotionBarTFFValue = 1;
             StartCoroutine(EmotionUpdateText());
             foreach (Light light in lights)
             {
@@ -55,9 +58,17 @@ public class VictimDecision : MonoBehaviour
         }
     }
 
-    public void Starting() 
+    public void Starting()
     {
-        firstIncident.SetActive(true); //first toxic incident is enabled
+        StartCoroutine(CoroutStarting());
+        //firstIncident.SetActive(true); //first toxic incident is enabled
+    }
+
+    public IEnumerator CoroutStarting()
+    {
+        _chatManager.SendMessageToChat("otherPlayer12!: get yout head out of your a$$", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+        firstIncident.SetActive(true);
     }
 
     public void DecisionA() //first emotion is angry
@@ -77,17 +88,26 @@ public class VictimDecision : MonoBehaviour
     }
 
     public void DecisionA_Act() //act on the angry emotion
-    {   _bHandler.toximeterValue = 1;
+    {
+        _bHandler.toximeterValue = 1;
         StartCoroutine(EmotionUpdateText());
-        decisionA1.SetActive(true);
-        decisionA1.GetComponent<TextWriting>().enabled = true;
-        decisionA1.GetComponent<TextWriting>().StartTextTyping(4);
+
+        StartCoroutine(CoroutDecisionA_Act());
     }
 
-    public void DecisionA_Ignore() //ignore the angry emotion
+    private IEnumerator CoroutDecisionA_Act()
     {
-        question.SetActive(false);
-        panel.SetActive(true);
+        _chatManager.SendMessageToChat("me: grow some skill and then speak", "message", true, 4);
+        yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("king9791!: do they have pcs in the kitchen?", "message", false, 0);
+        yield return new WaitForSeconds(0.5f);
+
+        _chatManager.SendMessageToChat("epicguy: just go make a sandwich", "message", false, 0);
+        yield return new WaitForSeconds(2.0f);
+
+        switchtrigger.SetActive(true);
     }
 
     public void DecisionB() //first emotion is sad
@@ -107,10 +127,10 @@ public class VictimDecision : MonoBehaviour
 
     public void SecondIncident()
     {
-       decisionA2.SetActive(true);
+        StartCoroutine(CoroutSecondIncident());
 
-       if(currentEmotion == EmotionalState.Angry) //if the current state is angry (has ignored the first toxic incident but was angry)
-       {
+        if(currentEmotion == EmotionalState.Angry) //if the current state is angry (has ignored the first toxic incident but was angry)
+        {
            ChangeEmotionalState("Furious");
            _bHandler.emotionBarTFFValue = 3;
            currentEmotion = EmotionalState.Furious;
@@ -119,27 +139,65 @@ public class VictimDecision : MonoBehaviour
            {
                StartCoroutine(ChangeLightColor(light, new Color (0.5f, 0f, 0f), 0.5f, 2.0f)); //darkRed for the furious state
            }
-      
-       }
-       else if(currentEmotion == EmotionalState.Sad) //if in the first decision the player chose sad
-       {
-           ChangeEmotionalState("Angry");
-           _bHandler.emotionBarTFFValue = 2;
-           currentEmotion = EmotionalState.Angry;
-           StartCoroutine(EmotionUpdateText());
-           foreach (Light light in lights)
-            {
-            StartCoroutine(ChangeLightColor(light, Color.red, 0.5f, 2.0f));
-            }
-       }
+        }
+        else if(currentEmotion == EmotionalState.Sad) //if in the first decision the player chose sad
+        {
+            ChangeEmotionalState("Angry");
+            _bHandler.emotionBarTFFValue = 2;
+            currentEmotion = EmotionalState.Angry;
+            StartCoroutine(EmotionUpdateText());
+            foreach (Light light in lights)
+                {
+                StartCoroutine(ChangeLightColor(light, Color.red, 0.5f, 2.0f));
+                }
+        }
+    }
+
+    public IEnumerator CoroutSecondIncident()
+    {
+        _chatManager.SendMessageToChat("king9791!: @iamafemale maybe this game isnt for u", "message", false, 0);
+        //play a message sound
+        yield return new WaitForSeconds(1.0f);
+        _chatManager.SendMessageToChat("epicguy: @iamafemale u would be better afk", "message", false, 0);
+        //play a message sound
+
+        if (currentEmotion == EmotionalState.Angry) //if the current state is angry (has ignored the first toxic incident but was angry)
+        {
+            ChangeEmotionalState("Furious");
+            _bHandler.emotionBarTFFValue = 3;
+            currentEmotion = EmotionalState.Furious;
+            StartCoroutine(EmotionUpdateText());
+        }
+        else if (currentEmotion == EmotionalState.Sad) //if in the first decision the player chose sad
+        {
+            ChangeEmotionalState("Angry");
+            _bHandler.emotionBarTFFValue = 2;
+            currentEmotion = EmotionalState.Angry;
+            StartCoroutine(EmotionUpdateText());
+        }
+        decisionA2.SetActive(true);
     }
 
     public void DecisionB_Act()
     {
-        decisionB1.SetActive(true);
         _bHandler.toximeterValue = 2;
-        decisionB1.GetComponent<TextWriting>().enabled = true;
-        decisionB1.GetComponent<TextWriting>().StartTextTyping(4);
+
+        StartCoroutine(CoroutDecisionBAct());
+    }
+
+    public IEnumerator CoroutDecisionBAct()
+    {
+        _chatManager.SendMessageToChat("me: woof woof, stop barking", "message", true, 4);
+        yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("king9791!: @iamafemale just go make a sandwich", "message", false, 0);
+        yield return new WaitForSeconds(0.5f);
+
+        _chatManager.SendMessageToChat("epicguy: @iamafemale do they put pcs in the kitchen?", "message", false, 0);
+        yield return new WaitForSeconds(2.0f);
+
+        switchtrigger.SetActive(true);
     }
 
     public IEnumerator EmotionUpdateText()
@@ -149,7 +207,7 @@ public class VictimDecision : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
     }
-    
+
     public void ChangeEmotionalState(string emotion)
     {
         GameObject obj = GameObject.FindWithTag("emotion_screen");
