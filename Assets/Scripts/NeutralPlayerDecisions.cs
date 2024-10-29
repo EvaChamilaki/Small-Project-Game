@@ -14,7 +14,6 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public GameObject decisionA1;
 
     public GameObject panel;
-    public GameObject logOut;
 
     public Tutorial tutorial;
     public GameObject ChatManagerObject;
@@ -55,11 +54,6 @@ public class NeutralPlayerDecisions : MonoBehaviour
         {
             StartCoroutine(TroubledEmotion());
         }
-
-        if(logOut.activeSelf && !hasloggedOut)
-        {
-            StartCoroutine(HappyEmotion());
-        }
     }
 
 
@@ -94,9 +88,8 @@ public class NeutralPlayerDecisions : MonoBehaviour
     {
         _bHandler.toximeterValue = 3;
         _bHandler.emotionBarSNHValue = 2;
-        _bHandler.emotionBarTFFValue = 0;
-        ChangeEmotionalState("Happy");
-        StartCoroutine(EmotionUpdateText());
+        _bHandler.emotionBarTFFValue = 0; 
+        StartCoroutine(HappyEmotion());
 
         StartCoroutine(CoroutDecisionA_Result());
     }

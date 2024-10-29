@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class AngryPlayerDecisions : MonoBehaviour
 {
@@ -17,30 +18,21 @@ public class AngryPlayerDecisions : MonoBehaviour
     public GameObject emotionUpdate;
     public GameObject emotionBarsCanvas;
 
-    public GameObject muted;
-
     public Tutorial tutorial;
     public GameObject tutorialPanel;
+    public GameObject ChatManagerObject;
 
-    private bool hasmuted;
     private bool tutorialshown;
-    private BarsHandler _bHandler;
-    
 
+    private BarsHandler _bHandler;
+    private ChatBehaviorManager _chatManager;
 
     void Start()
     {
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
         question.SetActive(false);
-        muted.SetActive(false);
-    }
 
-    void Update()
-    {
-        if (muted.activeSelf && !hasmuted)
-        {
-            StartCoroutine(HappyEmotion());
-        }
+        _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
     }
 
     public void DecisionB_Choice() //the angry button was chosen
@@ -55,18 +47,31 @@ public class AngryPlayerDecisions : MonoBehaviour
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 2;    
         StartCoroutine(StartTyping());
-        
     }
 
     public void DecisionB_Act() //act on the angry emotion
     {
         decisionB1.SetActive(false);
         decisionB4.SetActive(false);
-        decisionB2.SetActive(true);
 
         _bHandler.toximeterValue = 3;
-        decisionB2.GetComponent<TextWriting>().enabled = true;
-        decisionB2.GetComponent<TextWriting>().StartTextTyping(4);
+        StartCoroutine(CoroutDecisionB_Act());
+    }
+
+    private IEnumerator CoroutDecisionB_Act()
+    {
+        _chatManager.SendMessageToChat("me: @thebest_ next time plz install eyes before playing", "message", true, 4);
+        yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("king9791!: @thebest_ r ur parents proud of u?", "message", false, 0);
+        yield return new WaitForSeconds(0.8f);
+
+        _chatManager.SendMessageToChat("whiffedmyUlt: do u need someone to move your mouse?", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("thebest_ has muted the chat", "info", false, 0);
+        StartCoroutine(HappyEmotion());
     }
 
     public void DecisionB_Ignore() //do not act on the angry emotion
@@ -89,7 +94,6 @@ public class AngryPlayerDecisions : MonoBehaviour
 
     public IEnumerator HappyEmotion()
     {
-        hasmuted = true;
         ChangeEmotionalState("Happy");
 
         _bHandler.emotionBarTFFValue = 0;

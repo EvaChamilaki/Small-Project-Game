@@ -10729,7 +10729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1170670492828046295
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11178,7 +11178,6 @@ MonoBehaviour:
   question: {fileID: 539217813}
   decisionA1: {fileID: 314116393}
   panel: {fileID: 672082627}
-  logOut: {fileID: 0}
   tutorial: {fileID: 851436614}
   ChatManagerObject: {fileID: 403981489}
   emotionUpdate: {fileID: 5261484104557550037}
@@ -11203,9 +11202,9 @@ MonoBehaviour:
   decisionB4: {fileID: 837363369}
   emotionUpdate: {fileID: 5261484104557550037}
   emotionBarsCanvas: {fileID: 3603454677273617061}
-  muted: {fileID: 1960855397}
   tutorial: {fileID: 851436614}
   tutorialPanel: {fileID: 1565382107}
+  ChatManagerObject: {fileID: 403981489}
 --- !u!4 &2536237769387847974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3764867968120471220, guid: f2be17800adeb0e48969a7220a621efd, type: 3}
