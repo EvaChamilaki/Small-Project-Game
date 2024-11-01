@@ -11684,6 +11684,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 130
       objectReference: {fileID: 0}
+    - target: {fileID: 2939199642435477834, guid: 4861240c673230843818d829b5355819, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4964541142915142281, guid: 4861240c673230843818d829b5355819, type: 3}
       propertyPath: m_SizeDelta.x
       value: 200
@@ -11694,11 +11698,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4964541142915142281, guid: 4861240c673230843818d829b5355819, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 130
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4964541142915142281, guid: 4861240c673230843818d829b5355819, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 5531288360927855042, guid: 4861240c673230843818d829b5355819, type: 3}
       propertyPath: m_text
@@ -13712,15 +13716,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1828668507324677156, guid: 87151a854c9cd564c8c8eca7b9d78375, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1828668507324677156, guid: 87151a854c9cd564c8c8eca7b9d78375, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 130
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1828668507324677156, guid: 87151a854c9cd564c8c8eca7b9d78375, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 2649161509053869865, guid: 87151a854c9cd564c8c8eca7b9d78375, type: 3}
       propertyPath: m_text
@@ -14506,7 +14510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &7631329350547969035
 GameObject:
   m_ObjectHideFlags: 0
@@ -15021,12 +15025,16 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1621527828197224917, guid: efaee27195ed1d94bb120adfae80976d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621527828197224917, guid: efaee27195ed1d94bb120adfae80976d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 130
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1621527828197224917, guid: efaee27195ed1d94bb120adfae80976d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -70
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 2854662579124556887, guid: efaee27195ed1d94bb120adfae80976d, type: 3}
       propertyPath: m_LocalPosition.x
