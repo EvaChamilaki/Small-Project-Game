@@ -14,12 +14,32 @@ public class Tutorial : MonoBehaviour
     public bool isTutorialshown;
     public bool isTutorialActive;
 
+    private List<KeyCode> skipKeys = new List<KeyCode>
+    {
+        KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.R, KeyCode.B, KeyCode.Space
+    };
+
     void Start()
     {
         tutorial.SetActive(false);
         isTutorialActive = false;
 
     }
+
+    void Update()
+    {
+        if (isTutorialActive)
+        {
+            foreach (KeyCode key in skipKeys)
+            {
+                if (Input.GetKeyDown(key))
+                {
+                    HideTutorial();
+                }
+            }
+        }
+    }
+
 
     public void ShowTutorial(string message, string key)
     {
@@ -30,12 +50,6 @@ public class Tutorial : MonoBehaviour
             tutorial.SetActive(true);
             isTutorialActive = true;
         }
-
-        //    foreach(GameObject element in otherUIElements)
-        //    {
-        //        element.SetActive(false);
-        //    }
-
         Time.timeScale = 0; //pauses the game so no input can be done until the next button is pressed
 
 
@@ -43,6 +57,7 @@ public class Tutorial : MonoBehaviour
 
     public void HideTutorial()
     {
+        
         tutorial.SetActive(false);
         saveShown(tutorialkey);
         isTutorialshown = true;
