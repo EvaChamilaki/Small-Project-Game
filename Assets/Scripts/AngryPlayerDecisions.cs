@@ -40,7 +40,7 @@ public class AngryPlayerDecisions : MonoBehaviour
 
     public void DecisionB_Choice() //the angry button was chosen
     {
-        if (!tutorial.notfirstTimeShown("emotion2"))
+        if (!tutorial.notfirstTimeShown("emotion1"))
         {
             tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion1");
         }
