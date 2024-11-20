@@ -28,7 +28,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private Camera active_camera;
     private Camera main_camera;
     private Camera computer_camera;
-    private Camera emotions_camera;
+    public Camera emotions_camera;
 
     private GameObject currentScreen;
 
@@ -188,7 +188,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     }
 
-    void SwitchToEmotionsCamera()
+    public void SwitchToEmotionsCamera()
     {
         main_camera.enabled = false;
         computer_camera.enabled = false;

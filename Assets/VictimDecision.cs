@@ -33,6 +33,8 @@ public class VictimDecision : MonoBehaviour
 
     public List<Light> lights;
 
+    public GameObject character;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +81,7 @@ public class VictimDecision : MonoBehaviour
         ChangeEmotionalState("Angry");
         currentEmotion = EmotionalState.Angry;
         StartCoroutine(EmotionUpdateText());
+        StartCoroutine(SwitchCameras());
         question.SetActive(true);
         foreach (Light light in lights)
         {
@@ -117,6 +120,7 @@ public class VictimDecision : MonoBehaviour
         ChangeEmotionalState("Sad");
         currentEmotion = EmotionalState.Sad;
         StartCoroutine(EmotionUpdateText());
+        StartCoroutine(SwitchCameras());
         panel.SetActive(true);
         foreach (Light light in lights)
         {
@@ -167,6 +171,7 @@ public class VictimDecision : MonoBehaviour
             _bHandler.emotionBarTFFValue = 3;
             currentEmotion = EmotionalState.Furious;
             StartCoroutine(EmotionUpdateText());
+            
         }
         else if (currentEmotion == EmotionalState.Sad) //if in the first decision the player chose sad
         {
@@ -181,7 +186,7 @@ public class VictimDecision : MonoBehaviour
     public void DecisionB_Act()
     {
         _bHandler.toximeterValue = 2;
-
+        StartCoroutine(EmotionUpdateText());
         StartCoroutine(CoroutDecisionBAct());
     }
 
@@ -197,6 +202,9 @@ public class VictimDecision : MonoBehaviour
         _chatManager.SendMessageToChat("epicguy: @iamafemale do they put pcs in the kitchen?", "message", false, 0);
         yield return new WaitForSeconds(2.0f);
 
+        yield return StartCoroutine(SwitchCameras());
+        
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
         switchtrigger.SetActive(true);
     }
 
@@ -206,6 +214,13 @@ public class VictimDecision : MonoBehaviour
         // tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion");
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
+    }
+
+    public IEnumerator SwitchCameras()
+    {
+        yield return new WaitForSeconds(0.5f);
+        character.GetComponent<ThirdPersonCamera>().SwitchToEmotionsCamera();
+        
     }
 
     public void ChangeEmotionalState(string emotion)
