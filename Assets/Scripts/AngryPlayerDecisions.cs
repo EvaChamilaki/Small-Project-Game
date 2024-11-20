@@ -29,6 +29,8 @@ public class AngryPlayerDecisions : MonoBehaviour
     public List<Light> lights;
 
     private ChatBehaviorManager _chatManager;
+    
+    public GameObject character;
 
     void Start()
     {
@@ -76,9 +78,9 @@ public class AngryPlayerDecisions : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         _chatManager.SendMessageToChat("thebest_ has muted the chat", "info", false, 0);
-        StartCoroutine(HappyEmotion());
-
         yield return new WaitForSeconds(2.0f);
+        
+        StartCoroutine(HappyEmotion());
     }
 
     public void DecisionB_Ignore() //do not act on the angry emotion
@@ -96,22 +98,25 @@ public class AngryPlayerDecisions : MonoBehaviour
         _bHandler.toximeterValue = 3;
         _bHandler.emotionBarTFFValue = 3;
         ChangeEmotionalState("Furious");
-
-
         StartCoroutine(EmotionUpdateText());
+        StartCoroutine(SwitchCameras(1.5f));
+
 
     }
 
     public IEnumerator HappyEmotion()
     {
-        ChangeEmotionalState("Happy");
-        StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
-        StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
         _bHandler.emotionBarTFFValue = 0;
         _bHandler.emotionBarSNHValue = 2;
         _bHandler.toximeterValue = 3;
+        ChangeEmotionalState("Happy");
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
         yield return StartCoroutine(EmotionUpdateText());
-        StartCoroutine(SwitchScreensWithDelay(5.0f));
+        yield return StartCoroutine(SwitchCameras(0.5f));
+
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
+        StartCoroutine(SwitchScreensWithDelay(10.0f));
     }
 
     public IEnumerator EmotionUpdateText()
@@ -120,6 +125,12 @@ public class AngryPlayerDecisions : MonoBehaviour
  
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
+    }
+
+    public IEnumerator SwitchCameras(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        character.GetComponent<ThirdPersonCamera>().SwitchToEmotionsCamera();
     }
 
     private IEnumerator StartTyping()

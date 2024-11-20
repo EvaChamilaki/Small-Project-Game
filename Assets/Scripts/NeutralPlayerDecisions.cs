@@ -31,6 +31,8 @@ public class NeutralPlayerDecisions : MonoBehaviour
     
     private ChatBehaviorManager _chatManager;
 
+    public GameObject character;
+
 
     void Start()
     {
@@ -92,10 +94,10 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
     public void DecisionA_Result() //player feels left out
     {
-        _bHandler.toximeterValue = 3;
-        _bHandler.emotionBarSNHValue = 2;
-        _bHandler.emotionBarTFFValue = 0; 
-        StartCoroutine(HappyEmotion());
+        // _bHandler.toximeterValue = 3;
+        // _bHandler.emotionBarSNHValue = 2;
+        // _bHandler.emotionBarTFFValue = 0; 
+        // StartCoroutine(HappyEmotion());
 
         StartCoroutine(CoroutDecisionA_Result());
     }
@@ -115,6 +117,8 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
         _chatManager.SendMessageToChat("thebest_ has disconnected", "info", false, 0);
         yield return new WaitForSeconds(2.0f);
+
+        yield return StartCoroutine(HappyEmotion());
     }
 
     public IEnumerator TroubledEmotion()
@@ -131,12 +135,17 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public IEnumerator HappyEmotion()
     {
         hasloggedOut = true;
+        _bHandler.toximeterValue = 3;
         _bHandler.emotionBarSNHValue = 2;
+        _bHandler.emotionBarTFFValue = 0; 
         ChangeEmotionalState("Happy");
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
         yield return StartCoroutine(EmotionUpdateText());
-        StartCoroutine(SwitchScreensWithDelay(5.0f));
+        yield return StartCoroutine(SwitchCameras());
+
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
+        StartCoroutine(SwitchScreensWithDelay(10.0f));
     }
 
     public IEnumerator EmotionUpdateText()
@@ -144,6 +153,12 @@ public class NeutralPlayerDecisions : MonoBehaviour
         emotionUpdate.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
+    }
+
+    public IEnumerator SwitchCameras()
+    {
+        yield return new WaitForSeconds(0.5f);
+        character.GetComponent<ThirdPersonCamera>().SwitchToEmotionsCamera();
     }
     
     public void ChangeEmotionalState(string emotion)
