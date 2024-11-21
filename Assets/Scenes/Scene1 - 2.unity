@@ -1106,7 +1106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209501426}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.114962794, y: -0.000000017092301, z: 0.0000000019780937, w: 0.9933698}
+  m_LocalRotation: {x: 0.114962794, y: 0.000000017092301, z: -0.0000000019780937, w: 0.9933698}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2411,6 +2411,7 @@ MonoBehaviour:
   lights:
   - {fileID: 366171183}
   - {fileID: 925107644}
+  character: {fileID: 0}
 --- !u!1 &495817894
 GameObject:
   m_ObjectHideFlags: 0
@@ -5228,6 +5229,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998006494}
   m_CullTransparentMesh: 1
+--- !u!1001 &1023343078
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 514101065046634760, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.589
+      objectReference: {fileID: 0}
+    - target: {fileID: 514101065046634760, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7210083
+      objectReference: {fileID: 0}
+    - target: {fileID: 514101065046634760, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.5478887
+      objectReference: {fileID: 0}
+    - target: {fileID: 514101065046634760, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.84125143
+      objectReference: {fileID: 0}
+    - target: {fileID: 514101065046634760, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514101065046634760, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.54064417
+      objectReference: {fileID: 0}
+    - target: {fileID: 514101065046634760, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514101065046634760, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 514101065046634760, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -65.455
+      objectReference: {fileID: 0}
+    - target: {fileID: 514101065046634760, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178485070687673606, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 963194225}
+    - target: {fileID: 7535566864282365453, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: m_Name
+      value: Victim - Change Perspective Camera
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
 --- !u!1 &1046980472
 GameObject:
   m_ObjectHideFlags: 0
@@ -17115,6 +17177,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 9144859900715153450}
+  - {fileID: 1023343078}
   - {fileID: 1119968112}
   - {fileID: 393936042}
   - {fileID: 1758517279}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraPerspectiveAnim : MonoBehaviour
 {
     private Animator animController;
+    public GameObject _camera;
 
     void Awake()
     {
@@ -23,5 +24,11 @@ public class CameraPerspectiveAnim : MonoBehaviour
         {
             animController.SetTrigger("toxic_camera");
         }
+    }
+
+    void ChangeCameraAfterAnim()
+    {
+        gameObject.SetActive(false);
+        _camera.SetActive(true);
     }
 }
