@@ -7,6 +7,8 @@ public class CameraPerspectiveAnim : MonoBehaviour
     private Animator animController;
     public GameObject _camera;
 
+    public GameObject _character;
+
     void Awake()
     {
         animController = this.gameObject.GetComponent<Animator>();
@@ -30,5 +32,6 @@ public class CameraPerspectiveAnim : MonoBehaviour
     {
         gameObject.SetActive(false);
         _camera.SetActive(true);
+        _character.SetActive(true);
     }
 }

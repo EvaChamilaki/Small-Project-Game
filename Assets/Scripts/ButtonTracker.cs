@@ -37,7 +37,6 @@ public class ButtonTracker : MonoBehaviour
     public void RegisterButtonPress(Button button)
     {
         lastPressedButton = button;
-        Debug.Log("Last pressed button: " + button.name);
     }
 
     public void PlayAnimOnButtonClick()
@@ -51,7 +50,8 @@ public class ButtonTracker : MonoBehaviour
             trigger_button = "char2";
         }
 
-        StartCoroutine(WaitForAnimation(trigger_button));
+        animController.SetTrigger(trigger_button);
+        // StartCoroutine(WaitForAnimation(trigger_button));
     }
 
     private IEnumerator WaitForAnimation(string _trbut_name)
