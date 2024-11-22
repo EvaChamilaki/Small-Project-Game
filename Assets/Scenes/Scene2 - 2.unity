@@ -3627,6 +3627,10 @@ PrefabInstance:
       propertyPath: _character
       value: 
       objectReference: {fileID: 1073898946}
+    - target: {fileID: 5689734456007068229, guid: a1a0de05c82d9ba499c6857d30512a6f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000061035156
+      objectReference: {fileID: 0}
     - target: {fileID: 6080119733288010994, guid: a1a0de05c82d9ba499c6857d30512a6f, type: 3}
       propertyPath: m_Name
       value: Toxic - Change Perspective Camera
@@ -4804,8 +4808,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.481591, y: -33.837704}
-  m_SizeDelta: {x: 633.6979, y: 325.4019}
+  m_AnchoredPosition: {x: 35.8218, y: -60.4464}
+  m_SizeDelta: {x: 682.3783, y: 378.6192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1035207443
 MonoBehaviour:
@@ -4902,8 +4906,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A member of your team, thebest_ , makes a mistake, which makes you lose.
-    One more loss and you will get demoted. How does that make you feel?
+  m_text: The new member of your team, @casualcrasher, jumped in the top lane instead
+    of the middle they were supposed to stay. As a result, your ADC in the bot lane
+    was left without support.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31bf4d746535a8b4ba098237d9044c2e, type: 2}
   m_sharedMaterial: {fileID: 8375056987581174358, guid: 31bf4d746535a8b4ba098237d9044c2e, type: 2}
@@ -6258,7 +6263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -197, y: -117}
+  m_AnchoredPosition: {x: -197, y: -147}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1280399053
@@ -7388,7 +7393,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 213, y: -117}
+  m_AnchoredPosition: {x: 213, y: -147.00006}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1423919008
@@ -8651,7 +8656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 211508335105739347, guid: 1975d19bccb00c34da761ec56e95c921, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6945669644175863130, guid: 1975d19bccb00c34da761ec56e95c921, type: 3}
       propertyPath: m_Pivot.x
@@ -11768,7 +11773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &1170670492828046295
 CanvasRenderer:
   m_ObjectHideFlags: 0
