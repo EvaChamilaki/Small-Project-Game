@@ -114,7 +114,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         yield return StartCoroutine(SwitchCameras(0.5f));
 
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
-        StartCoroutine(SwitchScreensWithDelay(10.0f));
+        StartCoroutine(SwitchScreensWithDelay(3.0f));
     }
 
     public IEnumerator EmotionUpdateText()
