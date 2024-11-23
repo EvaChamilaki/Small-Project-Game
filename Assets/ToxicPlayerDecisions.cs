@@ -87,7 +87,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
         _chatManager.SendMessageToChat("me: go delete ur game honey", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
-        yield return new WaitForSeconds(1.0f);
+
+        yield return new WaitForSeconds(7.0f);
 
     }
 
@@ -120,7 +121,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
         _chatManager.SendMessageToChat("me: go delete ur game honey", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(7.0f);
     }
     
 }
