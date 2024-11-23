@@ -14,6 +14,7 @@ public class VictimDecision2 : MonoBehaviour
     public GameObject thirdPanel;
     
     public GameObject currentScreen;
+    public GameObject flags;
 
     private bool hasStartedTyping = false;
     
@@ -59,11 +60,13 @@ public class VictimDecision2 : MonoBehaviour
     public void DecisionB_Ignore() 
     {
         thirdPanel.SetActive(false);
+        flags.GetComponent<Flags>().hasMuted = true;
     }
 
     public void DecisionB_InsultBack()
     {
         thirdPanel.SetActive(false);
+        flags.GetComponent<Flags>().hasMuted = false;
         StartCoroutine(CoroutDecisionB_InsultBack());
     }
 

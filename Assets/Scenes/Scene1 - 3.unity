@@ -936,7 +936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209501426}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.114962794, y: 0.000000017092301, z: -0.0000000019780937, w: 0.9933698}
+  m_LocalRotation: {x: 0.114962794, y: -0.000000017092301, z: 0.0000000019780937, w: 0.9933698}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1200,7 +1200,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3063471613849046201}
+    m_TransformParent: {fileID: 6929206752032334809}
     m_Modifications:
     - target: {fileID: 4413366807429739908, guid: 63d63479983e73844bab58818991e1d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1241,6 +1241,10 @@ PrefabInstance:
     - target: {fileID: 4413366807429739908, guid: 63d63479983e73844bab58818991e1d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702521593297543635, guid: 63d63479983e73844bab58818991e1d4, type: 3}
+      propertyPath: sceneName
+      value: Scene2 - 3
       objectReference: {fileID: 0}
     - target: {fileID: 6873114293632297338, guid: 63d63479983e73844bab58818991e1d4, type: 3}
       propertyPath: m_Name
@@ -1774,6 +1778,7 @@ MonoBehaviour:
   secondPanel: {fileID: 779156496}
   thirdPanel: {fileID: 172156774}
   currentScreen: {fileID: 7548284395280804886}
+  flags: {fileID: 1074356514}
 --- !u!1 &528696498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,6 +2023,18 @@ MonoBehaviour:
       - m_Target: {fileID: 462012397}
         m_TargetAssemblyTypeName: VictimDecision2, Assembly-CSharp
         m_MethodName: EndPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1886083361}
+        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
+        m_MethodName: TransitionToNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3596,7 +3613,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0844857, y: -0.000000035345042, z: 0.0000000029968654, w: 0.99642473}
+  m_LocalRotation: {x: 0.0844857, y: 0.00000003534504, z: -0.000000002996865, w: 0.99642473}
   m_LocalPosition: {x: 2.716, y: 1.271, z: -2.912}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4088,6 +4105,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Victim - Change Perspective Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 7535566864282365453, guid: a8a69b6858c879148a8c74e73e3e2340, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4219,6 +4240,51 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1074356514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1074356516}
+  - component: {fileID: 1074356515}
+  m_Layer: 0
+  m_Name: Flags
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1074356515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074356514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22cd74950e312204fa2cdb475fdfdbc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasMuted: 0
+--- !u!4 &1074356516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074356514}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 540.0433, y: 380.74213, z: 2.6229858}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1108468975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4665,7 +4731,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164620674}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08448571, y: -0.000000017672525, z: 0.000000001498433, w: 0.99642473}
+  m_LocalRotation: {x: 0.08448571, y: 0.000000017672514, z: -0.0000000014984322, w: 0.99642473}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7327,6 +7393,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 223912681}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
+--- !u!114 &1886083361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6702521593297543635, guid: 63d63479983e73844bab58818991e1d4, type: 3}
+  m_PrefabInstance: {fileID: 233460291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a41ac3c91e9194ea7a6f20c8588564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1893384371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8352,7 +8429,6 @@ Transform:
   - {fileID: 1883354356430963382}
   - {fileID: 1760918284}
   - {fileID: 1259768282}
-  - {fileID: 668364764}
   m_Father: {fileID: 6929206752032334809}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3225202971116479030
@@ -9155,6 +9231,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3063471613849046201}
+  - {fileID: 668364764}
   - {fileID: 4875220795969959003}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9562,3 +9639,4 @@ SceneRoots:
   - {fileID: 4380830051041046251}
   - {fileID: 1705679539}
   - {fileID: 1619179734}
+  - {fileID: 1074356516}

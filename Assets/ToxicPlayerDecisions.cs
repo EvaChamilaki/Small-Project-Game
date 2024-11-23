@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 
@@ -12,14 +13,21 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public GameObject currentScreen;
 
-    private ChatBehaviorManager _chatManager;
     public GameObject ChatManagerObject;
+    public List<GameObject> choiceButtons;
 
+    private bool muted;
+    private int playOnce = 0;
+
+    private ChatBehaviorManager _chatManager;
     private bool hasStartedTyping = false;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        muted = GameObject.Find("Flags").GetComponent<Flags>().hasMuted;
+        Debug.Log("the player has muted: " + muted);
         _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
         firstInteractionPanel.SetActive(false);
     }
@@ -34,6 +42,17 @@ public class ToxicPlayerDecisions : MonoBehaviour
             firstInteractionPanel.GetComponent<TextWriting>().enabled = true;
             firstInteractionPanel.GetComponent<TextWriting>().StartTextTyping(0);
         }
+
+        if(playOnce == 0 && currentScreen.activeSelf && currentScreen.name == "BackgroundGameScreen2")
+        {
+            CheckPrevDecision();
+            playOnce = 1;
+        }
+    }
+
+    public void CheckPrevDecision()
+    {
+        StartCoroutine(Corout_PrevDecision());
     }
 
     public void DecisionA_Remind()
@@ -52,6 +71,16 @@ public class ToxicPlayerDecisions : MonoBehaviour
     {
         secondInteractionPanel.SetActive(false);
         StartCoroutine(CoroutDecisionB_Angry());
+    }
+
+    public void DecisionC_SaySth()
+    {
+        StartCoroutine(CoroutDecisionC_SaySth());
+    }
+
+    public void DecisionC_Join()
+    {
+        StartCoroutine(CoroutDecisionC_Join());
     }
 
     private IEnumerator CoroutDecisionA_Remind()
@@ -122,6 +151,93 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _chatManager.SendMessageToChat("me: go delete ur game honey", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(7.0f);
+    }
+
+    private IEnumerator Corout_PrevDecision()
+    {
+        _chatManager.SendMessageToChat("BlameTheTank: we are going to lose bc of you", "message", false, 0);
+        _chatManager.SendMessageToChat("king9791!: DO.AS.UR.TOLD.", "message", false, 0);
+        _chatManager.SendMessageToChat("whiffedmyUlt: you know you play for OUR team??", "message", false, 0);
+
+        if(muted)
+        {
+            
+            _chatManager.SendMessageToChat("Player 'casualcrasher' has muted the chat.", "info", false, 0);
+            yield return new WaitForSeconds(1.0f);
+
+            _chatManager.SendMessageToChat("bite_me4: @casualcrasher ?", "message", false, 0);
+            yield return new WaitForSeconds(0.2f);
+
+            _chatManager.SendMessageToChat("bite_me4: @casualcrasher ?", "message", false, 0);
+            yield return new WaitForSeconds(0.2f);
+
+            _chatManager.SendMessageToChat("bite_me4: @casualcrasher ?", "message", false, 0);
+            yield return new WaitForSeconds(0.2f);
+        }
+        else 
+        {
+            _chatManager.SendMessageToChat("casualcrasher: next time play as much as you talk", "message", false, 0);
+        }
+        yield return new WaitForSeconds(5.0f);
+
+        foreach(GameObject button in choiceButtons)
+        {
+            button.SetActive(true);
+        }
+    }
+
+    private IEnumerator CoroutDecisionC_SaySth()
+    {
+        _chatManager.SendMessageToChat("me: damn bruh thats enough, can we just focus???", "message", true, 4);
+        yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("bite_me4: you need ur bf to back u up? @casualcrasher", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("king9791!: bromance;)", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("whiffedmyUlt: go bungee jumping w/o parachute", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        StartCoroutine(Corout_VictimDisconnects());
+    }
+
+    private IEnumerator CoroutDecisionC_Join()
+    {
+        _chatManager.SendMessageToChat("me: delulu is not always the solulu", "message", true, 4);
+        yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("whiffedmyUlt: he thinks he knows the game", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("whiffedmyUlt: how funny is that", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("king9791!: @casualcrasher have u tried tetris its easi", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("me: go bungee jumping w/o parachute", "message", true, 4);
+        yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
+        yield return new WaitForSeconds(3.0f);
+
+        StartCoroutine(Corout_VictimDisconnects());
+    }
+
+    private IEnumerator Corout_VictimDisconnects()
+    {
+        _chatManager.SendMessageToChat("Player 'casualcrasher' has disconnected from the game.", "info", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("bite_me4: oh boohoo rage quit", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("whiffedmyUlt: @BlameTheTank don't invite them again", "message", false, 0);        
+        yield return new WaitForSeconds(1.0f);
+
+        //defeated panel!!!!!!!!
     }
     
 }
