@@ -56,7 +56,9 @@ public class ThirdPersonCamera : MonoBehaviour
 
         active_camera = main_camera;
 
-        if(tutorial.notfirstTimeShown("start"))
+        if(tutorial != null)
+        {
+             if(tutorial.notfirstTimeShown("start"))
         {
             charControlActive = true;
         }
@@ -65,13 +67,15 @@ public class ThirdPersonCamera : MonoBehaviour
              tutorial.ShowTutorial("Move your character with the WASD keys or the arrow keys, interact with objects with left mouse click, inspect with the V key", "start");
         }
        
+        }
+       
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(tutorial.isTutorialActive)
+        if(tutorial != null && tutorial.isTutorialActive)
         {
             return;
         }
