@@ -70,7 +70,25 @@ public class ToxicPlayerDecisions : MonoBehaviour
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 
-        _chatManager.SendMessageToChat("king9791!: ??????????", "message", false, 0);
+        _chatManager.SendMessageToChat("king9791!: ????", "message", false, 0);
+        yield return new WaitForSeconds(0.2f);
+
+        _chatManager.SendMessageToChat("king9791!: ????", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("bite_me4: wow ur useless", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("king9791!: trash skill trash team", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("whiffedmyUlt: fkg n00b", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("me: go delete ur game honey", "message", true, 4);
+        yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
+        yield return new WaitForSeconds(1.0f);
+
     }
 
     private IEnumerator CoroutDecisionB_Angry()
@@ -85,17 +103,24 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _chatManager.SendMessageToChat("bite_me4: if u say it as a recipe maybe she can follow it ", "message", false, 0);
         yield return new WaitForSeconds(1.0f);
 
-        // _chatManager.SendMessageToChat("casualcrasher: ", "message", false, 0); //the victim that defends themselves
+        _chatManager.SendMessageToChat("king9791!: ????", "message", false, 0);
+        yield return new WaitForSeconds(0.2f);
 
+        _chatManager.SendMessageToChat("king9791!: ????", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
 
+        _chatManager.SendMessageToChat("bite_me4: wow ur useless", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+        
+        _chatManager.SendMessageToChat("king9791!: trash skill trash team", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("whiffedmyUlt: fkg n00b", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("me: go delete ur game honey", "message", true, 4);
+        yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
+        yield return new WaitForSeconds(1.0f);
     }
     
-    // private IEnumerator StartTyping()
-    // {
-       
-    //     decisionB1.SetActive(true);
-    //     decisionB1.GetComponent<TextWriting>().enabled = true;
-    //     decisionB1.GetComponent<TextWriting>().StartTextTyping(0); 
-    // }
-
-    }
+}
