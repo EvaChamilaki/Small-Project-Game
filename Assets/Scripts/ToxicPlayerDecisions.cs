@@ -15,6 +15,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public GameObject ChatManagerObject;
     public List<GameObject> choiceButtons;
+    public GameObject youLostPanel;
 
     private bool muted;
     private int playOnce = 0;
@@ -27,7 +28,6 @@ public class ToxicPlayerDecisions : MonoBehaviour
     void Start()
     {
         muted = GameObject.Find("Flags").GetComponent<Flags>().hasMuted;
-        Debug.Log("the player has muted: " + muted);
         _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
         firstInteractionPanel.SetActive(false);
     }
@@ -235,9 +235,9 @@ public class ToxicPlayerDecisions : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         _chatManager.SendMessageToChat("whiffedmyUlt: @BlameTheTank don't invite them again", "message", false, 0);        
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(3.0f);
 
-        //defeated panel!!!!!!!!
+        youLostPanel.SetActive(true);
     }
     
 }

@@ -1252,7 +1252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6873114293632297338, guid: 63d63479983e73844bab58818991e1d4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1729,38 +1729,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5478d0ab4d0ff7f4cadb0ddc299986f3, type: 3}
---- !u!114 &462012396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408897990}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbeda01c8c7742846a28bfbb962010ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animController: {fileID: 2077741599}
-  emotionUpdate: {fileID: 1496746929824528354}
-  firstIncident: {fileID: 0}
-  question: {fileID: 0}
-  panel: {fileID: 0}
-  decisionA1: {fileID: 0}
-  decisionA2: {fileID: 0}
-  decisionB1: {fileID: 0}
-  decisionButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  ChatManagerObject: {fileID: 1652515862}
-  switchtrigger: {fileID: 0}
-  emotionBarsCanvas: {fileID: 1556494880}
-  currentScreen: {fileID: 7548284395280804886}
-  lights:
-  - {fileID: 366171183}
-  - {fileID: 925107644}
-  character: {fileID: 0}
 --- !u!114 &462012397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8654,9 +8622,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3811389739995577637, guid: a75428e9ed66b2640905abf0ebee8b39, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 462012396}
     - targetCorrespondingSourceObject: {fileID: 3811389739995577637, guid: a75428e9ed66b2640905abf0ebee8b39, type: 3}
       insertIndex: -1
       addedObject: {fileID: 462012397}
