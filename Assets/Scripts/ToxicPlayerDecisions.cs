@@ -27,7 +27,18 @@ public class ToxicPlayerDecisions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        muted = GameObject.Find("Flags").GetComponent<Flags>().hasMuted;
+        GameObject flags = GameObject.Find("Flags");
+
+        if(flags != null)
+        {
+            muted = GameObject.Find("Flags").GetComponent<Flags>().hasMuted;
+        }
+
+        else
+        {
+            muted = false;
+        }
+
         _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
         firstInteractionPanel.SetActive(false);
     }
@@ -47,6 +58,11 @@ public class ToxicPlayerDecisions : MonoBehaviour
         {
             CheckPrevDecision();
             playOnce = 1;
+        }
+
+        if(youLostPanel == null)
+        {
+            return;
         }
     }
 
