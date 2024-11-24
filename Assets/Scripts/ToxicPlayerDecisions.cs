@@ -23,10 +23,20 @@ public class ToxicPlayerDecisions : MonoBehaviour
     private ChatBehaviorManager _chatManager;
     private bool hasStartedTyping = false;
 
+    public GameObject emotionUpdate;
+    public GameObject emotionBarsCanvas;
+    private BarsHandler _bHandler;
+
+    public List<Light> lights;
+    
+    public Animator animController;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
         GameObject flags = GameObject.Find("Flags");
 
         if(flags != null)
@@ -68,6 +78,11 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public void CheckPrevDecision()
     {
+        ChangeEmotionalState("Troubled");
+        _bHandler.emotionBarSNHValue = 1;
+        _bHandler.emotionBarTFFValue = 1;
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.9f, 0.55f, 0.2f),1.5f, 2.0f));  //orange
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.15f, 0.2f, 0.5f), 1.5f, 2.0f)); //blue
         StartCoroutine(Corout_PrevDecision());
     }
 
@@ -79,12 +94,28 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public void DecisionB_Stress()
     {
+        StartCoroutine(EmotionUpdateText());
+        ChangeEmotionalState("Troubled");
+        
+        _bHandler.emotionBarSNHValue = 1;
+        _bHandler.emotionBarTFFValue = 1;
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.9f, 0.55f, 0.2f),1.5f, 2.0f));  //orange
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.15f, 0.2f, 0.5f), 1.5f, 2.0f)); //blue
+
         secondInteractionPanel.SetActive(false);
         StartCoroutine(CoroutDecisionB_Stress());
     }
 
     public void DecisionB_Angry()
     {
+        StartCoroutine(EmotionUpdateText());
+        ChangeEmotionalState("Angry");
+        
+        _bHandler.emotionBarSNHValue = 1;
+        _bHandler.emotionBarTFFValue = 2;
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
+        //increase toxicity 
         secondInteractionPanel.SetActive(false);
         StartCoroutine(CoroutDecisionB_Angry());
     }
@@ -96,6 +127,14 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public void DecisionC_Join()
     {
+        //increase toxicity
+        
+        StartCoroutine(EmotionUpdateText());
+        ChangeEmotionalState("Happy");
+        _bHandler.emotionBarSNHValue = 2;
+        _bHandler.emotionBarTFFValue = 0;
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
         StartCoroutine(CoroutDecisionC_Join());
     }
 
@@ -175,6 +214,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _chatManager.SendMessageToChat("BlameTheTank: we are going to lose bc of you", "message", false, 0);
         _chatManager.SendMessageToChat("king9791!: DO.AS.UR.TOLD.", "message", false, 0);
         _chatManager.SendMessageToChat("whiffedmyUlt: you know you play for OUR team??", "message", false, 0);
+        StartCoroutine(EmotionUpdateText());
 
         if(muted)
         {
@@ -197,7 +237,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         }
         yield return new WaitForSeconds(3.0f);
 
-        foreach(GameObject button in choiceButtons)
+        foreach (GameObject button in choiceButtons)
         {
             button.SetActive(true);
         }
@@ -215,7 +255,20 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _chatManager.SendMessageToChat("king9791!: bromance;)", "message", false, 0);
         yield return new WaitForSeconds(1.0f);
 
+        StartCoroutine(EmotionUpdateText());
+        ChangeEmotionalState("Angry");
+        
+        _bHandler.emotionBarSNHValue = 1;
+        _bHandler.emotionBarTFFValue = 2;
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
+
+
         _chatManager.SendMessageToChat("whiffedmyUlt: go bungee jumping w/o parachute", "message", false, 0);
+        yield return new WaitForSeconds(1.0f);
+
+        _chatManager.SendMessageToChat("me: stfu theyre the potato not me", "message", true, 4);
+        yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 
         StartCoroutine(Corout_VictimDisconnects());
@@ -256,5 +309,37 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
         youLostPanel.SetActive(true);
     }
+
+    private IEnumerator ChangeLightColor(Light light, Color targetcolor, float targetIntensity, float duration)
+    {
+        Color startColor = light.color;
+        float startIntensity = light.intensity;
+
+        float t = 0; 
+
+        while (t<duration)
+        {
+            t += Time.deltaTime;
+            light.color = Color.Lerp(startColor, targetcolor, t/duration);
+            light.intensity = Mathf.Lerp(startIntensity, targetIntensity, t/duration);
+            yield return null;
+        }
+
+        light.color = targetcolor;
+        light.intensity = targetIntensity;
+    }
+
+    public void ChangeEmotionalState(string emotion)
+    {
+        GameObject obj = GameObject.FindWithTag("emotion_screen");
+        animController = obj.GetComponent<Animator>();
+        animController.SetTrigger(emotion);
+    }
     
+    public IEnumerator EmotionUpdateText()
+    {
+        emotionUpdate.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        emotionUpdate.SetActive(false);
+    }
 }

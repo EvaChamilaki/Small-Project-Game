@@ -936,7 +936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209501426}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.114962794, y: -0.000000017092301, z: 0.0000000019780937, w: 0.9933698}
+  m_LocalRotation: {x: 0.114962794, y: 0.000000017092301, z: -0.0000000019780937, w: 0.9933698}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1747,6 +1747,12 @@ MonoBehaviour:
   thirdPanel: {fileID: 172156774}
   currentScreen: {fileID: 7548284395280804886}
   flags: {fileID: 1074356514}
+  emotionUpdate: {fileID: 1496746929824528354}
+  emotionBarsCanvas: {fileID: 1556494880}
+  lights:
+  - {fileID: 366171183}
+  - {fileID: 925107644}
+  animController: {fileID: 2077741599}
 --- !u!1 &528696498
 GameObject:
   m_ObjectHideFlags: 0
