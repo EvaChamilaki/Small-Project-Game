@@ -28,13 +28,20 @@ public class VictimDecision2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentScreen.activeSelf && !hasStartedTyping)
+        if(currentScreen.activeSelf && !hasStartedTyping && currentScreen.name != "BlockedScreen1")
         {
             firstPanel.SetActive(true);
             hasStartedTyping = true;
 
             firstPanel.GetComponent<TextWriting>().enabled = true;
             firstPanel.GetComponent<TextWriting>().StartTextTyping(0);
+
+        }
+
+        if(currentScreen.name == "BlockedScreen1" && !hasStartedTyping)
+        {
+            secondPanel.SetActive(true);
+
         }
     }
 
@@ -73,6 +80,13 @@ public class VictimDecision2 : MonoBehaviour
     public void EndPanel()
     {
         StartCoroutine(SwitchScreensWithDelay(5.0f));
+    }
+
+    public void ScreenSwitch()
+    {
+        StartCoroutine(SwitchScreensWithDelay(0.0f));
+        hasStartedTyping = false;
+        currentScreen.name = "BlockedScreen1";
     }
     
     public IEnumerator chatMessagesCorout() 
