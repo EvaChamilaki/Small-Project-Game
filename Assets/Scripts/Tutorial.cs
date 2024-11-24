@@ -71,6 +71,16 @@ public class Tutorial : MonoBehaviour
         Time.timeScale = 1; //resumes the game
     }
 
+    public void SetPlayerParameters(string _keyName, int _value)
+    {
+        PlayerPrefs.SetInt(_keyName, _value);
+    }
+
+    public int GetPlayerParameters(string _keyName)
+    {
+        return PlayerPrefs.GetInt(_keyName);
+    }
+
     public bool notfirstTimeShown(string key)
     {
         return PlayerPrefs.GetInt(key, 0) == 1; //if the tutorial has not been shown before, the key will be 0, if it has been shown the key will be 1

@@ -18,7 +18,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public GameObject youLostPanel;
 
     private bool muted;
-    private int playOnce = 0;
+    private int playOnce = 0, t_toximeter = 0;
 
     private ChatBehaviorManager _chatManager;
     private bool hasStartedTyping = false;
@@ -31,12 +31,28 @@ public class ToxicPlayerDecisions : MonoBehaviour
     
     public Animator animController;
 
+    public Tutorial tutorial;
+
+    public GameObject panelButton;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
+        
+        if(!PlayerPrefs.HasKey("toxic_toximeter"))
+        {
+            t_toximeter = 3;
+            tutorial.SetPlayerParameters("toxic_toximeter", t_toximeter);
+            _bHandler.toximeterValue = t_toximeter;
+        }
+        else 
+        {
+            _bHandler.toximeterValue = tutorial.GetPlayerParameters("toxic_toximeter");
+        }
+
         GameObject flags = GameObject.Find("Flags");
 
         if(flags != null)
@@ -87,7 +103,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
     }
 
     public void DecisionA_Remind()
-    {
+    {        
         firstInteractionPanel.SetActive(false);
         StartCoroutine(CoroutDecisionA_Remind());
     }
@@ -115,7 +131,11 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _bHandler.emotionBarTFFValue = 2;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
-        //increase toxicity 
+        
+        t_toximeter = tutorial.GetPlayerParameters("toxic_toximeter") + 1;
+        tutorial.SetPlayerParameters("toxic_toximeter", t_toximeter);
+        _bHandler.toximeterValue = t_toximeter;
+
         secondInteractionPanel.SetActive(false);
         StartCoroutine(CoroutDecisionB_Angry());
     }
@@ -127,7 +147,9 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public void DecisionC_Join()
     {
-        //increase toxicity
+        t_toximeter = tutorial.GetPlayerParameters("toxic_toximeter") + 2;
+        tutorial.SetPlayerParameters("toxic_toximeter", t_toximeter);
+        _bHandler.toximeterValue = t_toximeter;
         
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Happy");
@@ -172,7 +194,9 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _chatManager.SendMessageToChat("me: go delete ur game honey", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
 
-        yield return new WaitForSeconds(7.0f);
+        yield return new WaitForSeconds(4.0f);
+
+        panelButton.SetActive(true);
 
     }
 
@@ -205,7 +229,9 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
         _chatManager.SendMessageToChat("me: go delete ur game honey", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
-        yield return new WaitForSeconds(7.0f);
+        yield return new WaitForSeconds(4.0f);
+
+        panelButton.SetActive(true);
     }
 
     private IEnumerator Corout_PrevDecision()
@@ -286,7 +312,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _chatManager.SendMessageToChat("whiffedmyUlt: how funny is that", "message", false, 0);
         yield return new WaitForSeconds(1.0f);
 
-        _chatManager.SendMessageToChat("king9791!: @casualcrasher have u tried tetris its easi", "message", false, 0);
+        _chatManager.SendMessageToChat("king9791!: @casualcrasher have u tried tetris its easier", "message", false, 0);
         yield return new WaitForSeconds(1.0f);
 
         _chatManager.SendMessageToChat("me: go bungee jumping w/o parachute", "message", true, 4);
@@ -341,5 +367,11 @@ public class ToxicPlayerDecisions : MonoBehaviour
         emotionUpdate.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
+    }
+
+    private IEnumerator SwitchScreensWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        currentScreen.GetComponent<ComputerScreenSwitch>().SwitchScreens();
     }
 }

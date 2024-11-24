@@ -21,20 +21,33 @@ public class VictimDecision2 : MonoBehaviour
     private BarsHandler _bHandler;
 
     public List<Light> lights;
-    
     public Animator animController;
+    public Tutorial tutorial;
 
     private bool hasStartedTyping = false;
+    private int v_toximeter = 0;
+
     
     void Start()
     {
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
+
+        if(!PlayerPrefs.HasKey("victim_toximeter"))
+        {
+            v_toximeter = 1;
+            tutorial.SetPlayerParameters("victim_toximeter", v_toximeter);
+            _bHandler.toximeterValue = v_toximeter;
+        }
+        else 
+        {
+            _bHandler.toximeterValue = tutorial.GetPlayerParameters("victim_toximeter");
+        }
+
         _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
         firstPanel.SetActive(false);
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(currentScreen.activeSelf && !hasStartedTyping && currentScreen.name != "BlockedScreen1")
@@ -50,7 +63,6 @@ public class VictimDecision2 : MonoBehaviour
         if(currentScreen.name == "BlockedScreen1" && !hasStartedTyping)
         {
             secondPanel.SetActive(true);
-
         }
     }
 
@@ -98,7 +110,10 @@ public class VictimDecision2 : MonoBehaviour
     public void DecisionB_InsultBack()
     {
         StartCoroutine(EmotionUpdateText());
-        //increase toxicity
+
+        v_toximeter = tutorial.GetPlayerParameters("victim_toximeter") + 2;
+        tutorial.SetPlayerParameters("victim_toximeter", v_toximeter);
+        _bHandler.toximeterValue = v_toximeter;
 
         thirdPanel.SetActive(false);
         flags.GetComponent<Flags>().hasMuted = false;
