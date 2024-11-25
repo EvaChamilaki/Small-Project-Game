@@ -2151,7 +2151,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408897990}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbeda01c8c7742846a28bfbb962010ec, type: 3}
   m_Name: 
@@ -2159,6 +2159,7 @@ MonoBehaviour:
   animController: {fileID: 2077741599}
   emotionUpdate: {fileID: 1496746929824528354}
   firstIncident: {fileID: 1639877535}
+  mistakePanel: {fileID: 0}
   question: {fileID: 2031824479}
   panel: {fileID: 723411518}
   decisionA1: {fileID: 1340458297}
@@ -13898,6 +13899,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Silver
       objectReference: {fileID: 0}
+    - target: {fileID: 1129900603722206364, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129900603722206364, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129900603722206364, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.21569896
+      objectReference: {fileID: 0}
     - target: {fileID: 4034647644154754833, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
       propertyPath: m_text
       value: casualcrasher
@@ -13905,6 +13918,18 @@ PrefabInstance:
     - target: {fileID: 4034647644154754833, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
       propertyPath: m_margin.z
       value: -84.81002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034647644154754833, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034647644154754833, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034647644154754833, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4172613418079772530, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
       propertyPath: m_Pivot.x
