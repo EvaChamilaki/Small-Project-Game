@@ -158,7 +158,10 @@ public class ThirdPersonCamera : MonoBehaviour
                 writingText.GetComponent<TextWriting>().enabled = true;
                 writingText.GetComponent<TextWriting>().StartTextTyping(0);
                 hasBeenTyped = true;
+
+                               
             }
+            
         }
 
         else
@@ -188,7 +191,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
         active_camera = main_camera;
 
-        writingText.GetComponent<TextWriting>().enabled = false;
+        // writingText.GetComponent<TextWriting>().enabled = false;
 
     }
 
@@ -214,7 +217,7 @@ public class ThirdPersonCamera : MonoBehaviour
             currentScreen.SetActive(false);
         }
 
-        writingText.GetComponent<TextWriting>().enabled = false;
+        // writingText.GetComponent<TextWriting>().enabled = false;
         
         charcontroller.enabled = false;
         charControlActive = false;

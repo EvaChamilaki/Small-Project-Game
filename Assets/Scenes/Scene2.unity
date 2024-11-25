@@ -2509,6 +2509,7 @@ MonoBehaviour:
   - {fileID: 1280399051}
   - {fileID: 1423919006}
   currentCharIdx: 0
+  isWriting: 0
   textCompleted: 0
 --- !u!114 &539217816
 MonoBehaviour:
@@ -5906,6 +5907,7 @@ MonoBehaviour:
   - {fileID: 1971280506}
   - {fileID: 1366586668}
   currentCharIdx: 0
+  isWriting: 0
   textCompleted: 0
 --- !u!114 &1144638850
 MonoBehaviour:
@@ -11395,6 +11397,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 417887535}
   currentCharIdx: 0
+  isWriting: 0
   textCompleted: 0
 --- !u!114 &2119116659
 MonoBehaviour:
@@ -12980,6 +12983,7 @@ MonoBehaviour:
   timeBetweenWords: 0.1
   buttons: []
   currentCharIdx: 0
+  isWriting: 0
   textCompleted: 0
 --- !u!114 &4563585071750613729
 MonoBehaviour:
@@ -13284,7 +13288,7 @@ PrefabInstance:
     - target: {fileID: 3736404625644695418, guid: 808d2d7f66dbc7a41b23656c264b95e5, type: 3}
       propertyPath: firstScreen
       value: 
-      objectReference: {fileID: 1165430072717468141}
+      objectReference: {fileID: 164742368933168250}
     - target: {fileID: 3736404625644695418, guid: 808d2d7f66dbc7a41b23656c264b95e5, type: 3}
       propertyPath: writingText
       value: 

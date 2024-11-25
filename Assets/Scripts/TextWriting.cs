@@ -13,7 +13,7 @@ public class TextWriting : MonoBehaviour
     [SerializeField] List<GameObject> buttons;
 
     public int currentCharIdx;
-    private bool isWriting;
+    public bool isWriting;
     public bool textCompleted = false;
 
     private void OnEnable()
@@ -81,7 +81,7 @@ public class TextWriting : MonoBehaviour
         }
     }
 
-    private void ResumeWriting()
+    public void ResumeWriting()
     {
         isWriting = true;
         StartCoroutine(TextVisible(currentCharIdx));

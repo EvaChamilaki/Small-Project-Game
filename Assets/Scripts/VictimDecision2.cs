@@ -45,6 +45,11 @@ public class VictimDecision2 : MonoBehaviour
 
         _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
         firstPanel.SetActive(false);
+
+        if(thirdPanel == null)
+        {
+            return;
+        }
         
     }
 
