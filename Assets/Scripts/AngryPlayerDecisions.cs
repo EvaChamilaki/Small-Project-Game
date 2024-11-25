@@ -75,7 +75,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         _chatManager.SendMessageToChat("thebest_ has muted the chat", "info", false, 0);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(0.5f);
         
         StartCoroutine(HappyEmotion());
     }
@@ -96,7 +96,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         _bHandler.emotionBarTFFValue = 3;
         ChangeEmotionalState("Furious");
         StartCoroutine(EmotionUpdateText());
-        StartCoroutine(SwitchCameras(1.5f));
+        StartCoroutine(SwitchCameras(4.0f));
 
 
     }
@@ -110,7 +110,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
         yield return StartCoroutine(EmotionUpdateText());
-        yield return StartCoroutine(SwitchCameras(0.5f));
+        yield return StartCoroutine(SwitchCameras(0.3f));
 
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
         StartCoroutine(SwitchScreensWithDelay(3.0f));

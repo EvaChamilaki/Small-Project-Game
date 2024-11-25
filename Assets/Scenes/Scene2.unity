@@ -1397,6 +1397,7 @@ GameObject:
   - component: {fileID: 314116397}
   - component: {fileID: 314116396}
   - component: {fileID: 314116395}
+  - component: {fileID: 314116398}
   m_Layer: 6
   m_Name: You dont do anything
   m_TagString: Untagged
@@ -1487,6 +1488,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &314116398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314116393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92ddde07c37a594a806198567861998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMeshPro: {fileID: 2015387928}
+  timeBetweenCharacters: 0.05
+  timeBetweenWords: 0.1
+  buttons:
+  - {fileID: 1614496056}
+  currentCharIdx: 0
 --- !u!1 &343598923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2722,7 +2741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 243.46811, y: -19.5}
+  m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 686.9361, y: 89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &571097673
@@ -3481,6 +3500,7 @@ GameObject:
   - component: {fileID: 676541832}
   - component: {fileID: 676541831}
   - component: {fileID: 676541830}
+  - component: {fileID: 676541833}
   m_Layer: 6
   m_Name: You dont do anything
   m_TagString: Untagged
@@ -3573,6 +3593,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &676541833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676541828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92ddde07c37a594a806198567861998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMeshPro: {fileID: 799073193}
+  timeBetweenCharacters: 0.05
+  timeBetweenWords: 0.1
+  buttons:
+  - {fileID: 2007741038}
+  currentCharIdx: 0
 --- !u!1 &687626763
 GameObject:
   m_ObjectHideFlags: 0
@@ -3700,6 +3738,7 @@ GameObject:
   - component: {fileID: 743204203}
   - component: {fileID: 743204205}
   - component: {fileID: 743204204}
+  - component: {fileID: 743204206}
   m_Layer: 6
   m_Name: Panel
   m_TagString: Untagged
@@ -3766,6 +3805,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743204202}
   m_CullTransparentMesh: 1
+--- !u!114 &743204206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 743204202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92ddde07c37a594a806198567861998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMeshPro: {fileID: 1369750441}
+  timeBetweenCharacters: 0.05
+  timeBetweenWords: 0.1
+  buttons:
+  - {fileID: 1895938810}
+  currentCharIdx: 0
 --- !u!1 &780155207
 GameObject:
   m_ObjectHideFlags: 0
@@ -4140,6 +4197,7 @@ GameObject:
   - component: {fileID: 837363373}
   - component: {fileID: 837363372}
   - component: {fileID: 837363371}
+  - component: {fileID: 837363374}
   m_Layer: 6
   m_Name: Makes mistake again
   m_TagString: Untagged
@@ -4232,6 +4290,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &837363374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837363369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92ddde07c37a594a806198567861998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMeshPro: {fileID: 571097673}
+  timeBetweenCharacters: 0.05
+  timeBetweenWords: 0.1
+  buttons:
+  - {fileID: 1121006553}
+  currentCharIdx: 0
 --- !u!1001 &850604763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5372,7 +5448,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 395, y: -79}
+  m_AnchoredPosition: {x: 0, y: -8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1121006555
@@ -7847,6 +7923,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Diamond
       objectReference: {fileID: 0}
+    - target: {fileID: 1129900603722206364, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129900603722206364, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129900603722206364, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.16946435
+      objectReference: {fileID: 0}
     - target: {fileID: 4034647644154754833, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
       propertyPath: m_text
       value: BlameTheTank
@@ -7854,6 +7942,18 @@ PrefabInstance:
     - target: {fileID: 4034647644154754833, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
       propertyPath: m_margin.z
       value: -66.562096
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034647644154754833, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034647644154754833, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034647644154754833, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.97735846
       objectReference: {fileID: 0}
     - target: {fileID: 4172613418079772530, guid: 81a2d94df6d52e34bb4fb1a44fe0a8c9, type: 3}
       propertyPath: m_Pivot.x
@@ -10650,7 +10750,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0}
+  m_AnchoredPosition: {x: -0.000015258789, y: 0}
   m_SizeDelta: {x: 754.4898, y: 238.4282}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2022392428
@@ -13184,7 +13284,7 @@ PrefabInstance:
     - target: {fileID: 3736404625644695418, guid: 808d2d7f66dbc7a41b23656c264b95e5, type: 3}
       propertyPath: firstScreen
       value: 
-      objectReference: {fileID: 7266790668838660566}
+      objectReference: {fileID: 1165430072717468141}
     - target: {fileID: 3736404625644695418, guid: 808d2d7f66dbc7a41b23656c264b95e5, type: 3}
       propertyPath: writingText
       value: 
