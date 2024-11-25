@@ -8529,6 +8529,7 @@ MonoBehaviour:
   animController: {fileID: 461968889}
   tutorial: {fileID: 471132378}
   panelButton: {fileID: 250445471}
+  character: {fileID: 1073898946}
 --- !u!4 &2536237769387847974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3764867968120471220, guid: f2be17800adeb0e48969a7220a621efd, type: 3}

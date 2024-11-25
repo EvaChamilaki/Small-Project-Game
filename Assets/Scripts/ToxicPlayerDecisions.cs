@@ -296,13 +296,13 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
-        
+        StartCoroutine(SwitchCameras());
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 2;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
 
-
+        yield return new WaitUntil (() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
         _chatManager.SendMessageToChat("whiffedmyUlt: go bungee jumping w/o parachute", "message", false, 0);
         yield return new WaitForSeconds(1.0f);
 
@@ -315,6 +315,17 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     private IEnumerator CoroutDecisionC_Join()
     {
+        StartCoroutine(EmotionUpdateText());
+        _bHandler.emotionBarSNHValue = 2;
+        _bHandler.emotionBarTFFValue = 0;
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
+        StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
+
+        StartCoroutine(SwitchCameras());
+
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
+        yield return new WaitForSeconds(0.5f);
+
         _chatManager.SendMessageToChat("me: delulu is not always the solulu", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
