@@ -27,6 +27,8 @@ public class VictimDecision2 : MonoBehaviour
     private bool hasStartedTyping = false;
     private int v_toximeter = 0;
 
+    public GameObject character;
+
     
     void Start()
     {
@@ -83,6 +85,8 @@ public class VictimDecision2 : MonoBehaviour
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
         
+        StartCoroutine(SwitchCameras());
+
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 2;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
@@ -96,6 +100,8 @@ public class VictimDecision2 : MonoBehaviour
     {
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Troubled");
+
+        StartCoroutine(SwitchCameras());
 
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 1;
@@ -189,6 +195,9 @@ public class VictimDecision2 : MonoBehaviour
 
     public IEnumerator CoroutDecisionA_Angry()
     {
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
+
         _chatManager.SendMessageToChat("me: i know what im doing chill", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(2.0f);
@@ -198,6 +207,9 @@ public class VictimDecision2 : MonoBehaviour
     
     public IEnumerator CoroutDecisionA_Stress()
     {
+        yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
+
         _chatManager.SendMessageToChat("me: sorry but im swarmed, aid me", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(0.5f);
@@ -268,5 +280,11 @@ public class VictimDecision2 : MonoBehaviour
         emotionUpdate.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         emotionUpdate.SetActive(false);
+    }
+
+    public IEnumerator SwitchCameras()
+    {
+        yield return new WaitForSeconds(0.5f);
+        character.GetComponent<ThirdPersonCamera>().SwitchToEmotionsCamera();
     }
 }

@@ -179,8 +179,9 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     private IEnumerator CoroutDecisionB_Stress()
     {
-        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled); 
         yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled); 
+        
 
         _chatManager.SendMessageToChat("me: @casualcrasher go back stop inting", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
@@ -212,8 +213,9 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     private IEnumerator CoroutDecisionB_Angry()
     {
-        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled); 
         yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled); 
+
 
         _chatManager.SendMessageToChat("me: r u a girl and cant follow orders? ", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
@@ -323,8 +325,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
         StartCoroutine(SwitchCameras());
 
-        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
         yield return new WaitForSeconds(0.5f);
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
 
         _chatManager.SendMessageToChat("me: delulu is not always the solulu", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
