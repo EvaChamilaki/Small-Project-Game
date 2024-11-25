@@ -1641,7 +1641,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1038, y: 802}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254396980
@@ -2420,6 +2420,7 @@ MonoBehaviour:
   animController: {fileID: 2077741599}
   emotionUpdate: {fileID: 1496746929824528354}
   firstIncident: {fileID: 1639877535}
+  mistakePanel: {fileID: 1259768281}
   question: {fileID: 2031824479}
   panel: {fileID: 723411518}
   decisionA1: {fileID: 1340458297}
@@ -2487,7 +2488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &579049623
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3274,6 +3275,7 @@ GameObject:
   - component: {fileID: 723411522}
   - component: {fileID: 723411521}
   - component: {fileID: 723411520}
+  - component: {fileID: 723411524}
   m_Layer: 6
   m_Name: No Response
   m_TagString: Untagged
@@ -3288,7 +3290,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723411518}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -3461,6 +3463,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &723411524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723411518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f66568946625b94f870e5c8db474170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMeshPro: {fileID: 1167693378}
+  timeBetweenCharacters: 0.05
+  timeBetweenWords: 0.1
+  buttons:
+  - {fileID: 1407366499}
+  currentCharIdx: 0
+  textCompleted: 0
 --- !u!4 &742781134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cf74982766837284099b107aa452562a, type: 3}
@@ -4242,6 +4263,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1830534229}
+  - {fileID: 1456854814}
   m_Father: {fileID: 2031824480}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5573,7 +5595,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 81}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1167693378
@@ -5598,8 +5620,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You did not act on your emotions. You continue playing ignoring the incident.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 31bf4d746535a8b4ba098237d9044c2e, type: 2}
-  m_sharedMaterial: {fileID: 8375056987581174358, guid: 31bf4d746535a8b4ba098237d9044c2e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3fe9d72d341fcf64ebfa102c24512e12, type: 2}
+  m_sharedMaterial: {fileID: 6974735616930307545, guid: 3fe9d72d341fcf64ebfa102c24512e12, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5623,8 +5645,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5659,10 +5681,10 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -137.25992, y: 0, z: -256.84406, w: 0}
+  m_margin: {x: -178.52164, y: 0, z: -304.73474, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1167693379
@@ -5987,7 +6009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The insults are now targetted towards my gender, I need to say something.
+  m_text: The insults are now too personal, I need to say something.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31bf4d746535a8b4ba098237d9044c2e, type: 2}
   m_sharedMaterial: {fileID: 8375056987581174358, guid: 31bf4d746535a8b4ba098237d9044c2e, type: 2}
@@ -6076,13 +6098,14 @@ GameObject:
   - component: {fileID: 1259768285}
   - component: {fileID: 1259768284}
   - component: {fileID: 1259768283}
+  - component: {fileID: 1259768286}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1259768282
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6168,6 +6191,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1259768286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259768281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f66568946625b94f870e5c8db474170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMeshPro: {fileID: 110303983}
+  timeBetweenCharacters: 0.05
+  timeBetweenWords: 0.1
+  buttons:
+  - {fileID: 579049622}
+  currentCharIdx: 0
+  textCompleted: 0
 --- !u!1 &1262219080 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1311275682868582026, guid: f8204c48ee50e8647bd59dc0f31efb1a, type: 3}
@@ -7089,7 +7131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 226, y: -30}
+  m_AnchoredPosition: {x: 309, y: -87}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1407366501
@@ -7371,10 +7413,10 @@ RectTransform:
   m_GameObject: {fileID: 1456854813}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2031824480}
+  m_Father: {fileID: 957699241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8943,6 +8985,7 @@ GameObject:
   - component: {fileID: 1639877536}
   - component: {fileID: 1639877538}
   - component: {fileID: 1639877537}
+  - component: {fileID: 1639877539}
   m_Layer: 5
   m_Name: How are you feeling?
   m_TagString: Untagged
@@ -9068,6 +9111,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639877535}
   m_CullTransparentMesh: 1
+--- !u!114 &1639877539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639877535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b92ddde07c37a594a806198567861998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMeshPro: {fileID: 1639877537}
+  timeBetweenCharacters: 0.05
+  timeBetweenWords: 0.1
+  buttons:
+  - {fileID: 5218541734607178483}
+  - {fileID: 591143853157078444}
+  currentCharIdx: 0
 --- !u!1 &1652515862 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2641906090415739613, guid: 7cc1a19f8784b2b44b6f4c23dcc4fe74, type: 3}
@@ -11364,6 +11426,7 @@ GameObject:
   - component: {fileID: 2031824483}
   - component: {fileID: 2031824482}
   - component: {fileID: 2031824481}
+  - component: {fileID: 2031824484}
   m_Layer: 6
   m_Name: QuestionA
   m_TagString: Untagged
@@ -11386,7 +11449,6 @@ RectTransform:
   - {fileID: 331763274}
   - {fileID: 957699241}
   - {fileID: 194869727}
-  - {fileID: 1456854814}
   m_Father: {fileID: 20400616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -11457,6 +11519,26 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &2031824484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031824479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f66568946625b94f870e5c8db474170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textMeshPro: {fileID: 194869728}
+  timeBetweenCharacters: 0.05
+  timeBetweenWords: 0.1
+  buttons:
+  - {fileID: 331763273}
+  - {fileID: 957699240}
+  currentCharIdx: 0
+  textCompleted: 0
 --- !u!4 &2044003288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 50cc3e39044f0b34898b1e5aef0f398a, type: 3}
@@ -11707,11 +11789,15 @@ PrefabInstance:
     - target: {fileID: 2860752572795965700, guid: f8204c48ee50e8647bd59dc0f31efb1a, type: 3}
       propertyPath: firstScreen
       value: 
-      objectReference: {fileID: 8837712406374254977}
+      objectReference: {fileID: 526986093971089547}
     - target: {fileID: 2860752572795965700, guid: f8204c48ee50e8647bd59dc0f31efb1a, type: 3}
       propertyPath: writingText
       value: 
       objectReference: {fileID: 8567372427501664045}
+    - target: {fileID: 2860752572795965700, guid: f8204c48ee50e8647bd59dc0f31efb1a, type: 3}
+      propertyPath: emotions_camera
+      value: 
+      objectReference: {fileID: 393936041}
     - target: {fileID: 2860752572795965700, guid: f8204c48ee50e8647bd59dc0f31efb1a, type: 3}
       propertyPath: canvasEmotionBars
       value: 
@@ -13707,6 +13793,10 @@ PrefabInstance:
       propertyPath: chatPanel
       value: 
       objectReference: {fileID: 1760918285}
+    - target: {fileID: 3089053415276021514, guid: 7cc1a19f8784b2b44b6f4c23dcc4fe74, type: 3}
+      propertyPath: maxMessages
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8957498998095089498, guid: 7cc1a19f8784b2b44b6f4c23dcc4fe74, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

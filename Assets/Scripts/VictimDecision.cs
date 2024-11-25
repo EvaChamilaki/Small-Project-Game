@@ -10,6 +10,7 @@ public class VictimDecision : MonoBehaviour
     public GameObject emotionUpdate;
     public GameObject firstIncident;
 
+    public GameObject mistakePanel;
     public GameObject question;
     public GameObject panel;
     public GameObject decisionA1;
@@ -19,6 +20,8 @@ public class VictimDecision : MonoBehaviour
     public GameObject ChatManagerObject;
 
     public GameObject switchtrigger;
+
+    private bool hasStartedTyping = false;  
 
     private enum EmotionalState { Neutral, Angry, Sad, Furious, Troubled };
     private EmotionalState currentEmotion = EmotionalState.Neutral;
@@ -39,8 +42,10 @@ public class VictimDecision : MonoBehaviour
     void Start()
     {
         switchtrigger.SetActive(false);
+        mistakePanel.SetActive(false);
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
         _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
+     
     }
 
     void Update() //the panel that shows the username change
@@ -58,6 +63,16 @@ public class VictimDecision : MonoBehaviour
             StartCoroutine(SwitchScreensWithDelay(3.0f));
             switchtrigger.SetActive(false);
         }
+
+        if(currentScreen.activeSelf && !hasStartedTyping && !mistakePanel.activeSelf) //if the player has not started typing and the mistake panel is not active
+        {
+            mistakePanel.SetActive(true);
+            StartCoroutine(StartTyping());
+            hasStartedTyping = true;
+        }
+
+
+
     }
 
     public void Starting()
@@ -82,7 +97,7 @@ public class VictimDecision : MonoBehaviour
         currentEmotion = EmotionalState.Angry;
         StartCoroutine(EmotionUpdateText());
         StartCoroutine(SwitchCameras());
-        question.SetActive(true);
+        StartCoroutine(DecisionA_Angry());
         foreach (Light light in lights)
         {
             StartCoroutine(ChangeLightColor(light, Color.red, 0.5f, 2.0f));
@@ -121,11 +136,28 @@ public class VictimDecision : MonoBehaviour
         currentEmotion = EmotionalState.Sad;
         StartCoroutine(EmotionUpdateText());
         StartCoroutine(SwitchCameras());
-        panel.SetActive(true);
+        StartCoroutine(DecisionB_Sad());
         foreach (Light light in lights)
         {
             StartCoroutine(ChangeLightColor(light, Color.blue, 0.5f, 2.0f));
         }
+
+    }
+    public IEnumerator DecisionA_Angry()
+    {
+        yield return new WaitForSeconds(3.0f);
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
+        question.SetActive(true);
+        question.GetComponent<TextWriting>().enabled = true;
+        question.GetComponent<TextWriting>().StartTextTyping(0); 
+    }
+    public IEnumerator DecisionB_Sad()
+    {
+        yield return new WaitForSeconds(3.0f);
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
+        panel.SetActive(true);
+        panel.GetComponent<TextWriting>().enabled = true;
+        panel.GetComponent<TextWriting>().StartTextTyping(0); 
 
     }
 
@@ -265,5 +297,13 @@ public class VictimDecision : MonoBehaviour
 
         light.color = targetcolor;
         light.intensity = targetIntensity;
+    }
+
+    private IEnumerator StartTyping()
+    {
+        mistakePanel.SetActive(true);
+        mistakePanel.GetComponent<TextWriting>().enabled = true;
+        mistakePanel.GetComponent<TextWriting>().StartTextTyping(0); 
+        yield return new WaitForSeconds(1.0f);
     }
 }

@@ -41,7 +41,6 @@ public class AngryPlayerDecisions : MonoBehaviour
     }
 
 
-
     public void DecisionB_Choice() //the angry button was chosen
     {
         question.SetActive(false);
