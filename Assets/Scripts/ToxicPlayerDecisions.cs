@@ -35,6 +35,9 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public GameObject panelButton;
 
+    public GameObject character;
+
+
 
 
     // Start is called before the first frame update
@@ -112,6 +115,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
     {
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Troubled");
+
+        StartCoroutine(SwitchCameras());
         
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 1;
@@ -126,6 +131,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
     {
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
+
+        StartCoroutine(SwitchCameras());
         
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 2;
@@ -172,9 +179,12 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     private IEnumerator CoroutDecisionB_Stress()
     {
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled); 
+        yield return new WaitForSeconds(0.5f);
+
         _chatManager.SendMessageToChat("me: @casualcrasher go back stop inting", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
 
         _chatManager.SendMessageToChat("king9791!: ????", "message", false, 0);
         yield return new WaitForSeconds(0.2f);
@@ -202,6 +212,9 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     private IEnumerator CoroutDecisionB_Angry()
     {
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled); 
+        yield return new WaitForSeconds(0.5f);
+
         _chatManager.SendMessageToChat("me: r u a girl and cant follow orders? ", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
@@ -373,5 +386,11 @@ public class ToxicPlayerDecisions : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         currentScreen.GetComponent<ComputerScreenSwitch>().SwitchScreens();
+    }
+
+    public IEnumerator SwitchCameras()
+    {
+        yield return new WaitForSeconds(0.5f);
+        character.GetComponent<ThirdPersonCamera>().SwitchToEmotionsCamera();
     }
 }
