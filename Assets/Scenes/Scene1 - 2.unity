@@ -1069,6 +1069,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1433015358}
   currentCharIdx: 0
+  isWriting: 0
 --- !u!114 &226546626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2177,6 +2178,7 @@ MonoBehaviour:
   - {fileID: 366171183}
   - {fileID: 925107644}
   character: {fileID: 0}
+  endingPanel: {fileID: 0}
 --- !u!1 &495817894
 GameObject:
   m_ObjectHideFlags: 0
@@ -4718,6 +4720,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 226546623}
   currentCharIdx: 0
+  isWriting: 0
 --- !u!114 &998006497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5022,6 +5025,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1639877535}
   currentCharIdx: 0
+  isWriting: 0
 --- !u!114 &1052267187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5640,6 +5644,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1596051293}
   currentCharIdx: 0
+  isWriting: 0
 --- !u!114 &1110878027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6503,7 +6508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3317959381031922013, guid: 89fe14b9ee032c24a84c373c0853e3de, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4300192156290789801, guid: 89fe14b9ee032c24a84c373c0853e3de, type: 3}
       propertyPath: _camera
@@ -6575,6 +6580,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1526014842}
   currentCharIdx: 0
+  isWriting: 0
 --- !u!114 &1239157865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6687,7 +6693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1255784157
 Transform:
   m_ObjectHideFlags: 0
@@ -8068,6 +8074,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1896279489}
   currentCharIdx: 0
+  isWriting: 0
 --- !u!114 &1468352001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9677,7 +9684,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758517276}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
@@ -9899,6 +9906,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1110878024}
   currentCharIdx: 0
+  isWriting: 0
 --- !u!114 &1778912145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10057,6 +10065,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1239157862}
   currentCharIdx: 0
+  isWriting: 0
 --- !u!114 &1816640802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10782,6 +10791,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1526014842}
   currentCharIdx: 0
+  isWriting: 0
 --- !u!114 &1896279492
 MonoBehaviour:
   m_ObjectHideFlags: 0

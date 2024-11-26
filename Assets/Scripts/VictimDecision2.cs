@@ -29,6 +29,8 @@ public class VictimDecision2 : MonoBehaviour
 
     public GameObject character;
 
+    public GameObject endingPanel;
+
     
     void Start()
     {
@@ -71,6 +73,11 @@ public class VictimDecision2 : MonoBehaviour
         {
             secondPanel.SetActive(true);
         }
+    }
+
+    public void endPanel()
+    {
+        endingPanel.SetActive(true);
     }
 
     public void showChatMessages() 

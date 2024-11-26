@@ -38,6 +38,8 @@ public class VictimDecision : MonoBehaviour
 
     public GameObject character;
 
+    public GameObject endingPanel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +75,11 @@ public class VictimDecision : MonoBehaviour
 
 
 
+    }
+
+    public void endPanel()
+    {
+        endingPanel.SetActive(true);
     }
 
     public void Starting()
