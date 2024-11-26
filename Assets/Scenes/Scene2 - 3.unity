@@ -4308,6 +4308,10 @@ PrefabInstance:
       propertyPath: tutorial
       value: 
       objectReference: {fileID: 2112364400}
+    - target: {fileID: 4063055374616804464, guid: 74b13e8f826e9974db8ce87471bd1e7b, type: 3}
+      propertyPath: tutorialText
+      value: 
+      objectReference: {fileID: 1877424314}
     - target: {fileID: 7463063600793731871, guid: 74b13e8f826e9974db8ce87471bd1e7b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.2907825
@@ -7174,6 +7178,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2022459083}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
+--- !u!114 &1877424314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5965601259717617720, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
+  m_PrefabInstance: {fileID: 2112364399}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1908461266
 GameObject:
   m_ObjectHideFlags: 0
@@ -8092,6 +8107,10 @@ PrefabInstance:
     - target: {fileID: 5578950426582075946, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965601259717617720, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
+      propertyPath: m_text
+      value: mpiri patates
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
