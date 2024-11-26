@@ -26,11 +26,15 @@ public class CameraPerspectiveAnim : MonoBehaviour
         {
             animController.SetTrigger("toxic_camera");
         }
+        else 
+        {
+            animController.SetTrigger("mw_panel");
+        }
     }
 
     void ChangeCameraAfterAnim()
     {
-        gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
         _camera.SetActive(true);
         _character.SetActive(true);
         clickImg.SetActive(true);
