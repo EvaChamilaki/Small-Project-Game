@@ -141,7 +141,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
         ChangeEmotionalState("Happy");
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
-        yield return StartCoroutine(EmotionUpdateText());
+        StartCoroutine(EmotionUpdateText());
         yield return StartCoroutine(SwitchCameras());
 
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
@@ -157,7 +157,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
     public IEnumerator SwitchCameras()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         character.GetComponent<ThirdPersonCamera>().SwitchToEmotionsCamera();
     }
     

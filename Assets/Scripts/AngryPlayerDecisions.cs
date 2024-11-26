@@ -43,6 +43,10 @@ public class AngryPlayerDecisions : MonoBehaviour
 
     public void DecisionB_Choice() //the angry button was chosen
     {
+        if (!tutorial.notfirstTimeShown("emotion2"))
+        {
+            tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion2");
+        }
         question.SetActive(false);
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
@@ -96,7 +100,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         _bHandler.emotionBarTFFValue = 3;
         ChangeEmotionalState("Furious");
         StartCoroutine(EmotionUpdateText());
-        StartCoroutine(SwitchCameras(4.0f));
+        StartCoroutine(SwitchCameras(0.8f));
 
 
     }
@@ -109,8 +113,8 @@ public class AngryPlayerDecisions : MonoBehaviour
         ChangeEmotionalState("Happy");
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
-        yield return StartCoroutine(EmotionUpdateText());
-        yield return StartCoroutine(SwitchCameras(0.3f));
+        StartCoroutine(EmotionUpdateText());
+        yield return StartCoroutine(SwitchCameras(0.5f));
 
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
         StartCoroutine(SwitchScreensWithDelay(3.0f));
@@ -126,10 +130,14 @@ public class AngryPlayerDecisions : MonoBehaviour
 
     public IEnumerator SwitchCameras(float delay)
     {
+        if (decisionB4.activeSelf)
+        {
+            yield return new WaitUntil(() => !decisionB4.GetComponent<AutomaticTextWriting>().isWriting);
+        }
         yield return new WaitForSeconds(delay);
         character.GetComponent<ThirdPersonCamera>().SwitchToEmotionsCamera();
     }
-
+    
     private IEnumerator StartTyping()
     {
         yield return new WaitUntil(() => !tutorial.isTutorialActive);

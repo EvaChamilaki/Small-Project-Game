@@ -16,7 +16,7 @@ public class AutomaticTextWriting : MonoBehaviour
 
     
     public int currentCharIdx;
-    private bool isWriting;
+    public bool isWriting;
 
     private void Awake()
     {
