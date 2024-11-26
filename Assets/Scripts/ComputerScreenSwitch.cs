@@ -22,11 +22,6 @@ public class ComputerScreenSwitch : MonoBehaviour
             newScreen.SetActive(true);
 
             cameraScript.ControlComputerScreens(newScreen);
-            if(newScreen.name == "End Screen")
-            {
-                Debug.Log("eyo");
-                newScreen.transform.Find("Panel").GetComponent<Animator>().SetTrigger("trig");
-            }
         }
       
     }

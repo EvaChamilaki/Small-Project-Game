@@ -18,18 +18,24 @@ public class CameraPerspectiveAnim : MonoBehaviour
             return;
         }
 
-        if(this.gameObject.tag == "victim")
+        if (this.gameObject.tag == "victim")
         {
             animController.SetTrigger("victim_camera");
         }
-        else if(this.gameObject.tag == "toxic")
+        else if (this.gameObject.tag == "toxic")
         {
             animController.SetTrigger("toxic_camera");
         }
-        else 
+        else
         {
             animController.SetTrigger("mw_panel");
         }
+    }
+
+    void ChangeCameras()
+    {
+        this.gameObject.SetActive(false);
+        _camera.SetActive(true);
     }
 
     void ChangeCameraAfterAnim()
