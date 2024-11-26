@@ -131,11 +131,6 @@ public class VictimDecision2 : MonoBehaviour
         StartCoroutine(CoroutDecisionB_InsultBack());
     }
 
-    public void EndPanel()
-    {
-        StartCoroutine(SwitchScreensWithDelay(5.0f));
-    }
-
     public void ChangeEmotionButton(string emotion)
     {
         StartCoroutine(EmotionUpdateText());

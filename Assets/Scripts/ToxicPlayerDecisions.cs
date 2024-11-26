@@ -33,7 +33,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public Tutorial tutorial;
 
-    public GameObject panelButton;
+    public GameObject endScreen;
 
     public GameObject character;
 
@@ -207,7 +207,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
         yield return new WaitForSeconds(4.0f);
 
-        panelButton.SetActive(true);
+        endScreen.SetActive(true);
 
     }
 
@@ -246,7 +246,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(4.0f);
 
-        panelButton.SetActive(true);
+        endScreen.SetActive(true);
     }
 
     private IEnumerator Corout_PrevDecision()
@@ -360,6 +360,10 @@ public class ToxicPlayerDecisions : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
 
         youLostPanel.SetActive(true);
+
+        yield return new WaitForSeconds(3.0f);
+
+        endScreen.SetActive(true);
     }
 
     private IEnumerator ChangeLightColor(Light light, Color targetcolor, float targetIntensity, float duration)

@@ -14,10 +14,16 @@ public class EndingPanel : MonoBehaviour
             Debug.Log("Animator Controller: Not found");
             return;
         }
-        else 
+        else
         {
-            Debug.Log("eyo");
-            animController.SetTrigger("endPanel");
+            if (this.gameObject.name == "End Scene Final")
+            {
+                animController.SetTrigger("finalendPanel");
+            }
+            else
+            {
+                animController.SetTrigger("endPanel");
+            }
         }
     }
 }
