@@ -11,6 +11,7 @@ public class ThirdPersonCamera : MonoBehaviour
     public GameObject firstScreen;
     public GameObject writingText;
     public GameObject canvasEmotionBars;
+    public GameObject instructions;
 
 
     [Header("Character Control")]
@@ -147,6 +148,7 @@ public class ThirdPersonCamera : MonoBehaviour
         emotions_camera.enabled = false;
         canvasClick.SetActive(false);
         canvasEmotionBars.SetActive(false);
+        instructions.SetActive(false);
 
         // firstScreen.SetActive(true);
         if (currentScreen != null)
@@ -180,6 +182,7 @@ public class ThirdPersonCamera : MonoBehaviour
         main_camera.enabled = true;
         emotions_camera.enabled = false;
         canvasEmotionBars.SetActive(false);
+        instructions.SetActive(false);
 
         if (currentScreen != null)
         {
@@ -202,6 +205,7 @@ public class ThirdPersonCamera : MonoBehaviour
         emotions_camera.enabled = true;
         canvasClick.SetActive(false);
         canvasEmotionBars.SetActive(true);
+        instructions.SetActive(true);
 
         if(tutorial.notfirstTimeShown("screens"))
         {
