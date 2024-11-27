@@ -4330,7 +4330,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: The new member of your team, @casualcrasher, jumped in the top lane instead
-    of the middle they were supposed to stay. As a result, your ADC in the bot lane
+    of the middle they were supposed to stay. As a result, your ADC in the top lane
     was left without support.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3fe9d72d341fcf64ebfa102c24512e12, type: 2}
