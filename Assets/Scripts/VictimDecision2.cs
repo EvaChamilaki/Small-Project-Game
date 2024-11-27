@@ -200,7 +200,7 @@ public class VictimDecision2 : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
 
-        _chatManager.SendMessageToChat("me: i know what im doing chill", "message", true, 4);
+        _chatManager.SendMessageToChat("casualcrasher(me): i know what im doing chill", "message", true, 19);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(2.0f);
 
@@ -212,7 +212,7 @@ public class VictimDecision2 : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
 
-        _chatManager.SendMessageToChat("me: sorry but im swarmed, aid me", "message", true, 4);
+        _chatManager.SendMessageToChat("casualcrasher(me): sorry but im swarmed, aid me", "message", true, 19);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(0.5f);
         
@@ -238,7 +238,7 @@ public class VictimDecision2 : MonoBehaviour
 
     public IEnumerator CoroutDecisionB_InsultBack()
     {
-        _chatManager.SendMessageToChat("me: next time play as much as you talk", "message", true, 4);
+        _chatManager.SendMessageToChat("casualcrasher(me): next time play as much as you talk", "message", true, 19);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 

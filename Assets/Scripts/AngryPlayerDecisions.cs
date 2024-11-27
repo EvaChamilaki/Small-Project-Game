@@ -68,7 +68,7 @@ public class AngryPlayerDecisions : MonoBehaviour
 
     private IEnumerator CoroutDecisionB_Act()
     {
-        _chatManager.SendMessageToChat("me: @thebest_ next time plz install eyes before playing", "message", true, 4);
+        _chatManager.SendMessageToChat("BlameTheTank(me): @thebest_ next time plz install eyes before playing", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 

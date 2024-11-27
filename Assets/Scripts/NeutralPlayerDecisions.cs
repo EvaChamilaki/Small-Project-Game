@@ -104,7 +104,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
     private IEnumerator CoroutDecisionA_Result()
     { 
-        _chatManager.SendMessageToChat("me: right, i didnt know we were playing with a toddler, get your sht together @thebest_", "message", true, 4);
+        _chatManager.SendMessageToChat("BlameTheTank(me): right, i didnt know we were playing with a toddler, get your sht together @thebest_", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 

@@ -122,7 +122,7 @@ public class VictimDecision : MonoBehaviour
 
     private IEnumerator CoroutDecisionA_Act()
     {
-        _chatManager.SendMessageToChat("me: grow some skill and then speak", "message", true, 4);
+        _chatManager.SendMessageToChat("iamfemale(me): grow some skill and then speak", "message", true, 15);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 
@@ -231,7 +231,7 @@ public class VictimDecision : MonoBehaviour
 
     public IEnumerator CoroutDecisionBAct()
     {
-        _chatManager.SendMessageToChat("me: woof woof, stop barking", "message", true, 4);
+        _chatManager.SendMessageToChat("iamfemale(me): woof woof, stop barking", "message", true, 15);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 

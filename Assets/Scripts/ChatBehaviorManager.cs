@@ -16,14 +16,6 @@ public class ChatBehaviorManager : MonoBehaviour
 
     private GameObject newText = null;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            //SendMessageToChat("Hello");
-        }
-    }
-
     public void SendMessageToChat(string text, string typeObj, bool slowWriting, int startIdx) //type obj: message or info
     {
         if (chatPanel == null || textObject == null || infoTextObj == null)
@@ -52,6 +44,15 @@ public class ChatBehaviorManager : MonoBehaviour
 
         newMessage.textObj = newText.GetComponent<TextMeshProUGUI>();
         newMessage.textObj.text = newMessage.text;
+
+        if(typeObj == "message" && slowWriting)
+        {
+            newMessage.textObj.color = new Color(0.4f, 0.76f, 1.0f);
+        }
+        else if(typeObj == "message" && !slowWriting)
+        {
+            newMessage.textObj.color = new Color(1.0f, 0.705f, 0.415f);
+        }
 
         if(slowWriting)
         {
