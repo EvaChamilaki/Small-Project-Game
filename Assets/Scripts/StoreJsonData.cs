@@ -1,51 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using System.IO;
-using UnityEditor;
+using System.Linq;
 
 public class StoreJsonData : MonoBehaviour
 {
-    public string filePath = "";
+    private string filePath = "";
+    private string fileName = "";
+
+    private List<Decision> _DecisionDataList = new List<Decision>();
 
     void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
+
         try
         {
             filePath = System.IO.Directory.GetCurrentDirectory() + "/JsonData";
-            Debug.Log(filePath);
             if (!Directory.Exists(filePath))
             {
-                Debug.Log("Creating JsonData folder");
                 Directory.CreateDirectory(filePath);
             }
+            
+            int highestNumber = GetHighestFileNumber() + 1;
+            fileName = Path.Combine(filePath, $"data{highestNumber}.json");
         }
         catch (IOException ex)
         {
             Debug.LogError(ex.Message);
         }
-        DontDestroyOnLoad(this.gameObject);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            StoreData();
+            StoreData("Scene1", "Decision1", "Option1");
         }
     }
 
-    public void StoreData()
+    public void StoreData(string scene, string decisionName, string selectedDecision)
     {
         try
         {
-            Debug.Log(filePath);
-            int highestNumber = GetHighestFileNumber() + 1;
-            string fileName = Path.Combine(filePath, $"data{highestNumber}.json");
+            Decision newDecision = new Decision
+            {
+                scene = scene,
+                DecisionName = decisionName,
+                SelectedDecision = selectedDecision
+            };
 
-            Debug.Log($"File created: {fileName}");
-            string sampleData = "{\"message\": \"This is sample data\"}";
-            File.WriteAllText(fileName, sampleData);
+            _DecisionDataList.Add(newDecision);
+
+            string decisionJson = JsonUtility.ToJson(new DecisionListWrapper { decisions = _DecisionDataList }, true);
+
+            if (!string.IsNullOrEmpty(fileName))
+            {
+                File.WriteAllText(fileName, decisionJson);
+            }
+            else
+            {
+                Debug.LogError("File name is not set. Cannot save data.");
+            }
         }
         catch (IOException ex)
         {
@@ -53,22 +71,34 @@ public class StoreJsonData : MonoBehaviour
         }
     }
 
+    [System.Serializable]
+    public class Decision
+    {
+        public string scene;
+        public string DecisionName;
+        public string SelectedDecision;
+    }
+
+    [System.Serializable]
+    public class DecisionListWrapper
+    {
+        public List<Decision> decisions;
+    }
+
     private int GetHighestFileNumber()
     {
         int highestNumber = 0;
 
-        // Check all files in the directory
         if (Directory.Exists(filePath))
         {
             string[] files = Directory.GetFiles(filePath, "data*.json");
 
             foreach (string file in files)
             {
-                // Extract the number part from the file name
-                string fileName = Path.GetFileNameWithoutExtension(file); // e.g., "data1"
+                string fileName = Path.GetFileNameWithoutExtension(file);
                 if (fileName.StartsWith("data"))
                 {
-                    string numberPart = fileName.Substring(4); // Extract "1" from "data1"
+                    string numberPart = fileName.Substring(4);
                     if (int.TryParse(numberPart, out int fileNumber))
                     {
                         highestNumber = Mathf.Max(highestNumber, fileNumber);

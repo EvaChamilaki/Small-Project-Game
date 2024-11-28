@@ -31,6 +31,10 @@ public class AngryPlayerDecisions : MonoBehaviour
     private ChatBehaviorManager _chatManager;
     
     public GameObject character;
+    
+    [Header("Data Handler")]
+    public GameObject storeDataGO;
+    private StoreJsonData storeData;
 
     void Start()
     {
@@ -38,6 +42,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         question.SetActive(false);
 
         _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
+        storeData = storeDataGO.GetComponent<StoreJsonData>();
     }
 
 
@@ -50,10 +55,12 @@ public class AngryPlayerDecisions : MonoBehaviour
         question.SetActive(false);
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
-        StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
+
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f), 1.5f, 2.0f));  //dark red
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
         _bHandler.emotionBarSNHValue = 1;
-        _bHandler.emotionBarTFFValue = 2;    
+        _bHandler.emotionBarTFFValue = 2;
+
         StartCoroutine(StartTyping());
     }
 
@@ -64,6 +71,8 @@ public class AngryPlayerDecisions : MonoBehaviour
 
         _bHandler.toximeterValue = 3;
         StartCoroutine(CoroutDecisionB_Act());
+
+        storeData.StoreData("Toxic_Scene2", "FirstDecision", "AngryDecisionAct");
     }
 
     private IEnumerator CoroutDecisionB_Act()
@@ -88,6 +97,7 @@ public class AngryPlayerDecisions : MonoBehaviour
     {
         decisionB1.SetActive(false);
         decisionB3.SetActive(true);
+        storeData.StoreData("Scene2", "FirstDecision", "AngryDecisionNotAct");
     }
 
     public void DecisionB_Repeat() //a mistake happens again, player is furious

@@ -12438,6 +12438,7 @@ MonoBehaviour:
   - {fileID: 1092779988}
   - {fileID: 784829016}
   character: {fileID: 1073898946}
+  storeDataGO: {fileID: 1313705471}
 --- !u!114 &2486466153057099253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12466,6 +12467,7 @@ MonoBehaviour:
   - {fileID: 1092779988}
   - {fileID: 784829016}
   character: {fileID: 1073898946}
+  storeDataGO: {fileID: 1313705471}
 --- !u!4 &2536237769387847974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3764867968120471220, guid: f2be17800adeb0e48969a7220a621efd, type: 3}

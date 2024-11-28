@@ -32,6 +32,10 @@ public class NeutralPlayerDecisions : MonoBehaviour
     private ChatBehaviorManager _chatManager;
 
     public GameObject character;
+    
+    [Header("Data Handler")]
+    public GameObject storeDataGO;
+    private StoreJsonData storeData;
 
 
     void Start()
@@ -41,6 +45,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
         panel.SetActive(false);
 
         _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
+        storeData = storeDataGO.GetComponent<StoreJsonData>();
     }
 
  
@@ -72,11 +77,15 @@ public class NeutralPlayerDecisions : MonoBehaviour
         question.SetActive(false);
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Neutral");
+
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.95f, 0.85f, 0.4f),1.5f, 2.0f));  //pale yellow
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.5f, 0.6f, 0.7f), 1.5f, 2.0f)); // graysih blue
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 0;
+
         decisionA1.SetActive(true);
+
+        storeData.StoreData("Scene2", "FirstDecision", "NeutralDecision");
     }
 
     public void DecisionA_Reaction() //others are toxic to the mistake
