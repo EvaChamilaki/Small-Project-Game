@@ -102,7 +102,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
         RaycastHit hit;
         Ray ray = active_camera.ScreenPointToRay(Input.mousePosition);
-        if (active_camera == main_camera && Physics.Raycast(ray.origin, ray.direction, out hit, 5.0f)) //TODO: fix raycast distance (click issue)
+        if (active_camera == main_camera && Physics.Raycast(ray.origin, ray.direction, out hit, 2.0f)) //TODO: fix raycast distance (click issue)
         {
             if (hit.transform.CompareTag("ComputerScreen"))
             {
