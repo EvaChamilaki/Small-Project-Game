@@ -85,7 +85,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
         decisionA1.SetActive(true);
 
-        storeData.StoreData("Scene2", "FirstDecision", "NeutralDecision");
+        storeData.StoreData("Toxic_Scene2", "FirstDecision", "NeutralDecision");
     }
 
     public void DecisionA_Reaction() //others are toxic to the mistake

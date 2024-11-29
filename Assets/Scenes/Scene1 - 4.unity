@@ -704,7 +704,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 462012397}
         m_TargetAssemblyTypeName: VictimDecision2, Assembly-CSharp
-        m_MethodName: endPanel
+        m_MethodName: endPanelNo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2092,7 +2092,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 462012397}
         m_TargetAssemblyTypeName: VictimDecision2, Assembly-CSharp
-        m_MethodName: endPanel
+        m_MethodName: endPanelYes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3592,7 +3592,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0844857, y: -0.000000035345042, z: 0.0000000029968654, w: 0.99642473}
+  m_LocalRotation: {x: 0.0844857, y: 0.00000003534504, z: -0.000000002996865, w: 0.99642473}
   m_LocalPosition: {x: 2.716, y: 1.271, z: -2.912}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4613,7 +4613,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164620674}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08448571, y: -0.000000017672525, z: 0.000000001498433, w: 0.99642473}
+  m_LocalRotation: {x: 0.08448571, y: 0.000000017672514, z: -0.0000000014984322, w: 0.99642473}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
