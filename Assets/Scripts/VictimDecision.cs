@@ -139,7 +139,7 @@ public class VictimDecision : MonoBehaviour
     public void DecisionB() //first emotion is sad
     {
         disableDecisionButtons(decisionButtons);
-        _bHandler.emotionBarSNHValue = 1;
+        _bHandler.emotionBarSNHValue = 0;
         ChangeEmotionalState("Sad");
         currentEmotion = EmotionalState.Sad;
         StartCoroutine(EmotionUpdateText());
