@@ -15,6 +15,7 @@ public class AngryPlayerDecisions : MonoBehaviour
     public GameObject decisionB2; //act on the angry emotion
     public GameObject decisionB3; //not act on the angry emotion
     public GameObject decisionB4; //repeat the action
+    public GameObject panel; //the results of the decision
 
     public GameObject emotionUpdate;
     public GameObject emotionBarsCanvas;
@@ -52,7 +53,8 @@ public class AngryPlayerDecisions : MonoBehaviour
         {
             tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion2");
         }
-        question.SetActive(false);
+
+        question.SetActive(false); //how does that make you feel question
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
 
@@ -81,22 +83,35 @@ public class AngryPlayerDecisions : MonoBehaviour
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 
+        panel.SetActive(true);
+
+       
+    }
+
+    public void DecisionB_Reactions()
+    {
+        StartCoroutine(DecisionB_ReactionsCorout());
+    }
+
+    private IEnumerator DecisionB_ReactionsCorout()
+    {
         _chatManager.SendMessageToChat("king9791!: @thebest_ r ur parents proud of u?", "message", false, 0);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("whiffedmyUlt: do u need someone to move your mouse?", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("thebest_ has muted the chat", "info", false, 0);
-        yield return new WaitForSeconds(0.5f);
-        
+        yield return new WaitForSeconds(2.0f);
+
         StartCoroutine(HappyEmotion());
     }
+
 
     public void DecisionB_Ignore() //do not act on the angry emotion
     {
         decisionB1.SetActive(false);
-        decisionB3.SetActive(true);
+        decisionB3.SetActive(true); //you don't react to the mistake panel
         storeData.StoreData("Scene2", "FirstDecision", "AngryDecisionNotAct");
     }
 
@@ -127,7 +142,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         yield return StartCoroutine(SwitchCameras(0.5f));
 
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
-        StartCoroutine(SwitchScreensWithDelay(3.0f));
+        StartCoroutine(SwitchScreensWithDelay(5.0f));
     }
 
     public IEnumerator EmotionUpdateText()

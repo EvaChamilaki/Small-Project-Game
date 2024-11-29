@@ -19,7 +19,6 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public GameObject ChatManagerObject;
 
     private bool hasStartedTyping = false;
-    private bool emotionupdated = false;
     private bool hasloggedOut;
 
     public GameObject emotionUpdate;
@@ -60,10 +59,6 @@ public class NeutralPlayerDecisions : MonoBehaviour
             question.GetComponent<TextWriting>().StartTextTyping(0);
         }
 
-        if(panel.activeSelf && !emotionupdated)
-        {
-            StartCoroutine(TroubledEmotion());
-        }
     }
 
 
@@ -74,7 +69,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
             tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion2");
         }
 
-        question.SetActive(false);
+        question.SetActive(false); //how does that make you feel question
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Neutral");
 
@@ -83,12 +78,12 @@ public class NeutralPlayerDecisions : MonoBehaviour
         _bHandler.emotionBarSNHValue = 1;
         _bHandler.emotionBarTFFValue = 0;
 
-        decisionA1.SetActive(true);
+        decisionA1.SetActive(true); //you don't react to the mistake panel
 
         storeData.StoreData("Toxic_Scene2", "FirstDecision", "NeutralDecision");
     }
 
-    public void DecisionA_Reaction() //others are toxic to the mistake
+    public void DecisionA_Reaction() //others are toxic to the mistake - enabled with the "next" button
     {
         StartCoroutine(CoroutDecisionA_Reaction());
     }
@@ -96,18 +91,15 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public IEnumerator CoroutDecisionA_Reaction()
     {
         _chatManager.SendMessageToChat("king9791!: @thebest_ r ur parents proud of u? @BlameTheTank can u babysit this piece of trash?", "message", false, 0);
-
-        panel.SetActive(true);
         yield return new WaitForSeconds(0.5f);
+        panel.SetActive(true);
+        MakeTheTroubledEmotion();
+        yield return new WaitForSeconds(0.5f);
+        
     }
 
     public void DecisionA_Result() //player feels left out
     {
-        // _bHandler.toximeterValue = 3;
-        // _bHandler.emotionBarSNHValue = 2;
-        // _bHandler.emotionBarTFFValue = 0; 
-        // StartCoroutine(HappyEmotion());
-
         StartCoroutine(CoroutDecisionA_Result());
     }
 
@@ -115,11 +107,11 @@ public class NeutralPlayerDecisions : MonoBehaviour
     { 
         _chatManager.SendMessageToChat("BlameTheTank(me): right, i didnt know we were playing with a toddler, get your sht together @thebest_", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("whiffedmyUlt: lol love the sass", "message", false, 0);
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1.0f);
 
         _chatManager.SendMessageToChat("OopsIFlopped: brutal but true, @thebest_ give up", "message", false, 0);
         yield return new WaitForSeconds(1.0f);
@@ -130,9 +122,13 @@ public class NeutralPlayerDecisions : MonoBehaviour
         yield return StartCoroutine(HappyEmotion());
     }
 
+    public void MakeTheTroubledEmotion()
+    {
+        StartCoroutine(TroubledEmotion());
+    }
+
     public IEnumerator TroubledEmotion()
     {
-        emotionupdated = true;
         _bHandler.emotionBarTFFValue = 1;
         ChangeEmotionalState("Troubled");
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.9f, 0.55f, 0.2f),1.5f, 2.0f));  //orange
@@ -154,7 +150,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
         yield return StartCoroutine(SwitchCameras());
 
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
-        StartCoroutine(SwitchScreensWithDelay(3.0f));
+        StartCoroutine(SwitchScreensWithDelay(5.0f));
     }
 
     public IEnumerator EmotionUpdateText()
