@@ -53,20 +53,6 @@ public class VictimDecision : MonoBehaviour
 
     void Update() //the panel that shows the username change
     {
-        if(switchtrigger.activeSelf)
-        {   
-            ChangeEmotionalState("Troubled");
-            currentEmotion = EmotionalState.Troubled;
-            _bHandler.emotionBarTFFValue = 1;
-            StartCoroutine(EmotionUpdateText());
-            foreach (Light light in lights)
-            {
-                StartCoroutine(ChangeLightColor(light, new Color(0.5f, 0.1f, 0.5f), 0.5f, 2.0f)); //purple color for the troubled emotion but does not work very well, it's too similar to the room light
-            }
-            StartCoroutine(SwitchScreensWithDelay(3.0f));
-            switchtrigger.SetActive(false);
-        }
-
         if(currentScreen.activeSelf && !hasStartedTyping && !mistakePanel.activeSelf) //if the player has not started typing and the mistake panel is not active
         {
             mistakePanel.SetActive(true);
@@ -111,29 +97,35 @@ public class VictimDecision : MonoBehaviour
             StartCoroutine(ChangeLightColor(light, Color.red, 0.5f, 2.0f));
         }
     }
+    public IEnumerator DecisionA_Angry() //first choice is angry
+    {
+        yield return new WaitForSeconds(3.0f);
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
+        question.SetActive(true); //do you act on the angry emotion
+        question.GetComponent<TextWriting>().enabled = true;
+        question.GetComponent<TextWriting>().StartTextTyping(0);
+    }
 
     public void DecisionA_Act() //act on the angry emotion
     {
-        _bHandler.toximeterValue = 1;
-        StartCoroutine(EmotionUpdateText());
-
         StartCoroutine(CoroutDecisionA_Act());
         storeData.StoreData("Victim_Scene1", "FirstDecision", "AngryDecision");
     }
 
     private IEnumerator CoroutDecisionA_Act()
     {
+        _bHandler.toximeterValue = 1;
         _chatManager.SendMessageToChat("iamfemale(me): grow some skill and then speak", "message", true, 15);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 
         _chatManager.SendMessageToChat("king9791!: do they have pcs in the kitchen?", "message", false, 0);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         _chatManager.SendMessageToChat("epicguy: just go make a sandwich", "message", false, 0);
         yield return new WaitForSeconds(2.0f);
 
-        switchtrigger.SetActive(true);
+        MakeTheTroubledEmotion();
     }
 
     public void DecisionB() //first emotion is sad
@@ -152,50 +144,20 @@ public class VictimDecision : MonoBehaviour
 
         storeData.StoreData("Victim_Scene1", "FirstDecision", "SadDecision");
     }
-    public IEnumerator DecisionA_Angry()
+
+    public IEnumerator DecisionB_Sad() //first choice is sad
     {
         yield return new WaitForSeconds(3.0f);
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
-        question.SetActive(true);
-        question.GetComponent<TextWriting>().enabled = true;
-        question.GetComponent<TextWriting>().StartTextTyping(0); 
-    }
-    public IEnumerator DecisionB_Sad()
-    {
-        yield return new WaitForSeconds(3.0f);
-        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
-        panel.SetActive(true);
+        panel.SetActive(true); //you did not act panel
         panel.GetComponent<TextWriting>().enabled = true;
         panel.GetComponent<TextWriting>().StartTextTyping(0); 
 
     }
 
-    public void SecondIncident()
+    public void SecondIncident() //enabled when sad or when angry but without reaction
     {
         StartCoroutine(CoroutSecondIncident());
-
-        if(currentEmotion == EmotionalState.Angry) //if the current state is angry (has ignored the first toxic incident but was angry)
-        {
-           ChangeEmotionalState("Furious");
-           _bHandler.emotionBarTFFValue = 3;
-           currentEmotion = EmotionalState.Furious;
-           StartCoroutine(EmotionUpdateText());
-           foreach(Light light in lights)
-           {
-               StartCoroutine(ChangeLightColor(light, new Color (0.5f, 0f, 0f), 0.5f, 2.0f)); //darkRed for the furious state
-           }
-        }
-        else if(currentEmotion == EmotionalState.Sad) //if in the first decision the player chose sad
-        {
-            ChangeEmotionalState("Angry");
-            _bHandler.emotionBarTFFValue = 2;
-            currentEmotion = EmotionalState.Angry;
-            StartCoroutine(EmotionUpdateText());
-            foreach (Light light in lights)
-                {
-                StartCoroutine(ChangeLightColor(light, Color.red, 0.5f, 2.0f));
-                }
-        }
     }
 
     public IEnumerator CoroutSecondIncident()
@@ -205,6 +167,7 @@ public class VictimDecision : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         _chatManager.SendMessageToChat("epicguy: @iamafemale u would be better afk", "message", false, 0);
         //play a message sound
+        Debug.Log("Current Emotion is:" + currentEmotion);
 
         if (currentEmotion == EmotionalState.Angry) //if the current state is angry (has ignored the first toxic incident but was angry)
         {
@@ -212,7 +175,11 @@ public class VictimDecision : MonoBehaviour
             _bHandler.emotionBarTFFValue = 3;
             currentEmotion = EmotionalState.Furious;
             StartCoroutine(EmotionUpdateText());
-            
+            foreach (Light light in lights)
+            {
+                StartCoroutine(ChangeLightColor(light, new Color(0.5f, 0f, 0f), 0.5f, 2.0f)); //darkRed for the furious state
+            }
+
         }
         else if (currentEmotion == EmotionalState.Sad) //if in the first decision the player chose sad
         {
@@ -220,31 +187,57 @@ public class VictimDecision : MonoBehaviour
             _bHandler.emotionBarTFFValue = 2;
             currentEmotion = EmotionalState.Angry;
             StartCoroutine(EmotionUpdateText());
+            foreach (Light light in lights)
+            {
+                StartCoroutine(ChangeLightColor(light, Color.red, 0.5f, 2.0f));
+            }
         }
-        decisionA2.SetActive(true);
+
+        yield return new WaitForSeconds(1.0f);
+        decisionA2.SetActive(true); //"Answer them" panel
     }
 
-    public void DecisionB_Act()
+    public void DecisionB_Act() //the answer them has been selected
     {
-        _bHandler.toximeterValue = 2;
-        StartCoroutine(EmotionUpdateText());
+
         StartCoroutine(CoroutDecisionBAct());
     }
 
     public IEnumerator CoroutDecisionBAct()
     {
+        _bHandler.toximeterValue = 2;
         _chatManager.SendMessageToChat("iamfemale(me): woof woof, stop barking", "message", true, 15);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 
         _chatManager.SendMessageToChat("king9791!: @iamafemale just go make a sandwich", "message", false, 0);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         _chatManager.SendMessageToChat("epicguy: @iamafemale do they put pcs in the kitchen?", "message", false, 0);
         yield return new WaitForSeconds(2.0f);
 
-        yield return StartCoroutine(SwitchCameras());
+        yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
+        MakeTheTroubledEmotion();
+    }
+
+    public void MakeTheTroubledEmotion()
+    {
+        ChangeEmotionalState("Troubled");
+        currentEmotion = EmotionalState.Troubled;
+        _bHandler.emotionBarTFFValue = 1;
+        StartCoroutine(EmotionUpdateText());
+        foreach (Light light in lights)
+        {
+            StartCoroutine(ChangeLightColor(light, new Color(0.5f, 0.1f, 0.5f), 0.5f, 2.0f)); //purple color for the troubled emotion but does not work very well, it's too similar to the room light
+        }
+
+        StartCoroutine(TroubledEmotionCorout());
         
+    }
+
+    public IEnumerator TroubledEmotionCorout()
+    {
+        yield return StartCoroutine(SwitchCameras());
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
         switchtrigger.SetActive(true);
     }
@@ -261,7 +254,7 @@ public class VictimDecision : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         character.GetComponent<ThirdPersonCamera>().SwitchToEmotionsCamera();
-        
+            
     }
 
     public void ChangeEmotionalState(string emotion)
@@ -280,6 +273,11 @@ public class VictimDecision : MonoBehaviour
                 button.SetActive(false);
             }
         }
+    }
+
+    public void ScreenSwitch()
+    {
+        StartCoroutine(SwitchScreensWithDelay(0.0f));
     }
 
     private IEnumerator SwitchScreensWithDelay(float delay)
