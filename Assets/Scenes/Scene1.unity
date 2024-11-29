@@ -1276,8 +1276,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209501426}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25421557, y: 1e-45, z: -0, w: 0.9671476}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.35138464, y: -0.000000006975467, z: 0.0000000026180198, w: 0.9362312}
+  m_LocalPosition: {x: 0, y: -0.00000023841858, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4661,8 +4661,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24140655, y: 0.000000016698575, z: -0.000000004154004, w: 0.97042406}
-  m_LocalPosition: {x: 2.716, y: 1.0153325, z: -0.730958}
+  m_LocalRotation: {x: 0.3574026, y: 0.00000003338583, z: -0.000000012776034, w: 0.9339505}
+  m_LocalPosition: {x: 2.716, y: 3.271, z: -2.912}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5623,8 +5623,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142197896}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24140656, y: 0.000000016698577, z: -0.0000000041540047, w: 0.97042406}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.35740253, y: 0.000000033385835, z: -0.000000012776032, w: 0.9339505}
+  m_LocalPosition: {x: 0, y: -0.00000023841858, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5873,8 +5873,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164620674}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21864621, y: -0.000000014540613, z: 0.0000000032580818, w: 0.9758042}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.046505153, y: -0.00000002423626, z: 0.000000001128332, w: 0.99891806}
+  m_LocalPosition: {x: 0, y: -2.0934937, z: -0.86565924}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12901,6 +12901,10 @@ PrefabInstance:
       propertyPath: tutorial
       value: 
       objectReference: {fileID: 847663041}
+    - target: {fileID: 2860752572795965700, guid: f8204c48ee50e8647bd59dc0f31efb1a, type: 3}
+      propertyPath: rayLength
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2860752572795965700, guid: f8204c48ee50e8647bd59dc0f31efb1a, type: 3}
       propertyPath: canvasClick
       value: 

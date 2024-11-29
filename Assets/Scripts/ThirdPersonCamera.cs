@@ -21,6 +21,7 @@ public class ThirdPersonCamera : MonoBehaviour
     public float speed = 0.1f;
     public float turnSmoothTime = 0.1f;
     public float turnSmoothVel;
+    public float rayLength;
 
     private bool computerHit = false;
     private bool charControlActive = true;
@@ -102,7 +103,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
         RaycastHit hit;
         Ray ray = active_camera.ScreenPointToRay(Input.mousePosition);
-        if (active_camera == main_camera && Physics.Raycast(ray.origin, ray.direction, out hit, 2.0f)) //TODO: fix raycast distance (click issue)
+        if (active_camera == main_camera && Physics.Raycast(ray.origin, ray.direction, out hit, rayLength)) //TODO: fix raycast distance (click issue)
         {
             if (hit.transform.CompareTag("ComputerScreen"))
             {
