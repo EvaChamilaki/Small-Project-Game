@@ -2351,9 +2351,9 @@ MonoBehaviour:
     m_LegacyHeadingDefinition: -1
     m_LegacyVelocityFilterStrength: -1
   m_BindingMode: 4
-  m_SplineCurvature: 0.411
+  m_SplineCurvature: 0.3
   m_Orbits:
-  - m_Height: 3.33
+  - m_Height: 3
     m_Radius: 3
   - m_Height: 2
     m_Radius: 2
@@ -8839,6 +8839,10 @@ PrefabInstance:
       propertyPath: tutorial
       value: 
       objectReference: {fileID: 471132378}
+    - target: {fileID: 3736404625644695418, guid: 808d2d7f66dbc7a41b23656c264b95e5, type: 3}
+      propertyPath: rayLength
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3736404625644695418, guid: 808d2d7f66dbc7a41b23656c264b95e5, type: 3}
       propertyPath: canvasClick
       value: 

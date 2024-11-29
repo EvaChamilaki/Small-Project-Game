@@ -43,8 +43,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
     {
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
         storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
-        
-        if(!PlayerPrefs.HasKey("toxic_toximeter"))
+
+        if (!PlayerPrefs.HasKey("toxic_toximeter"))
         {
             t_toximeter = 3;
             tutorial.SetPlayerParameters("toxic_toximeter", t_toximeter);
@@ -114,7 +114,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
     {
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Troubled");
-        
+
         storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Stressed");
 
         StartCoroutine(SwitchCameras());
@@ -196,21 +196,21 @@ public class ToxicPlayerDecisions : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         _chatManager.SendMessageToChat("king9791!: ????", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("bite_me4: wow ur useless", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("king9791!: trash skill trash team", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("whiffedmyUlt: fkg n00b", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("BlameTheTank(me): go delete ur game honey", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
 
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(5.0f);
 
         endScreen.SetActive(true);
 
@@ -227,29 +227,29 @@ public class ToxicPlayerDecisions : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         _chatManager.SendMessageToChat("king9791!: explains the low rank", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("bite_me4: if u say it as a recipe maybe she can follow it ", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("king9791!: ????", "message", false, 0);
         yield return new WaitForSeconds(0.2f);
 
         _chatManager.SendMessageToChat("king9791!: ????", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("bite_me4: wow ur useless", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         
         _chatManager.SendMessageToChat("king9791!: trash skill trash team", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("whiffedmyUlt: fkg n00b", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("BlameTheTank(me): go delete ur game honey", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(5.0f);
 
         endScreen.SetActive(true);
     }
