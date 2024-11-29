@@ -39,6 +39,7 @@ public class VictimDecision : MonoBehaviour
     public GameObject character;
 
     public GameObject endingPanel;
+    private StoreJsonData storeData;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +48,7 @@ public class VictimDecision : MonoBehaviour
         mistakePanel.SetActive(false);
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
         _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
-     
+        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
     }
 
     void Update() //the panel that shows the username change
@@ -109,7 +110,6 @@ public class VictimDecision : MonoBehaviour
         {
             StartCoroutine(ChangeLightColor(light, Color.red, 0.5f, 2.0f));
         }
-       
     }
 
     public void DecisionA_Act() //act on the angry emotion
@@ -118,6 +118,7 @@ public class VictimDecision : MonoBehaviour
         StartCoroutine(EmotionUpdateText());
 
         StartCoroutine(CoroutDecisionA_Act());
+        storeData.StoreData("Victim_Scene1", "FirstDecision", "AngryDecision");
     }
 
     private IEnumerator CoroutDecisionA_Act()
@@ -149,6 +150,7 @@ public class VictimDecision : MonoBehaviour
             StartCoroutine(ChangeLightColor(light, Color.blue, 0.5f, 2.0f));
         }
 
+        storeData.StoreData("Victim_Scene1", "FirstDecision", "SadDecision");
     }
     public IEnumerator DecisionA_Angry()
     {
