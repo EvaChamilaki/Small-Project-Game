@@ -36,14 +36,13 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public GameObject endScreen;
 
     public GameObject character;
-
-
-
+    private StoreJsonData storeData;
 
     // Start is called before the first frame update
     void Start()
     {
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
+        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
         
         if(!PlayerPrefs.HasKey("toxic_toximeter"))
         {
@@ -115,6 +114,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
     {
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Troubled");
+        
+        storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Stressed");
 
         StartCoroutine(SwitchCameras());
         
@@ -131,6 +132,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
     {
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
+
+        storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Angry");
 
         StartCoroutine(SwitchCameras());
         
@@ -149,6 +152,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public void DecisionC_SaySth()
     {
+        storeData.StoreData("Toxic_Scene2-3", "OthersRToxicDecision", "SaySomething");
         StartCoroutine(CoroutDecisionC_SaySth());
     }
 
@@ -157,6 +161,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         t_toximeter = tutorial.GetPlayerParameters("toxic_toximeter") + 2;
         tutorial.SetPlayerParameters("toxic_toximeter", t_toximeter);
         _bHandler.toximeterValue = t_toximeter;
+        storeData.StoreData("Toxic_Scene2-3", "OthersRToxicDecision", "JoinThem");
         
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Happy");
