@@ -48,7 +48,7 @@ public class VictimDecision : MonoBehaviour
         mistakePanel.SetActive(false);
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
         _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
-        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
+       /* storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();*/
     }
 
     void Update() //the panel that shows the username change
