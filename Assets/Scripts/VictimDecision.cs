@@ -150,9 +150,6 @@ public class VictimDecision : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
         panel.SetActive(true); //you did not act panel
-        panel.GetComponent<TextWriting>().enabled = true;
-        panel.GetComponent<TextWriting>().StartTextTyping(0); 
-
     }
 
     public void SecondIncident() //enabled when sad or when angry but without reaction

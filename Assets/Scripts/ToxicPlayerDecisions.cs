@@ -16,6 +16,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public GameObject ChatManagerObject;
     public List<GameObject> choiceButtons;
     public GameObject youLostPanel;
+    public GameObject exitButton;
     public GameObject effectsPanel;
 
     private bool muted;
@@ -176,6 +177,11 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public void VictimDisconnects()
     {
         StartCoroutine(Corout_VictimDisconnects());
+    }
+
+    public void EndGame()
+    {
+        endScreen.SetActive(true);
     }
 
     private IEnumerator CoroutDecisionA_Remind()
@@ -376,7 +382,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
         yield return new WaitForSeconds(3.0f);
 
-        endScreen.SetActive(true);
+        exitButton.SetActive(true);
     }
 
     private IEnumerator ChangeLightColor(Light light, Color targetcolor, float targetIntensity, float duration)
