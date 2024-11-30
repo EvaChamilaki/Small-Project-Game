@@ -20,6 +20,7 @@ public class AngryPlayerDecisions : MonoBehaviour
 
     public GameObject emotionUpdate;
     public GameObject emotionBarsCanvas;
+    public GameObject toxicityUpdate;
 
     public Tutorial tutorial;
     public GameObject tutorialPanel;
@@ -73,6 +74,8 @@ public class AngryPlayerDecisions : MonoBehaviour
         decisionB4.SetActive(false);
 
         _bHandler.toximeterValue = 3;
+        
+        toxicityUpdate.SetActive(true);
         StartCoroutine(CoroutDecisionB_Act());
 
         storeData.StoreData("Toxic_Scene2", "FirstDecision", "AngryDecisionAct");
@@ -124,6 +127,8 @@ public class AngryPlayerDecisions : MonoBehaviour
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 0.0f, 0.2f), 1.5f, 2.0f)); // orange
         _bHandler.toximeterValue = 3;
         _bHandler.emotionBarTFFValue = 3;
+        
+        toxicityUpdate.SetActive(true);
         ChangeEmotionalState("Furious");
         StartCoroutine(EmotionUpdateText());
         StartCoroutine(SwitchCameras(0.8f));
@@ -133,6 +138,8 @@ public class AngryPlayerDecisions : MonoBehaviour
 
     public IEnumerator HappyEmotion()
     {
+        toxicityUpdate.SetActive(true);
+
         _bHandler.emotionBarTFFValue = 0;
         _bHandler.emotionBarSNHValue = 2;
         _bHandler.toximeterValue = 3;

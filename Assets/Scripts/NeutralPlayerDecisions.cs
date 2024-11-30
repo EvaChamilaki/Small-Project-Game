@@ -24,6 +24,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
     public GameObject emotionUpdate;
     public GameObject emotionBarsCanvas;
+    public GameObject toxicityUpdate;
 
     private BarsHandler _bHandler;
 
@@ -141,6 +142,8 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public IEnumerator HappyEmotion()
     {
         hasloggedOut = true;
+        toxicityUpdate.SetActive(true);
+        
         _bHandler.toximeterValue = 3;
         _bHandler.emotionBarSNHValue = 2;
         _bHandler.emotionBarTFFValue = 0; 
