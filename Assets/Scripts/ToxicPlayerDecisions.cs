@@ -42,7 +42,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
     void Start()
     {
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
-        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
+/*        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();*/
 
         if (!PlayerPrefs.HasKey("toxic_toximeter"))
         {
@@ -115,7 +115,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Troubled");
 
-        storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Stressed");
+/*        storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Stressed");*/
 
         StartCoroutine(SwitchCameras());
         
@@ -132,8 +132,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
     {
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
-
-        storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Angry");
+/*
+        storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Angry");*/
 
         StartCoroutine(SwitchCameras());
         

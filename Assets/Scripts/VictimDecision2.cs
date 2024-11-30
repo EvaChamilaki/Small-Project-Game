@@ -12,6 +12,7 @@ public class VictimDecision2 : MonoBehaviour
     public GameObject firstPanel;
     public GameObject secondPanel;
     public GameObject thirdPanel;
+    public GameObject sceneTriggerButton;
     
     public GameObject currentScreen;
     public GameObject flags;
@@ -37,7 +38,7 @@ public class VictimDecision2 : MonoBehaviour
     void Start()
     {
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
-        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
+/*        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();*/
 
         if(!PlayerPrefs.HasKey("victim_toximeter"))
         {
@@ -80,13 +81,13 @@ public class VictimDecision2 : MonoBehaviour
 
     public void endPanelYes()
     {
-        storeData.StoreData("Toxic_Scene1-4", "WasItFair", "Yes");
+/*        storeData.StoreData("Toxic_Scene1-4", "WasItFair", "Yes");*/
         endingPanel.SetActive(true);
     }
 
     public void endPanelNo()
     {
-        storeData.StoreData("Toxic_Scene1-4", "WasItFair", "No");
+/*        storeData.StoreData("Toxic_Scene1-4", "WasItFair", "No");*/
         endingPanel.SetActive(true);
     }
 
@@ -102,7 +103,7 @@ public class VictimDecision2 : MonoBehaviour
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
         
-        storeData.StoreData("Victim_Scene1-3", "HowAreYouFeeling", "Frustrated");
+/*        storeData.StoreData("Victim_Scene1-3", "HowAreYouFeeling", "Frustrated");*/
         
         StartCoroutine(SwitchCameras());
 
@@ -120,7 +121,7 @@ public class VictimDecision2 : MonoBehaviour
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Troubled");
 
-        storeData.StoreData("Victim_Scene1-3", "HowAreYouFeeling", "Stressed");
+/*        storeData.StoreData("Victim_Scene1-3", "HowAreYouFeeling", "Stressed");*/
 
         StartCoroutine(SwitchCameras());
 
@@ -136,14 +137,14 @@ public class VictimDecision2 : MonoBehaviour
     public void DecisionB_Ignore() 
     {
         thirdPanel.SetActive(false);
-        storeData.StoreData("Victim_Scene1-3", "HowDoYouReact", "Ignore->MuteChat");
+/*        storeData.StoreData("Victim_Scene1-3", "HowDoYouReact", "Ignore->MuteChat");*/
         flags.GetComponent<Flags>().hasMuted = true;
     }
 
     public void DecisionB_InsultBack()
     {
         StartCoroutine(EmotionUpdateText());
-        storeData.StoreData("Victim_Scene1-3", "HowDoYouReact", "InsultBack");
+/*        storeData.StoreData("Victim_Scene1-3", "HowDoYouReact", "InsultBack");*/
 
         v_toximeter = tutorial.GetPlayerParameters("victim_toximeter") + 2;
         tutorial.SetPlayerParameters("victim_toximeter", v_toximeter);
@@ -161,7 +162,7 @@ public class VictimDecision2 : MonoBehaviour
         if (emotion == "Sad")
         {
             ChangeEmotionalState("Sad");
-            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Sad");
+/*            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Sad");*/
             _bHandler.emotionBarSNHValue = 0;
             _bHandler.emotionBarTFFValue = 1;
             foreach (Light light in lights)
@@ -173,7 +174,7 @@ public class VictimDecision2 : MonoBehaviour
         else if (emotion == "Unfazed")
         {
             ChangeEmotionalState("Neutral");
-            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Unfazed");
+/*            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Unfazed");*/
             _bHandler.emotionBarSNHValue = 1;
             _bHandler.emotionBarTFFValue = 0;
             StartCoroutine(ChangeLightColor(lights[0], new Color(0.95f, 0.85f, 0.4f),1.5f, 2.0f));  //pale yellow
@@ -183,7 +184,7 @@ public class VictimDecision2 : MonoBehaviour
         else if (emotion == "Furious")
         {
             ChangeEmotionalState("Furious");
-            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Furious");
+/*            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Furious");*/
             _bHandler.emotionBarSNHValue = 1;
             _bHandler.emotionBarTFFValue = 3;
             StartCoroutine(ChangeLightColor(lights[0], new Color(0.3f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
@@ -197,6 +198,11 @@ public class VictimDecision2 : MonoBehaviour
         StartCoroutine(SwitchScreensWithDelay(0.0f));
         hasStartedTyping = false;
         currentScreen.name = "BlockedScreen1";
+    }
+
+    public void SceneSwitch()
+    {
+        StartCoroutine(SwitchScreensWithDelay(2.0f));
     }
     
     public IEnumerator chatMessagesCorout() 
@@ -244,13 +250,13 @@ public class VictimDecision2 : MonoBehaviour
     public IEnumerator Corout_TeammatesResponses()
     {
         _chatManager.SendMessageToChat("BlameTheTank: we are going to lose bc of you", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
 
         _chatManager.SendMessageToChat("king9791!: DO.AS.UR.TOLD.", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
 
         _chatManager.SendMessageToChat("whiffedmyUlt: you know you play for OUR team??", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
         
         thirdPanel.SetActive(true);
     }
@@ -261,7 +267,7 @@ public class VictimDecision2 : MonoBehaviour
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 
-        StartCoroutine(SwitchScreensWithDelay(5.0f));
+        sceneTriggerButton.SetActive(true);
     }
     
     private IEnumerator SwitchScreensWithDelay(float delay)
