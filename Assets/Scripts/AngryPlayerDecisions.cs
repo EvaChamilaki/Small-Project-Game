@@ -16,6 +16,7 @@ public class AngryPlayerDecisions : MonoBehaviour
     public GameObject decisionB3; //not act on the angry emotion
     public GameObject decisionB4; //repeat the action
     public GameObject panel; //the results of the decision
+    public GameObject endingPanel;
 
     public GameObject emotionUpdate;
     public GameObject emotionBarsCanvas;
@@ -142,7 +143,9 @@ public class AngryPlayerDecisions : MonoBehaviour
         yield return StartCoroutine(SwitchCameras(0.5f));
 
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
-        StartCoroutine(SwitchScreensWithDelay(5.0f));
+
+        yield return new WaitForSeconds(3.0f);
+        endingPanel.SetActive(true);
     }
 
     public IEnumerator EmotionUpdateText()
@@ -196,14 +199,6 @@ public class AngryPlayerDecisions : MonoBehaviour
         light.color = targetcolor;
         light.intensity = targetIntensity;
     }
-
-    private IEnumerator SwitchScreensWithDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        currentScreen.GetComponent<ComputerScreenSwitch>().SwitchScreens();
-    }
-
-
 }
 
 

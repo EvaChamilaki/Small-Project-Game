@@ -1328,7 +1328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256716463}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.006368819, y: 0.0000000016130649, z: 1.0273527e-11, w: 0.99997973}
+  m_LocalRotation: {x: -0.006368819, y: 0.0000000016130655, z: 1.0273529e-11, w: 0.99997973}
   m_LocalPosition: {x: 1.2, y: 1.434, z: -4.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3255,7 +3255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643006898}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.021722784, y: -0.0000000010751438, z: 2.3360624e-11, w: 0.9997641}
+  m_LocalRotation: {x: 0.021722784, y: -0.0000000010751451, z: 2.3360654e-11, w: 0.9997641}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3893,7 +3893,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706703823}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.006368819, y: 8.065317e-10, z: 5.136758e-12, w: 0.99997973}
+  m_LocalRotation: {x: -0.006368819, y: 8.0653256e-10, z: 5.1367643e-12, w: 0.99997973}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7838,7 +7838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415160492}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.02372994, y: -0.000000001720164, z: 4.083089e-11, w: 0.9997184}
+  m_LocalRotation: {x: 0.023729943, y: -0.000000001075096, z: 2.5519153e-11, w: 0.9997184}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12588,7 +12588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1170670492828046295
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13043,6 +13043,7 @@ MonoBehaviour:
   question: {fileID: 539217813}
   decisionA1: {fileID: 314116393}
   panel: {fileID: 672082627}
+  endingPanel: {fileID: 9028978080390484435}
   tutorial: {fileID: 851436614}
   ChatManagerObject: {fileID: 403981489}
   emotionUpdate: {fileID: 5261484104557550037}
@@ -13072,6 +13073,7 @@ MonoBehaviour:
   decisionB3: {fileID: 676541828}
   decisionB4: {fileID: 837363369}
   panel: {fileID: 6668128}
+  endingPanel: {fileID: 9028978080390484435}
   emotionUpdate: {fileID: 5261484104557550037}
   emotionBarsCanvas: {fileID: 3603454677273617061}
   tutorial: {fileID: 851436614}

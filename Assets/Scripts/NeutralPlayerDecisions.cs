@@ -14,6 +14,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
     public GameObject decisionA1;
 
     public GameObject panel;
+    public GameObject endingPanel;
 
     public Tutorial tutorial;
     public GameObject ChatManagerObject;
@@ -111,10 +112,10 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
         _chatManager.SendMessageToChat("whiffedmyUlt: lol love the sass", "message", false, 0);
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("OopsIFlopped: brutal but true, @thebest_ give up", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
 
         _chatManager.SendMessageToChat("thebest_ has disconnected", "info", false, 0);
         yield return new WaitForSeconds(2.0f);
@@ -144,13 +145,15 @@ public class NeutralPlayerDecisions : MonoBehaviour
         _bHandler.emotionBarSNHValue = 2;
         _bHandler.emotionBarTFFValue = 0; 
         ChangeEmotionalState("Happy");
-        StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f), 1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
         StartCoroutine(EmotionUpdateText());
         yield return StartCoroutine(SwitchCameras());
 
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
-        StartCoroutine(SwitchScreensWithDelay(5.0f));
+
+        yield return new WaitForSeconds(3.0f);
+        endingPanel.SetActive(true);
     }
 
     public IEnumerator EmotionUpdateText()
@@ -191,12 +194,4 @@ public class NeutralPlayerDecisions : MonoBehaviour
         light.color = targetcolor;
         light.intensity = targetIntensity;
     }
-
-    private IEnumerator SwitchScreensWithDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        currentScreen.GetComponent<ComputerScreenSwitch>().SwitchScreens();
-    }
-
-
 }
