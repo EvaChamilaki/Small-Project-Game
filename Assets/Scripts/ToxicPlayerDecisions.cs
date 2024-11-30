@@ -16,6 +16,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public GameObject ChatManagerObject;
     public List<GameObject> choiceButtons;
     public GameObject youLostPanel;
+    public GameObject effectsPanel;
 
     private bool muted;
     private int playOnce = 0, t_toximeter = 0;
@@ -152,7 +153,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public void DecisionC_SaySth()
     {
-        storeData.StoreData("Toxic_Scene2-3", "OthersRToxicDecision", "SaySomething");
+/*        storeData.StoreData("Toxic_Scene2-3", "OthersRToxicDecision", "SaySomething");*/
         StartCoroutine(CoroutDecisionC_SaySth());
     }
 
@@ -161,7 +162,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         t_toximeter = tutorial.GetPlayerParameters("toxic_toximeter") + 2;
         tutorial.SetPlayerParameters("toxic_toximeter", t_toximeter);
         _bHandler.toximeterValue = t_toximeter;
-        storeData.StoreData("Toxic_Scene2-3", "OthersRToxicDecision", "JoinThem");
+/*        storeData.StoreData("Toxic_Scene2-3", "OthersRToxicDecision", "JoinThem");*/
         
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Happy");
@@ -170,6 +171,11 @@ public class ToxicPlayerDecisions : MonoBehaviour
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
         StartCoroutine(CoroutDecisionC_Join());
+    }
+
+    public void VictimDisconnects()
+    {
+        StartCoroutine(Corout_VictimDisconnects());
     }
 
     private IEnumerator CoroutDecisionA_Remind()
@@ -293,13 +299,13 @@ public class ToxicPlayerDecisions : MonoBehaviour
     {
         _chatManager.SendMessageToChat("BlameTheTank(me): damn bruh thats enough, can we just focus???", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("bite_me4: you need ur bf to back u up? @casualcrasher", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("king9791!: bromance;)", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(4.0f);
 
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
@@ -311,13 +317,14 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
         yield return new WaitUntil (() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
         _chatManager.SendMessageToChat("whiffedmyUlt: go bungee jumping w/o parachute", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("BlameTheTank(me): stfu theyre the potato not me", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
-        StartCoroutine(Corout_VictimDisconnects());
+        effectsPanel.SetActive(true);
+       
     }
 
     private IEnumerator CoroutDecisionC_Join()
@@ -350,11 +357,12 @@ public class ToxicPlayerDecisions : MonoBehaviour
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(3.0f);
 
-        StartCoroutine(Corout_VictimDisconnects());
+        effectsPanel.SetActive(true);
     }
 
     private IEnumerator Corout_VictimDisconnects()
     {
+        yield return new WaitForSeconds(1.0f);
         _chatManager.SendMessageToChat("Player 'casualcrasher' has disconnected from the game.", "info", false, 0);
         yield return new WaitForSeconds(1.0f);
 
