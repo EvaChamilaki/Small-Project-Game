@@ -978,7 +978,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209501426}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.114962794, y: 0.000000017092301, z: -0.0000000019780937, w: 0.9933698}
+  m_LocalRotation: {x: 0.114962794, y: -0.000000017092301, z: 0.0000000019780937, w: 0.9933698}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7998,7 +7998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6735911667561166896, guid: 4861240c673230843818d829b5355819, type: 3}
       propertyPath: m_text
-      value: Hm, I haven't been in the mood for this type of music..
+      value: 'I am not in the mood for something like this. . '
       objectReference: {fileID: 0}
     - target: {fileID: 6735911667561166896, guid: 4861240c673230843818d829b5355819, type: 3}
       propertyPath: m_fontSize
@@ -8916,7 +8916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360385299590558451, guid: 87151a854c9cd564c8c8eca7b9d78375, type: 3}
       propertyPath: m_text
-      value: Still haven't started anything, I might have artist block..
+      value: I am not in the mood for something like this. . .
       objectReference: {fileID: 0}
     - target: {fileID: 8360385299590558451, guid: 87151a854c9cd564c8c8eca7b9d78375, type: 3}
       propertyPath: m_fontSize
@@ -9606,7 +9606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8677633414735062383, guid: efaee27195ed1d94bb120adfae80976d, type: 3}
       propertyPath: m_text
-      value: Still listening to these bands, but less frequently..
+      value: 'I am not in the mood for something like this. . '
       objectReference: {fileID: 0}
     - target: {fileID: 8677633414735062383, guid: efaee27195ed1d94bb120adfae80976d, type: 3}
       propertyPath: m_fontSize
