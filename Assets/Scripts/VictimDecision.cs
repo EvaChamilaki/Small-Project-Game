@@ -18,6 +18,7 @@ public class VictimDecision : MonoBehaviour
     public GameObject decisionB1;
     public List<GameObject> decisionButtons;
     public GameObject ChatManagerObject;
+    public GameObject toxicityUpdate;
 
     public GameObject switchtrigger;
 
@@ -59,9 +60,6 @@ public class VictimDecision : MonoBehaviour
             StartCoroutine(StartTyping());
             hasStartedTyping = true;
         }
-
-
-
     }
 
     public void endPanel()
@@ -114,13 +112,14 @@ public class VictimDecision : MonoBehaviour
 
     private IEnumerator CoroutDecisionA_Act()
     {
+        toxicityUpdate.SetActive(true);
         _bHandler.toximeterValue = 1;
         _chatManager.SendMessageToChat("iamfemale(me): grow some skill and then speak", "message", true, 15);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("king9791!: do they have pcs in the kitchen?", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("epicguy: just go make a sandwich", "message", false, 0);
         yield return new WaitForSeconds(2.0f);
@@ -161,7 +160,7 @@ public class VictimDecision : MonoBehaviour
     {
         _chatManager.SendMessageToChat("king9791!: @iamafemale maybe this game isnt for u", "message", false, 0);
         //play a message sound
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         _chatManager.SendMessageToChat("epicguy: @iamafemale u would be better afk", "message", false, 0);
         //play a message sound
         Debug.Log("Current Emotion is:" + currentEmotion);
@@ -202,13 +201,14 @@ public class VictimDecision : MonoBehaviour
 
     public IEnumerator CoroutDecisionBAct()
     {
+        toxicityUpdate.SetActive(true);
         _bHandler.toximeterValue = 2;
         _chatManager.SendMessageToChat("iamfemale(me): woof woof, stop barking", "message", true, 15);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("king9791!: @iamafemale just go make a sandwich", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("epicguy: @iamafemale do they put pcs in the kitchen?", "message", false, 0);
         yield return new WaitForSeconds(2.0f);

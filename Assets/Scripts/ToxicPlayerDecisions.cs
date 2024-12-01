@@ -36,6 +36,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public Tutorial tutorial;
 
     public GameObject endScreen;
+    public GameObject toxicityUpdate;
 
     public GameObject character;
     private StoreJsonData storeData;
@@ -147,6 +148,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         t_toximeter = tutorial.GetPlayerParameters("toxic_toximeter") + 1;
         tutorial.SetPlayerParameters("toxic_toximeter", t_toximeter);
         _bHandler.toximeterValue = t_toximeter;
+        toxicityUpdate.SetActive(true);
 
         secondInteractionPanel.SetActive(false);
         StartCoroutine(CoroutDecisionB_Angry());
@@ -163,6 +165,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         t_toximeter = tutorial.GetPlayerParameters("toxic_toximeter") + 2;
         tutorial.SetPlayerParameters("toxic_toximeter", t_toximeter);
         _bHandler.toximeterValue = t_toximeter;
+        toxicityUpdate.SetActive(true);
 /*        storeData.StoreData("Toxic_Scene2-3", "OthersRToxicDecision", "JoinThem");*/
         
         StartCoroutine(EmotionUpdateText());
@@ -348,16 +351,16 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
         _chatManager.SendMessageToChat("BlameTheTank(me): delulu is not always the solulu", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("whiffedmyUlt: he thinks he knows the game", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("whiffedmyUlt: how funny is that", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("king9791!: @casualcrasher have u tried tetris its easier", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("BlameTheTank(me): go bungee jumping w/o parachute", "message", true, 4);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
@@ -370,10 +373,10 @@ public class ToxicPlayerDecisions : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         _chatManager.SendMessageToChat("Player 'casualcrasher' has disconnected from the game.", "info", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("bite_me4: oh boohoo rage quit", "message", false, 0);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("whiffedmyUlt: @BlameTheTank don't invite them again", "message", false, 0);        
         yield return new WaitForSeconds(3.0f);

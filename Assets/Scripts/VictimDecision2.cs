@@ -31,6 +31,7 @@ public class VictimDecision2 : MonoBehaviour
     public GameObject character;
 
     public GameObject endingPanel;
+    public GameObject toxicityUpdate;
     
     private StoreJsonData storeData;
 
@@ -149,6 +150,7 @@ public class VictimDecision2 : MonoBehaviour
         v_toximeter = tutorial.GetPlayerParameters("victim_toximeter") + 2;
         tutorial.SetPlayerParameters("victim_toximeter", v_toximeter);
         _bHandler.toximeterValue = v_toximeter;
+        toxicityUpdate.SetActive(true);
 
         thirdPanel.SetActive(false);
         flags.GetComponent<Flags>().hasMuted = false;

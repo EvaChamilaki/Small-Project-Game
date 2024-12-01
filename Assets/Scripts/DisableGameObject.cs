@@ -8,4 +8,9 @@ public class DisableGameObject : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
+
+    void disableParent()
+    {
+        this.transform.parent.gameObject.SetActive(false);
+    }
 }
