@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 
 public class ToxicPlayerDecisions : MonoBehaviour
@@ -184,6 +185,9 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public void EndGame()
     {
+        string buttonClicked = EventSystem.current.currentSelectedGameObject.name;
+        
+        storeData.StoreData("Toxic_Scene2-3", "ReportThem", buttonClicked);
         endScreen.SetActive(true);
     }
 
