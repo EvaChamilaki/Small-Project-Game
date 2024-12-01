@@ -23,21 +23,13 @@ public class StoreJsonData : MonoBehaviour
             {
                 Directory.CreateDirectory(filePath);
             }
-            
+
             int highestNumber = GetHighestFileNumber() + 1;
             fileName = Path.Combine(filePath, $"data{highestNumber}.json");
         }
         catch (IOException ex)
         {
             Debug.LogError(ex.Message);
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            StoreData("Scene1", "Decision1", "Option1");
         }
     }
 
@@ -52,22 +44,31 @@ public class StoreJsonData : MonoBehaviour
                 SelectedDecision = selectedDecision
             };
 
-            _DecisionDataList.Add(newDecision);
+            DecisionListWrapper decisionWrapper;
 
-            string decisionJson = JsonUtility.ToJson(new DecisionListWrapper { decisions = _DecisionDataList }, true);
-
-            if (!string.IsNullOrEmpty(fileName))
+            if (File.Exists(fileName))
             {
-                File.WriteAllText(fileName, decisionJson);
+                string existingJson = File.ReadAllText(fileName);
+                decisionWrapper = JsonUtility.FromJson<DecisionListWrapper>(existingJson);
+
+                decisionWrapper.decisions.Add(newDecision);
             }
             else
             {
-                Debug.LogError("File name is not set. Cannot save data.");
+                decisionWrapper = new DecisionListWrapper
+                {
+                    participantID = GetHighestFileNumber() + 1,
+                    decisions = new List<Decision>()
+                };
+                decisionWrapper.decisions.Add(newDecision);
             }
+
+            string updatedJson = JsonUtility.ToJson(decisionWrapper, true);
+            File.WriteAllText(fileName, updatedJson);
         }
         catch (IOException ex)
         {
-            Debug.LogError($"Error creating JSON file: {ex.Message}");
+            Debug.LogError($"Error handling JSON file: {ex.Message}");
         }
     }
 
@@ -82,6 +83,7 @@ public class StoreJsonData : MonoBehaviour
     [System.Serializable]
     public class DecisionListWrapper
     {
+        public int participantID;
         public List<Decision> decisions;
     }
 
