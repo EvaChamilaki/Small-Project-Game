@@ -62,8 +62,8 @@ public class AngryPlayerDecisions : MonoBehaviour
 
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f), 1.5f, 2.0f));  //dark red
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
-        _bHandler.emotionBarSNHValue = 1;
-        _bHandler.emotionBarTFFValue = 2;
+        // _bHandler.emotionBarSNHValue = 1;
+        // _bHandler.emotionBarTFFValue = 2;
 
         StartCoroutine(StartTyping());
     }
@@ -73,7 +73,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         decisionB1.SetActive(false);
         decisionB4.SetActive(false);
 
-        _bHandler.toximeterValue = 3;
+        // _bHandler.toximeterValue = 3;
         
         toxicityUpdate.SetActive(true);
         StartCoroutine(CoroutDecisionB_Act());
@@ -125,8 +125,8 @@ public class AngryPlayerDecisions : MonoBehaviour
         decisionB4.SetActive(true);
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.3f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 0.0f, 0.2f), 1.5f, 2.0f)); // orange
-        _bHandler.toximeterValue = 3;
-        _bHandler.emotionBarTFFValue = 3;
+        // _bHandler.toximeterValue = 3;
+        // _bHandler.emotionBarTFFValue = 3;
         
         toxicityUpdate.SetActive(true);
         ChangeEmotionalState("Furious");
@@ -140,9 +140,9 @@ public class AngryPlayerDecisions : MonoBehaviour
     {
         toxicityUpdate.SetActive(true);
 
-        _bHandler.emotionBarTFFValue = 0;
-        _bHandler.emotionBarSNHValue = 2;
-        _bHandler.toximeterValue = 3;
+        // _bHandler.emotionBarTFFValue = 0;
+        // _bHandler.emotionBarSNHValue = 2;
+        // _bHandler.toximeterValue = 3;
         ChangeEmotionalState("Happy");
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2

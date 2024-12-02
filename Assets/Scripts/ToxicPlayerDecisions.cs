@@ -101,8 +101,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public void CheckPrevDecision()
     {
         ChangeEmotionalState("Troubled");
-        _bHandler.emotionBarSNHValue = 1;
-        _bHandler.emotionBarTFFValue = 1;
+        // _bHandler.emotionBarSNHValue = 1;
+        // _bHandler.emotionBarTFFValue = 1;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.9f, 0.55f, 0.2f),1.5f, 2.0f));  //orange
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.15f, 0.2f, 0.5f), 1.5f, 2.0f)); //blue
         StartCoroutine(Corout_PrevDecision());
@@ -123,8 +123,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
         StartCoroutine(SwitchCameras());
         
-        _bHandler.emotionBarSNHValue = 1;
-        _bHandler.emotionBarTFFValue = 1;
+        // _bHandler.emotionBarSNHValue = 1;
+        // _bHandler.emotionBarTFFValue = 1;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.9f, 0.55f, 0.2f),1.5f, 2.0f));  //orange
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.15f, 0.2f, 0.5f), 1.5f, 2.0f)); //blue
 
@@ -141,8 +141,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
         StartCoroutine(SwitchCameras());
         
-        _bHandler.emotionBarSNHValue = 1;
-        _bHandler.emotionBarTFFValue = 2;
+        // _bHandler.emotionBarSNHValue = 1;
+        // _bHandler.emotionBarTFFValue = 2;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
         
@@ -171,8 +171,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
         
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Happy");
-        _bHandler.emotionBarSNHValue = 2;
-        _bHandler.emotionBarTFFValue = 0;
+        // _bHandler.emotionBarSNHValue = 2;
+        // _bHandler.emotionBarTFFValue = 0;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
         StartCoroutine(CoroutDecisionC_Join());
@@ -323,8 +323,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
         StartCoroutine(SwitchCameras());
-        _bHandler.emotionBarSNHValue = 1;
-        _bHandler.emotionBarTFFValue = 2;
+        // _bHandler.emotionBarSNHValue = 1;
+        // _bHandler.emotionBarTFFValue = 2;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
 
@@ -343,8 +343,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
     private IEnumerator CoroutDecisionC_Join()
     {
         StartCoroutine(EmotionUpdateText());
-        _bHandler.emotionBarSNHValue = 2;
-        _bHandler.emotionBarTFFValue = 0;
+        // _bHandler.emotionBarSNHValue = 2;
+        // _bHandler.emotionBarTFFValue = 0;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
 

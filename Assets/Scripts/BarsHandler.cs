@@ -7,21 +7,41 @@ using UnityEngine.UI;
 public class BarsHandler : MonoBehaviour
 {
     public List<Sprite> images_toximeter; 
-    public List<Sprite> images_emotionBarSNH;
-    public List<Sprite> images_emotionBarTFF;
+    public List<Sprite> images_emotionBarHappy;
+    public List<Sprite> images_emotionBarSad;
+    public List<Sprite> images_emotionBarCalm;
+    public List<Sprite> images_emotionBarStressed;
+    public List<Sprite> images_emotionBarTroubled;
+    public List<Sprite> images_emotionBarFrustrated;
 
     public GameObject toximeter; // !! unique ID is 0
-    public GameObject emotionBarSNH; // !! unique ID is 1
-    public GameObject emotionBarTFF; // !! unique ID is 2
+    public GameObject emotionBarHappy; // !! unique ID is 1
+    public GameObject emotionBarSad; // !! unique ID is 2
+    public GameObject emotionBarCalm; // !! unique ID is 3
+    public GameObject emotionBarStressed; // !! unique ID is 4
+    public GameObject emotionBarTroubled; // !! unique ID is 5
+    public GameObject emotionBarFrustrated; // !! unique ID is 6
 
     [Range(0, 6)]
     public int toximeterValue;
 
-    [Range(0, 2)]
-    public int emotionBarSNHValue;
+    [Range(0, 1)]
+    public int emotionBarHappyValue;
 
-    [Range(0, 3)]
-    public int emotionBarTFFValue;
+    [Range(0, 1)]
+    public int emotionBarSadValue;
+    
+    [Range(0, 1)]
+    public int emotionBarCalmValue;
+    
+    [Range(0, 1)]
+    public int emotionBarStressedValue;
+    
+    [Range(0, 1)]
+    public int emotionBarTroubledValue;
+    
+    [Range(0, 1)]
+    public int emotionBarFrustratedValue;
 
     void Start()
     {
@@ -31,8 +51,12 @@ public class BarsHandler : MonoBehaviour
     void SetBarsOnEnable()
     {
         setBarSprite(toximeterValue, 0);
-        setBarSprite(emotionBarSNHValue, 1);
-        setBarSprite(emotionBarTFFValue, 2);
+        setBarSprite(emotionBarHappyValue, 1);
+        setBarSprite(emotionBarSadValue, 2);
+        setBarSprite(emotionBarCalmValue, 3);
+        setBarSprite(emotionBarStressedValue, 4);
+        setBarSprite(emotionBarTroubledValue, 5);
+        setBarSprite(emotionBarFrustratedValue, 6);
     }
 
     void OnEnable()
@@ -41,11 +65,10 @@ public class BarsHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// Change the sprite of the bar, 0: is for the toximeter, 1: is for the emotion bar with emotions Sad-Neutral-Happy, 2: is for the emotion bar with emotions Troubled
-    /// - Frustrated - Furious. 
+    /// Change the sprite of the bar.
     /// </summary>
     /// <param name="_value">Value of the bars to change the sprite. Toximeter has a range from 0 to 6, SNH and TFF bars have from 0 to 2 </param>
-    /// <param name="_barID">ID of the bars, 0: toximeter, 1: SNH emotion bar, 2: TFF emotion bar.</param>
+    /// <param name="_barID">ID of the bars, 0: toximeter, 1: happy, 2: sad, 3: calm, 4: stressed, 5: troubled, 6: frustrated.</param>
     public void setBarSprite(int _value, int _barID)
     {
         if (_barID == 0)
@@ -54,11 +77,27 @@ public class BarsHandler : MonoBehaviour
         }
         else if (_barID == 1)
         {
-            emotionBarSNH.GetComponent<Image>().sprite = images_emotionBarSNH[_value];
+            emotionBarHappy.GetComponent<Image>().sprite = images_emotionBarHappy[_value];
         }
         else if (_barID == 2)
         {
-            emotionBarTFF.GetComponent<Image>().sprite = images_emotionBarTFF[_value];
+            emotionBarSad.GetComponent<Image>().sprite = images_emotionBarSad[_value];
+        }
+        else if (_barID == 3)
+        {
+            emotionBarCalm.GetComponent<Image>().sprite = images_emotionBarCalm[_value];
+        }
+        else if (_barID == 4)
+        {
+            emotionBarStressed.GetComponent<Image>().sprite = images_emotionBarStressed[_value];
+        }
+        else if (_barID == 5)
+        {
+            emotionBarTroubled.GetComponent<Image>().sprite = images_emotionBarTroubled[_value];
+        }
+        else if (_barID == 6)
+        {
+            emotionBarFrustrated.GetComponent<Image>().sprite = images_emotionBarFrustrated[_value];
         }
     }
 }

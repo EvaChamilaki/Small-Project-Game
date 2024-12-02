@@ -1,9 +1,0 @@
-{
-    "decisions": [
-        {
-            "scene": "Toxic_Scene2",
-            "DecisionName": "FirstDecision",
-            "SelectedDecision": "AngryDecisionAct"
-        }
-    ]
-}

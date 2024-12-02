@@ -108,8 +108,8 @@ public class VictimDecision2 : MonoBehaviour
         
         StartCoroutine(SwitchCameras());
 
-        _bHandler.emotionBarSNHValue = 1;
-        _bHandler.emotionBarTFFValue = 2;
+        // _bHandler.emotionBarSNHValue = 1;
+        // _bHandler.emotionBarTFFValue = 2;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
 
@@ -126,8 +126,8 @@ public class VictimDecision2 : MonoBehaviour
 
         StartCoroutine(SwitchCameras());
 
-        _bHandler.emotionBarSNHValue = 1;
-        _bHandler.emotionBarTFFValue = 1;
+        // _bHandler.emotionBarSNHValue = 1;
+        // _bHandler.emotionBarTFFValue = 1;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.9f, 0.55f, 0.2f),1.5f, 2.0f));  //orange
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.15f, 0.2f, 0.5f), 1.5f, 2.0f)); //blue
 
@@ -165,8 +165,8 @@ public class VictimDecision2 : MonoBehaviour
         {
             ChangeEmotionalState("Sad");
 /*            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Sad");*/
-            _bHandler.emotionBarSNHValue = 0;
-            _bHandler.emotionBarTFFValue = 1;
+            // _bHandler.emotionBarSNHValue = 0;
+            // _bHandler.emotionBarTFFValue = 1;
             foreach (Light light in lights)
             {
                 StartCoroutine(ChangeLightColor(light, Color.blue, 0.5f, 2.0f));
@@ -177,8 +177,8 @@ public class VictimDecision2 : MonoBehaviour
         {
             ChangeEmotionalState("Neutral");
 /*            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Unfazed");*/
-            _bHandler.emotionBarSNHValue = 1;
-            _bHandler.emotionBarTFFValue = 0;
+            // _bHandler.emotionBarSNHValue = 1;
+            // _bHandler.emotionBarTFFValue = 0;
             StartCoroutine(ChangeLightColor(lights[0], new Color(0.95f, 0.85f, 0.4f),1.5f, 2.0f));  //pale yellow
             StartCoroutine(ChangeLightColor(lights[1], new Color(0.5f, 0.6f, 0.7f), 1.5f, 2.0f)); // graysih blue
 
@@ -187,8 +187,8 @@ public class VictimDecision2 : MonoBehaviour
         {
             ChangeEmotionalState("Furious");
 /*            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Furious");*/
-            _bHandler.emotionBarSNHValue = 1;
-            _bHandler.emotionBarTFFValue = 3;
+            // _bHandler.emotionBarSNHValue = 1;
+            // _bHandler.emotionBarTFFValue = 3;
             StartCoroutine(ChangeLightColor(lights[0], new Color(0.3f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
             StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 0.0f, 0.2f), 1.5f, 2.0f)); // orange
 
