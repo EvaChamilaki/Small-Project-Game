@@ -49,7 +49,7 @@ public class AngryPlayerDecisions : MonoBehaviour
     }
 
 
-    public void DecisionB_Choice() //the angry button was chosen
+    public void DecisionB_Choice() //the Stressed button was chosen
     {
         if (!tutorial.notfirstTimeShown("emotion2"))
         {
@@ -58,27 +58,28 @@ public class AngryPlayerDecisions : MonoBehaviour
 
         question.SetActive(false); //how does that make you feel question
         StartCoroutine(EmotionUpdateText());
-        ChangeEmotionalState("Angry");
+        ChangeEmotionalState("Stressed");
 
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f), 1.5f, 2.0f));  //dark red
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
-        // _bHandler.emotionBarSNHValue = 1;
-        // _bHandler.emotionBarTFFValue = 2;
+        _bHandler.emotionBarStressedValue = 1;
+        _bHandler.emotionBarTroubledValue = 1;
+        _bHandler.emotionBarCalmValue = 0;
 
         StartCoroutine(StartTyping());
     }
 
-    public void DecisionB_Act() //act on the angry emotion
+    public void DecisionB_Act() //act on the stressed emotion
     {
         decisionB1.SetActive(false);
         decisionB4.SetActive(false);
 
-        // _bHandler.toximeterValue = 3;
+        _bHandler.toximeterValue = 3;
         
         toxicityUpdate.SetActive(true);
         StartCoroutine(CoroutDecisionB_Act());
 
-        storeData.StoreData("Toxic_Scene2", "FirstDecision", "AngryDecisionAct");
+        storeData.StoreData("Toxic_Scene2", "FirstDecision", "StressedDecisionAct");
     }
 
     private IEnumerator CoroutDecisionB_Act()
@@ -112,11 +113,11 @@ public class AngryPlayerDecisions : MonoBehaviour
     }
 
 
-    public void DecisionB_Ignore() //do not act on the angry emotion
+    public void DecisionB_Ignore() //do not act on the stressed emotion
     {
         decisionB1.SetActive(false);
         decisionB3.SetActive(true); //you don't react to the mistake panel
-        storeData.StoreData("Scene2", "FirstDecision", "AngryDecisionNotAct");
+        storeData.StoreData("Scene2", "FirstDecision", "StressedDecisionNotAct");
     }
 
     public void DecisionB_Repeat() //a mistake happens again, player is furious
@@ -125,24 +126,25 @@ public class AngryPlayerDecisions : MonoBehaviour
         decisionB4.SetActive(true);
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.3f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 0.0f, 0.2f), 1.5f, 2.0f)); // orange
-        // _bHandler.toximeterValue = 3;
-        // _bHandler.emotionBarTFFValue = 3;
+        _bHandler.toximeterValue = 3;
+        _bHandler.emotionBarFrustratedValue = 1;
+        _bHandler.emotionBarHappyValue = 0;
+        _bHandler.emotionBarStressedValue = 1;
         
         toxicityUpdate.SetActive(true);
-        ChangeEmotionalState("Furious");
+        ChangeEmotionalState("Angry");
         StartCoroutine(EmotionUpdateText());
         StartCoroutine(SwitchCameras(0.8f));
-
-
     }
 
     public IEnumerator HappyEmotion()
     {
         toxicityUpdate.SetActive(true);
 
-        // _bHandler.emotionBarTFFValue = 0;
-        // _bHandler.emotionBarSNHValue = 2;
-        // _bHandler.toximeterValue = 3;
+        _bHandler.emotionBarHappyValue = 1;
+        _bHandler.emotionBarFrustratedValue = 0;
+        _bHandler.emotionBarTroubledValue = 0;
+        
         ChangeEmotionalState("Happy");
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2

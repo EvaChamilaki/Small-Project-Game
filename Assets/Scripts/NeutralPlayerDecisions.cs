@@ -64,7 +64,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
     }
 
 
-    public void DecisionA_Choice() //chooses the neutral emotion
+    public void DecisionA_Choice() //chooses the Calm emotion
     {
         if (!tutorial.notfirstTimeShown("emotion2"))
         {
@@ -73,16 +73,15 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
         question.SetActive(false); //how does that make you feel question
         StartCoroutine(EmotionUpdateText());
-        ChangeEmotionalState("Neutral");
+        ChangeEmotionalState("Calm");
 
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.95f, 0.85f, 0.4f),1.5f, 2.0f));  //pale yellow
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.5f, 0.6f, 0.7f), 1.5f, 2.0f)); // graysih blue
-        // _bHandler.emotionBarSNHValue = 1;
-        // _bHandler.emotionBarTFFValue = 0;
+        _bHandler.emotionBarCalmValue = 1;
 
         decisionA1.SetActive(true); //you don't react to the mistake panel
 
-        storeData.StoreData("Toxic_Scene2", "FirstDecision", "NeutralDecision");
+        storeData.StoreData("Toxic_Scene2", "FirstDecision", "CalmDecision");
     }
 
     public void DecisionA_Reaction() //others are toxic to the mistake - enabled with the "next" button
@@ -131,7 +130,10 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
     public IEnumerator TroubledEmotion()
     {
-        // _bHandler.emotionBarTFFValue = 1;
+        _bHandler.emotionBarTroubledValue = 1;
+        _bHandler.emotionBarCalmValue = 0;
+        _bHandler.emotionBarHappyValue = 0;
+
         ChangeEmotionalState("Troubled");
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.9f, 0.55f, 0.2f),1.5f, 2.0f));  //orange
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.15f, 0.2f, 0.5f), 1.5f, 2.0f)); //blue
@@ -144,9 +146,10 @@ public class NeutralPlayerDecisions : MonoBehaviour
         hasloggedOut = true;
         toxicityUpdate.SetActive(true);
         
-        // _bHandler.toximeterValue = 3;
-        // _bHandler.emotionBarSNHValue = 2;
-        // _bHandler.emotionBarTFFValue = 0; 
+        _bHandler.toximeterValue = 3;
+        _bHandler.emotionBarHappyValue = 1;
+        _bHandler.emotionBarTroubledValue = 0;
+        
         ChangeEmotionalState("Happy");
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f), 1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
