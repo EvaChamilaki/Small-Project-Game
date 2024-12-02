@@ -1625,8 +1625,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 919.994, y: 256.623}
+  m_AnchoredPosition: {x: 9.764801, y: 0}
+  m_SizeDelta: {x: 900.4645, y: 256.623}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254396980
 MonoBehaviour:
@@ -9000,6 +9000,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7680581752050202468, guid: f99533e64b4118548bdd1d1600226479, type: 3}
+      propertyPath: emotionBarCalmValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680581752050202468, guid: f99533e64b4118548bdd1d1600226479, type: 3}
+      propertyPath: emotionBarHappyValue
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9961,8 +9969,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 22}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 37}
+  m_SizeDelta: {x: 499.4432, y: 93.3002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1639877537
 MonoBehaviour:
@@ -9984,7 +9992,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: How are you feeling?
+  m_text: How does this message make you feel?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3fe9d72d341fcf64ebfa102c24512e12, type: 2}
   m_sharedMaterial: {fileID: 6974735616930307545, guid: 3fe9d72d341fcf64ebfa102c24512e12, type: 2}
@@ -10047,7 +10055,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -174.99777, y: 0, z: -178.82831, w: 0}
+  m_margin: {x: 0.056640625, y: 0, z: 2.411499, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -14618,7 +14626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -139, y: -51}
+  m_AnchoredPosition: {x: -139, y: -68}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2032327738424534061
@@ -14885,7 +14893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Angry
+  m_text: Frustrated
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15989,7 +15997,7 @@ GameObject:
   - component: {fileID: 8803817210168794426}
   - component: {fileID: 3419414233615525445}
   m_Layer: 5
-  m_Name: Angry
+  m_Name: Frustrated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16013,7 +16021,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 120, y: -52}
+  m_AnchoredPosition: {x: 120, y: -69}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5298022433631634710
@@ -16950,7 +16958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &7631329350547969035
 GameObject:
   m_ObjectHideFlags: 0
