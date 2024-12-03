@@ -3882,6 +3882,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2022459083}
     m_Modifications:
+    - target: {fileID: 3397278852587527990, guid: 69a2429cd79d8cc43ab2bce171a2427c, type: 3}
+      propertyPath: inspectText
+      value: 
+      objectReference: {fileID: 1931480942420042929}
     - target: {fileID: 3790300537524486110, guid: 69a2429cd79d8cc43ab2bce171a2427c, type: 3}
       propertyPath: m_LocalScale.x
       value: 80.00001
@@ -3950,6 +3954,11 @@ PrefabInstance:
 --- !u!4 &898493802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3790300537524486110, guid: 69a2429cd79d8cc43ab2bce171a2427c, type: 3}
+  m_PrefabInstance: {fileID: 898493801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &898493803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7981078149098409463, guid: 69a2429cd79d8cc43ab2bce171a2427c, type: 3}
   m_PrefabInstance: {fileID: 898493801}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &906570564
@@ -9146,6 +9155,10 @@ PrefabInstance:
       propertyPath: canvasEmotionBars
       value: 
       objectReference: {fileID: 3603454677273617061}
+    - target: {fileID: 3736404625644695418, guid: 808d2d7f66dbc7a41b23656c264b95e5, type: 3}
+      propertyPath: monitor_InteractableGO
+      value: 
+      objectReference: {fileID: 898493803}
     - target: {fileID: 5662932242188390648, guid: 808d2d7f66dbc7a41b23656c264b95e5, type: 3}
       propertyPath: m_Layer
       value: 8

@@ -27,6 +27,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private bool charControlActive = true;
     private bool hasClicked = false;
 
+    [Header("Cameras")]
     private Camera active_camera;
     private Camera main_camera;
     private Camera computer_camera;
@@ -38,6 +39,9 @@ public class ThirdPersonCamera : MonoBehaviour
 
     public Tutorial tutorial;
 
+    [Header("Computer Screen Management")]
+    public GameObject monitor_InteractableGO;
+    private ComputerScreenColDetection csColDetectionScript;
 
 
     void Start()
@@ -47,7 +51,7 @@ public class ThirdPersonCamera : MonoBehaviour
         currentScreen = firstScreen;
 
         writingText.GetComponent<TextWriting>().enabled = false;
-
+        csColDetectionScript = monitor_InteractableGO.GetComponent<ComputerScreenColDetection>();
 
         main_camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         computer_camera = GameObject.FindWithTag("ComputerCamera").GetComponent<Camera>();
@@ -58,30 +62,30 @@ public class ThirdPersonCamera : MonoBehaviour
 
         active_camera = main_camera;
 
-        if(tutorial != null)
+        if (tutorial != null)
         {
-             if(tutorial.notfirstTimeShown("start"))
-        {
-            charControlActive = true;
+            if (tutorial.notfirstTimeShown("start"))
+            {
+                charControlActive = true;
+            }
+            else
+            {
+                tutorial.ShowTutorial("Move your character with the WASD keys or the arrow keys, interact with objects with left mouse click, inspect with the V key", "start");
+            }
+
         }
-        else
-        {
-             tutorial.ShowTutorial("Move your character with the WASD keys or the arrow keys, interact with objects with left mouse click, inspect with the V key", "start");
-        }
-       
-        }
-       
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(tutorial != null && tutorial.isTutorialActive)
+        if (tutorial != null && tutorial.isTutorialActive)
         {
             return;
         }
-        
+
 
         if (charControlActive)
         {
@@ -101,25 +105,31 @@ public class ThirdPersonCamera : MonoBehaviour
             }
         }
 
-        RaycastHit hit;
-        Ray ray = active_camera.ScreenPointToRay(Input.mousePosition);
-        if (active_camera == main_camera && Physics.Raycast(ray.origin, ray.direction, out hit, rayLength)) //TODO: fix raycast distance (click issue)
-        {
-            if (hit.transform.CompareTag("ComputerScreen"))
-            {
-                computerHit = true;
-                canvasClick.SetActive(true);
+        // RaycastHit hit;
+        // Ray ray = active_camera.ScreenPointToRay(Input.mousePosition);
+        // if (active_camera == main_camera && Physics.Raycast(ray.origin, ray.direction, out hit, rayLength)) //TODO: fix raycast distance (click issue)
+        // {
+        //     if (hit.transform.CompareTag("ComputerScreen"))
+        //     {
+        //         computerHit = true;
+        //         canvasClick.SetActive(true);
 
-            }
-        }
+        //     }
+        // }
 
-        else
-        {
-            computerHit = false;
-            canvasClick.SetActive(false);
-        }
+        // else
+        // {
+        //     computerHit = false;
+        //     canvasClick.SetActive(false);
+        // }
 
-        if (computerHit && Input.GetMouseButtonDown(0))
+        // if (computerHit && Input.GetMouseButtonDown(0))
+        // {
+        //     SwitchToComputerCamera();
+        //     hasClicked = true;
+        // }
+
+        if (csColDetectionScript.isInRange && Input.GetMouseButtonDown(0))
         {
             SwitchToComputerCamera();
             hasClicked = true;
@@ -147,6 +157,7 @@ public class ThirdPersonCamera : MonoBehaviour
         main_camera.enabled = false;
         computer_camera.enabled = true;
         emotions_camera.enabled = false;
+        csColDetectionScript.DisableOutline();
         canvasClick.SetActive(false);
         canvasEmotionBars.SetActive(false);
         instructions.SetActive(false);
@@ -162,9 +173,9 @@ public class ThirdPersonCamera : MonoBehaviour
                 writingText.GetComponent<TextWriting>().StartTextTyping(0);
                 hasBeenTyped = true;
 
-                               
+
             }
-            
+
         }
 
         else
@@ -204,17 +215,18 @@ public class ThirdPersonCamera : MonoBehaviour
         main_camera.enabled = false;
         computer_camera.enabled = false;
         emotions_camera.enabled = true;
+        csColDetectionScript.DisableOutline();
         canvasClick.SetActive(false);
         canvasEmotionBars.SetActive(true);
         instructions.SetActive(true);
 
-        if(tutorial.notfirstTimeShown("screens"))
+        if (tutorial.notfirstTimeShown("screens"))
         {
             charControlActive = true;
         }
         else
         {
-        tutorial.ShowTutorial("Press the B key to go back to the computer screen, or the Space key to go back to the room", "screens");
+            tutorial.ShowTutorial("Press the B key to go back to the computer screen, or the Space key to go back to the room", "screens");
         }
 
         if (currentScreen != null)
@@ -223,7 +235,7 @@ public class ThirdPersonCamera : MonoBehaviour
         }
 
         // writingText.GetComponent<TextWriting>().enabled = false;
-        
+
         charcontroller.enabled = false;
         charControlActive = false;
 

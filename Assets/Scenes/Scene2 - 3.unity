@@ -2057,7 +2057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256716463}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.043713428, y: -0.000000004297484, z: 1.880375e-10, w: 0.9990442}
+  m_LocalRotation: {x: 0.043713428, y: -0.0000000042974837, z: 1.8803746e-10, w: 0.9990442}
   m_LocalPosition: {x: 1.2, y: 1.434, z: -2.4160385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4394,7 +4394,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706703823}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04371344, y: -0.000000002148742, z: 9.401877e-11, w: 0.9990441}
+  m_LocalRotation: {x: 0.04371344, y: -0.0000000021487416, z: 9.401875e-11, w: 0.9990441}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5414,6 +5414,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2022459083}
     m_Modifications:
+    - target: {fileID: 3397278852587527990, guid: 69a2429cd79d8cc43ab2bce171a2427c, type: 3}
+      propertyPath: inspectText
+      value: 
+      objectReference: {fileID: 1931480942420042929}
     - target: {fileID: 3790300537524486110, guid: 69a2429cd79d8cc43ab2bce171a2427c, type: 3}
       propertyPath: m_LocalScale.x
       value: 80.00001
@@ -5482,6 +5486,11 @@ PrefabInstance:
 --- !u!4 &898493802 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3790300537524486110, guid: 69a2429cd79d8cc43ab2bce171a2427c, type: 3}
+  m_PrefabInstance: {fileID: 898493801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &898493803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7981078149098409463, guid: 69a2429cd79d8cc43ab2bce171a2427c, type: 3}
   m_PrefabInstance: {fileID: 898493801}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &906570564
@@ -8218,7 +8227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415160492}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06354056, y: -1.7556702e-29, z: 6.8471968e-31, w: 0.9979793}
+  m_LocalRotation: {x: 0.06354056, y: -1e-45, z: -0, w: 0.9979793}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11738,6 +11747,10 @@ PrefabInstance:
       propertyPath: canvasEmotionBars
       value: 
       objectReference: {fileID: 3603454677273617061}
+    - target: {fileID: 3736404625644695418, guid: 808d2d7f66dbc7a41b23656c264b95e5, type: 3}
+      propertyPath: monitor_InteractableGO
+      value: 
+      objectReference: {fileID: 898493803}
     - target: {fileID: 5662932242188390648, guid: 808d2d7f66dbc7a41b23656c264b95e5, type: 3}
       propertyPath: m_Layer
       value: 8
