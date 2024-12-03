@@ -1,0 +1,15 @@
+{
+    "participantID": 1,
+    "decisions": [
+        {
+            "scene": "Toxic_Scene2",
+            "DecisionName": "FirstDecision",
+            "SelectedDecision": "CalmDecision"
+        },
+        {
+            "scene": "Victim_Scene1",
+            "DecisionName": "FirstDecision",
+            "SelectedDecision": "FrustratedDecision"
+        }
+    ]
+}

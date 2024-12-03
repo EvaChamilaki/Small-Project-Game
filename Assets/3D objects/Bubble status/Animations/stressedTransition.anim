@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: troubledTransition
+  m_Name: stressedTransition
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -44,7 +44,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.61737454
+        value: 0.9104993
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -105,7 +105,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 2100000, guid: 10b415a5b972fab4d9e9e43e69a21352, type: 2}
+      value: {fileID: 2100000, guid: cefaf20b33943db4b9a73271ecc8eb56, type: 2}
     attribute: m_Materials.Array.data[0]
     path: 
     classID: 23
@@ -164,7 +164,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 2100000, guid: 10b415a5b972fab4d9e9e43e69a21352, type: 2}
+    - {fileID: 2100000, guid: cefaf20b33943db4b9a73271ecc8eb56, type: 2}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -213,7 +213,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.61737454
+        value: 0.9104993
         inSlope: 0
         outSlope: 0
         tangentMode: 136
