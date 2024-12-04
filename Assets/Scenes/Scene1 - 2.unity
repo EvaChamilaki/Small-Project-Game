@@ -306,7 +306,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209501426}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.136236, y: 0.00000000852298, z: -0.0000000011720644, w: 0.99067646}
+  m_LocalRotation: {x: 0.136236, y: -0.000000008522976, z: 0.000000001172064, w: 0.99067646}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4596,6 +4596,18 @@ PrefabInstance:
     - target: {fileID: 5449862205129341731, guid: f99533e64b4118548bdd1d1600226479, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680581752050202468, guid: f99533e64b4118548bdd1d1600226479, type: 3}
+      propertyPath: toximeterValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680581752050202468, guid: f99533e64b4118548bdd1d1600226479, type: 3}
+      propertyPath: emotionBarCalmValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680581752050202468, guid: f99533e64b4118548bdd1d1600226479, type: 3}
+      propertyPath: emotionBarHappyValue
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
