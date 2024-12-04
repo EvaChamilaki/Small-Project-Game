@@ -41,7 +41,7 @@ public class VictimDecision2 : MonoBehaviour
     void Start()
     {
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
-/*        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();*/
+        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
 
         if(!PlayerPrefs.HasKey("victim_toximeter"))
         {
@@ -84,13 +84,13 @@ public class VictimDecision2 : MonoBehaviour
 
     public void endPanelYes()
     {
-/*        storeData.StoreData("Toxic_Scene1-4", "WasItFair", "Yes");*/
+        storeData.StoreData("Toxic_Scene1-4", "WasItFair", "Yes");
         endingPanel.SetActive(true);
     }
 
     public void endPanelNo()
     {
-/*        storeData.StoreData("Toxic_Scene1-4", "WasItFair", "No");*/
+        storeData.StoreData("Toxic_Scene1-4", "WasItFair", "No");
         endingPanel.SetActive(true);
     }
 
@@ -107,7 +107,7 @@ public class VictimDecision2 : MonoBehaviour
         ChangeEmotionalState("Angry");
         curEmotion = "Angry";
         
-/*        storeData.StoreData("Victim_Scene1-3", "HowAreYouFeeling", "Frustrated");*/
+        storeData.StoreData("Victim_Scene1-3", "HowAreYouFeeling", "Frustrated");
         
         StartCoroutine(SwitchCameras());
 
@@ -128,7 +128,7 @@ public class VictimDecision2 : MonoBehaviour
         ChangeEmotionalState("Stressed");
         curEmotion = "Stressed";
 
-/*        storeData.StoreData("Victim_Scene1-3", "HowAreYouFeeling", "Stressed");*/
+        storeData.StoreData("Victim_Scene1-3", "HowAreYouFeeling", "Stressed");
 
         StartCoroutine(SwitchCameras());
 
@@ -147,13 +147,13 @@ public class VictimDecision2 : MonoBehaviour
     public void DecisionB_Ignore() 
     {
         thirdPanel.SetActive(false);
-/*        storeData.StoreData("Victim_Scene1-3", "HowDoYouReact", "Ignore->MuteChat");*/
+        storeData.StoreData("Victim_Scene1-3", "HowDoYouReact", "Ignore->MuteChat");
         flags.GetComponent<Flags>().hasMuted = true;
     }
 
     public void DecisionB_InsultBack()
     {
-/*        storeData.StoreData("Victim_Scene1-3", "HowDoYouReact", "InsultBack");*/
+        storeData.StoreData("Victim_Scene1-3", "HowDoYouReact", "InsultBack");
 
         StartCoroutine(EmotionUpdateText());
         if(curEmotion == "Stressed")
@@ -184,10 +184,9 @@ public class VictimDecision2 : MonoBehaviour
         if (emotion == "Sad")
         {
             ChangeEmotionalState("Sad");
-/*            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Sad");*/
+            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Sad");
             _bHandler.emotionBarSadValue = 1;
-            // _bHandler.emotionBarSNHValue = 0;
-            // _bHandler.emotionBarTFFValue = 1;
+            
             foreach (Light light in lights)
             {
                 StartCoroutine(ChangeLightColor(light, Color.blue, 0.5f, 2.0f));
@@ -197,10 +196,9 @@ public class VictimDecision2 : MonoBehaviour
         else if (emotion == "Troubled")
         {
             ChangeEmotionalState("Troubled");
-/*            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Troubled");*/
+            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Troubled");
             _bHandler.emotionBarTroubledValue = 1;
-            // _bHandler.emotionBarSNHValue = 1;
-            // _bHandler.emotionBarTFFValue = 0;
+            
             StartCoroutine(ChangeLightColor(lights[0], new Color(0.95f, 0.85f, 0.4f),1.5f, 2.0f));  //pale yellow
             StartCoroutine(ChangeLightColor(lights[1], new Color(0.5f, 0.6f, 0.7f), 1.5f, 2.0f)); // graysih blue
 
@@ -208,10 +206,9 @@ public class VictimDecision2 : MonoBehaviour
         else if (emotion == "Frustrated")
         {
             ChangeEmotionalState("Frustrated");
-/*            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Frustrated");*/
+            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Frustrated");
             _bHandler.emotionBarFrustratedValue = 1;
-            // _bHandler.emotionBarSNHValue = 1;
-            // _bHandler.emotionBarTFFValue = 3;
+            
             StartCoroutine(ChangeLightColor(lights[0], new Color(0.3f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
             StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 0.0f, 0.2f), 1.5f, 2.0f)); // orange
 

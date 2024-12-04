@@ -48,7 +48,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
     void Start()
     {
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
-/*        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();*/
+        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
 
         if (!PlayerPrefs.HasKey("toxic_toximeter"))
         {
@@ -135,7 +135,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _bHandler.emotionBarCalmValue = 0;
         isAngry = false;
 
-/*        storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Stressed");*/
+        storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Stressed");
 
         StartCoroutine(SwitchCameras());
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.9f, 0.55f, 0.2f),1.5f, 2.0f));  //orange
@@ -153,8 +153,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _bHandler.emotionBarHappyValue = 0;
         _bHandler.emotionBarCalmValue = 0;
         isAngry = true;
-/*
-        storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Angry");*/
+
+        storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Angry");
 
         StartCoroutine(SwitchCameras());
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
@@ -171,7 +171,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public void DecisionC_SaySth()
     {
-/*        storeData.StoreData("Toxic_Scene2-3", "OthersRToxicDecision", "SaySomething");*/
+        storeData.StoreData("Toxic_Scene2-3", "OthersRToxicDecision", "SaySomething");
         StartCoroutine(EmotionUpdateText());
         _bHandler.emotionBarHappyValue = 0;
         StartCoroutine(CoroutDecisionC_SaySth());
@@ -183,7 +183,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         tutorial.SetPlayerParameters("toxic_toximeter", t_toximeter);
         _bHandler.toximeterValue = t_toximeter;
         toxicityUpdate.SetActive(true);
-/*        storeData.StoreData("Toxic_Scene2-3", "OthersRToxicDecision", "JoinThem");*/
+        storeData.StoreData("Toxic_Scene2-3", "OthersRToxicDecision", "JoinThem");
         
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Happy");

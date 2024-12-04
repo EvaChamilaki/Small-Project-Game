@@ -49,7 +49,7 @@ public class VictimDecision : MonoBehaviour
         mistakePanel.SetActive(false);
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
         _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
-        // storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
+        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
     }
 
     void Update() //the panel that shows the username change
@@ -105,7 +105,7 @@ public class VictimDecision : MonoBehaviour
         question.SetActive(true); //do you act on the angry emotion
         question.GetComponent<TextWriting>().enabled = true;
         question.GetComponent<TextWriting>().StartTextTyping(0);
-        // storeData.StoreData("Victim_Scene1", "FirstDecision", "FrustratedDecision");
+        storeData.StoreData("Victim_Scene1", "FirstDecision", "FrustratedDecision");
     }
 
     public void DecisionA_Act() //act on the angry emotion
