@@ -5,6 +5,7 @@ using UnityEngine;
 public class Flags : MonoBehaviour
 {
     public bool hasMuted = false;
+    public bool isAngry = false;
     
     void Awake()
     {

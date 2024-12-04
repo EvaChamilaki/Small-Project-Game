@@ -21,6 +21,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public GameObject effectsPanel;
 
     private bool muted;
+    private bool isAngry;
+
     private int playOnce = 0, t_toximeter = 0;
 
     private ChatBehaviorManager _chatManager;
@@ -64,6 +66,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         if(flags != null)
         {
             muted = GameObject.Find("Flags").GetComponent<Flags>().hasMuted;
+            isAngry = GameObject.Find("Flags").GetComponent<Flags>().isAngry;
         }
 
         else
@@ -100,9 +103,19 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     public void CheckPrevDecision()
     {
-        ChangeEmotionalState("Troubled");
-        // _bHandler.emotionBarSNHValue = 1;
-        // _bHandler.emotionBarTFFValue = 1;
+        if(isAngry)
+        {
+            _bHandler.emotionBarFrustratedValue = 1;
+            ChangeEmotionalState("Frustrated");
+        }
+        else
+        {
+            _bHandler.emotionBarStressedValue = 1;
+            _bHandler.emotionBarHappyValue = 1;
+            ChangeEmotionalState("Stressed");
+        }
+        _bHandler.emotionBarTroubledValue = 1;
+        
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.9f, 0.55f, 0.2f),1.5f, 2.0f));  //orange
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.15f, 0.2f, 0.5f), 1.5f, 2.0f)); //blue
         StartCoroutine(Corout_PrevDecision());
@@ -117,14 +130,14 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public void DecisionB_Stress()
     {
         StartCoroutine(EmotionUpdateText());
-        ChangeEmotionalState("Troubled");
+        ChangeEmotionalState("Stressed");
+        _bHandler.emotionBarStressedValue = 1;
+        _bHandler.emotionBarCalmValue = 0;
+        isAngry = false;
 
 /*        storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Stressed");*/
 
         StartCoroutine(SwitchCameras());
-        
-        // _bHandler.emotionBarSNHValue = 1;
-        // _bHandler.emotionBarTFFValue = 1;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.9f, 0.55f, 0.2f),1.5f, 2.0f));  //orange
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.15f, 0.2f, 0.5f), 1.5f, 2.0f)); //blue
 
@@ -135,14 +148,15 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public void DecisionB_Angry()
     {
         StartCoroutine(EmotionUpdateText());
-        ChangeEmotionalState("Angry");
+        ChangeEmotionalState("Frustrated");
+        _bHandler.emotionBarFrustratedValue = 1;
+        _bHandler.emotionBarHappyValue = 0;
+        _bHandler.emotionBarCalmValue = 0;
+        isAngry = true;
 /*
         storeData.StoreData("Toxic_Scene2-2", "HowAreYouFeeling", "Angry");*/
 
         StartCoroutine(SwitchCameras());
-        
-        // _bHandler.emotionBarSNHValue = 1;
-        // _bHandler.emotionBarTFFValue = 2;
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
         
@@ -158,6 +172,8 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public void DecisionC_SaySth()
     {
 /*        storeData.StoreData("Toxic_Scene2-3", "OthersRToxicDecision", "SaySomething");*/
+        StartCoroutine(EmotionUpdateText());
+        _bHandler.emotionBarHappyValue = 0;
         StartCoroutine(CoroutDecisionC_SaySth());
     }
 
@@ -171,8 +187,11 @@ public class ToxicPlayerDecisions : MonoBehaviour
         
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Happy");
-        // _bHandler.emotionBarSNHValue = 2;
-        // _bHandler.emotionBarTFFValue = 0;
+        _bHandler.emotionBarHappyValue = 1;
+        _bHandler.emotionBarFrustratedValue = 1;
+        _bHandler.emotionBarStressedValue = 0;
+        _bHandler.emotionBarTroubledValue = 0;
+
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
         StartCoroutine(CoroutDecisionC_Join());
@@ -323,8 +342,9 @@ public class ToxicPlayerDecisions : MonoBehaviour
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Angry");
         StartCoroutine(SwitchCameras());
-        // _bHandler.emotionBarSNHValue = 1;
-        // _bHandler.emotionBarTFFValue = 2;
+        _bHandler.emotionBarFrustratedValue = 1;
+        _bHandler.emotionBarHappyValue = 0;
+        
         StartCoroutine(ChangeLightColor(lights[0], new Color(0.5f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
 
@@ -337,17 +357,10 @@ public class ToxicPlayerDecisions : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         effectsPanel.SetActive(true);
-       
     }
 
     private IEnumerator CoroutDecisionC_Join()
     {
-        StartCoroutine(EmotionUpdateText());
-        // _bHandler.emotionBarSNHValue = 2;
-        // _bHandler.emotionBarTFFValue = 0;
-        StartCoroutine(ChangeLightColor(lights[0], new Color(0.0f, 0.5f, 0.0f),1.5f, 2.0f));  //green1
-        StartCoroutine(ChangeLightColor(lights[1], new Color(0.6f, 1.0f, 0.6f), 1.5f, 2.0f)); //green2
-
         StartCoroutine(SwitchCameras());
 
         yield return new WaitForSeconds(0.5f);
