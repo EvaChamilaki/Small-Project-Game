@@ -224,13 +224,13 @@ public class ThirdPersonCamera : MonoBehaviour
         instructions.SetActive(true);
         username.SetActive(true);
 
-        if (tutorial.notfirstTimeShown("screens"))
+        if (!tutorial.notfirstTimeShown("screens"))
         {
-            charControlActive = true;
+            StartCoroutine(ShowEmotionTutorials());
         }
         else
         {
-            tutorial.ShowTutorial("Press the B key to go back to the computer screen, or the Space key to go back to the room", "screens");
+            charControlActive = true;
         }
 
         if (currentScreen != null)
@@ -245,6 +245,18 @@ public class ThirdPersonCamera : MonoBehaviour
 
         active_camera = emotions_camera;
 
+    }
+
+    private IEnumerator ShowEmotionTutorials()
+    {
+        tutorial.ShowTutorial("Press the B key to go back to the computer screen. \n Press the Space key to go back to the room", "screens");
+        yield return new WaitUntil(() => !tutorial.isTutorialActive);
+
+        tutorial.ShowTutorial("Notice your emotions on the left! When you make certain choices, these emotions will change", "bars");
+        yield return new WaitUntil(() => !tutorial.isTutorialActive);
+
+        tutorial.ShowTutorial("On the top of your emotions, you see the toximeter. It shows your toxicity level. It can increase throughout the game!", "toximeterbar");
+        yield return new WaitUntil(() => !tutorial.isTutorialActive);
     }
 
     public void ControlComputerScreens(GameObject screen) //used to control the current screen so it does not go back to the first screen every time we change cameras
