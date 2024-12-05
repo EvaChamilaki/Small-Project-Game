@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour
 {
@@ -21,9 +22,16 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
-        tutorial.SetActive(false);
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name == "Scene2") 
+        {
+            tutorial.SetActive(true);
+        }
+        else 
+        {
+            tutorial.SetActive(false);
+        }
         isTutorialActive = false;
-
     }
 
     void Update()

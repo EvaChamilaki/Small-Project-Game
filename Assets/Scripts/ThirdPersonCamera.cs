@@ -130,7 +130,7 @@ public class ThirdPersonCamera : MonoBehaviour
         //     hasClicked = true;
         // }
 
-        if (csColDetectionScript.isInRange && Input.GetMouseButtonDown(0))
+        if (csColDetectionScript.isInRange && main_camera.enabled && Input.GetMouseButtonDown(0))
         {
             SwitchToComputerCamera();
             hasClicked = true;

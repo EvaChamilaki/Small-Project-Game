@@ -1328,7 +1328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256716463}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.019609941, y: 0.000000034454246, z: -6.7577566e-10, w: 0.9998078}
+  m_LocalRotation: {x: 0.019609941, y: 0.00000003445651, z: -6.7582007e-10, w: 0.9998078}
   m_LocalPosition: {x: 1.2, y: 1.434, z: -2.4160385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3273,7 +3273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643006898}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.102049045, y: -0.0000000042017296, z: 9.155735e-10, w: 0.9947794}
+  m_LocalRotation: {x: -0.102049045, y: -0.0000000042029695, z: 9.158436e-10, w: 0.9947794}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3911,7 +3911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706703823}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.13833238, y: 0.000000016930061, z: -0.000000003045782, w: 0.9903859}
+  m_LocalRotation: {x: -0.13833238, y: 0.000000016934518, z: -0.0000000030465839, w: 0.9903859}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8000,7 +8000,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415160492}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.11378351, y: 0.00000002919189, z: -0.000000006001011, w: 0.9935056}
+  m_LocalRotation: {x: -0.11378347, y: -0.000000016723295, z: 0.000000003437828, w: 0.9935056}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12851,7 +12851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1170670492828046295
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14270,6 +14270,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3736404625644695418, guid: 808d2d7f66dbc7a41b23656c264b95e5, type: 3}
+      propertyPath: tutorialGO
+      value: 
+      objectReference: {fileID: 1565382107}
+    - target: {fileID: 3736404625644695418, guid: 808d2d7f66dbc7a41b23656c264b95e5, type: 3}
       propertyPath: canvasClick
       value: 
       objectReference: {fileID: 1931480942420042929}
@@ -15218,13 +15222,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 851436614}
+    - target: {fileID: 1881548044881981593, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3249434892531548990, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
       propertyPath: m_Name
       value: Tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 3249434892531548990, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968475344271370055, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4209592849799269030, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -15233,6 +15245,14 @@ PrefabInstance:
     - target: {fileID: 4209592849799269030, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619868592225468557, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379388257188917099, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5578950426582075946, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
       propertyPath: m_Pivot.x
