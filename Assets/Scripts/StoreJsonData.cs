@@ -7,6 +7,10 @@ using System.Linq;
 
 public class StoreJsonData : MonoBehaviour
 {
+    public GameObject participantIDInputField;
+    public GameObject errorParticipantExists;
+    public GameObject endScreen;
+    private string participantID;
     private string filePath = "";
     private string fileName = "";
 
@@ -15,7 +19,7 @@ public class StoreJsonData : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-
+        
         try
         {
             filePath = System.IO.Directory.GetCurrentDirectory() + "/JsonData";
@@ -23,13 +27,26 @@ public class StoreJsonData : MonoBehaviour
             {
                 Directory.CreateDirectory(filePath);
             }
-
-            int highestNumber = GetHighestFileNumber() + 1;
-            fileName = Path.Combine(filePath, $"data{highestNumber}.json");
         }
         catch (IOException ex)
         {
             Debug.LogError(ex.Message);
+        }
+    }
+
+    public void createFile()
+    {
+        participantID = participantIDInputField.GetComponent<TMPro.TMP_InputField>().text;
+        
+        fileName = Path.Combine(filePath, $"data{participantID}.json");
+
+        if (File.Exists(fileName))
+        {
+            StartCoroutine(ShowError());
+        }
+        else
+        {
+            endScreen.SetActive(true);
         }
     }
 
@@ -57,7 +74,7 @@ public class StoreJsonData : MonoBehaviour
             {
                 decisionWrapper = new DecisionListWrapper
                 {
-                    participantID = GetHighestFileNumber() + 1,
+                    participantIDVal = participantID,
                     decisions = new List<Decision>()
                 };
                 decisionWrapper.decisions.Add(newDecision);
@@ -83,32 +100,14 @@ public class StoreJsonData : MonoBehaviour
     [System.Serializable]
     public class DecisionListWrapper
     {
-        public int participantID;
+        public string participantIDVal;
         public List<Decision> decisions;
     }
 
-    private int GetHighestFileNumber()
+    private IEnumerator ShowError()
     {
-        int highestNumber = 0;
-
-        if (Directory.Exists(filePath))
-        {
-            string[] files = Directory.GetFiles(filePath, "data*.json");
-
-            foreach (string file in files)
-            {
-                string fileName = Path.GetFileNameWithoutExtension(file);
-                if (fileName.StartsWith("data"))
-                {
-                    string numberPart = fileName.Substring(4);
-                    if (int.TryParse(numberPart, out int fileNumber))
-                    {
-                        highestNumber = Mathf.Max(highestNumber, fileNumber);
-                    }
-                }
-            }
-        }
-
-        return highestNumber;
+        errorParticipantExists.SetActive(true);
+        yield return new WaitForSeconds(3.0f);
+        errorParticipantExists.SetActive(false);
     }
 }

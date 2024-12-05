@@ -14,6 +14,10 @@ public class ChatBehaviorManager : MonoBehaviour
 
     public GameObject chatPanel, textObject, infoTextObj;
 
+    [Header("AudioSources")]
+    public AudioSource audioSourceMessage;
+    public AudioSource audioSourceInfo;
+
     private GameObject newText = null;
 
     public void SendMessageToChat(string text, string typeObj, bool slowWriting, int startIdx) //type obj: message or info
@@ -40,17 +44,19 @@ public class ChatBehaviorManager : MonoBehaviour
         else if (typeObj == "info")
         {
             newText = Instantiate(infoTextObj, chatPanel.transform);
+            audioSourceInfo.Play();
         }
 
         newMessage.textObj = newText.GetComponent<TextMeshProUGUI>();
         newMessage.textObj.text = newMessage.text;
 
-        if(typeObj == "message" && slowWriting)
+        if(typeObj == "message" && slowWriting) //me
         {
             newMessage.textObj.color = new Color(0.4f, 0.76f, 1.0f);
         }
-        else if(typeObj == "message" && !slowWriting)
+        else if(typeObj == "message" && !slowWriting) //other players
         {
+            audioSourceMessage.Play();
             newMessage.textObj.color = new Color(1.0f, 0.705f, 0.415f);
         }
 

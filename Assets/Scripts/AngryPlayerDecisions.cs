@@ -35,8 +35,6 @@ public class AngryPlayerDecisions : MonoBehaviour
     
     public GameObject character;
     
-    [Header("Data Handler")]
-    public GameObject storeDataGO;
     private StoreJsonData storeData;
 
     void Start()
@@ -45,7 +43,7 @@ public class AngryPlayerDecisions : MonoBehaviour
         question.SetActive(false);
 
         _chatManager = ChatManagerObject.GetComponent<ChatBehaviorManager>();
-        storeData = storeDataGO.GetComponent<StoreJsonData>();
+        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
     }
 
 

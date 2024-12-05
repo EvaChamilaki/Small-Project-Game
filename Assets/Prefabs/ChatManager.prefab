@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2641906090415739613}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45,11 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d00e04bfe4b054f827f6e07efb650d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMessages: 8
+  maxMessages: 3
   messageList: []
   chatPanel: {fileID: 0}
   textObject: {fileID: 5797387240083130099, guid: bfc7d1ec2602a144d953db86107c1d80, type: 3}
   infoTextObj: {fileID: 5797387240083130099, guid: 392784804a6f8d44482667eb5b0aadcf, type: 3}
+  audioSourceMessage: {fileID: 0}
+  audioSourceInfo: {fileID: 0}
 --- !u!114 &8258295744612567023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,4 +69,5 @@ MonoBehaviour:
   timeBetweenWords: 0.1
   buttons: []
   currentCharIdx: 0
+  isWriting: 0
   textCompleted: 0
