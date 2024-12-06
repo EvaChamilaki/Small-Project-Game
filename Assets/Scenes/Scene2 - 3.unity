@@ -2085,7 +2085,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256716463}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.043713428, y: 0.0000000042974837, z: -1.8803746e-10, w: 0.9990442}
+  m_LocalRotation: {x: 0.043713428, y: -0.0000000042974837, z: 1.8803746e-10, w: 0.9990442}
   m_LocalPosition: {x: 1.2, y: 1.434, z: -2.4160385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3418,7 +3418,9 @@ MonoBehaviour:
   _textMeshPro: {fileID: 1073129248}
   timeBetweenCharacters: 0.05
   timeBetweenWords: 0.1
-  buttons: []
+  buttons:
+  - {fileID: 1423919006}
+  - {fileID: 132522747}
   currentCharIdx: 0
   isWriting: 0
   textCompleted: 0
@@ -3954,7 +3956,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643006898}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.087745935, y: 0.000000004285004, z: -3.7744746e-10, w: 0.9961429}
+  m_LocalRotation: {x: 0.087745935, y: -0.000000004285004, z: 3.7744746e-10, w: 0.9961429}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4430,7 +4432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706703823}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.04371344, y: 0.0000000021487416, z: -9.401875e-11, w: 0.9990441}
+  m_LocalRotation: {x: 0.04371344, y: -0.0000000021487416, z: 9.401875e-11, w: 0.9990441}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4495,7 +4497,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1006197532, guid: 078b4ffecc7fe7740931ead27336575b, type: 3}
+  m_Sprite: {fileID: -61127969, guid: c4b95379281294c44a59b0e8c22a8f3e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9476,6 +9478,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5496337003832515276, guid: 1975d19bccb00c34da761ec56e95c921, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ae4cf283bf2c61e4d90b0b7d6ed6efb1, type: 3}
     - target: {fileID: 6945669644175863130, guid: 1975d19bccb00c34da761ec56e95c921, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -11031,6 +11037,10 @@ PrefabInstance:
     - target: {fileID: 3249434892531548990, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
       propertyPath: m_Name
       value: Tutorial 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3249434892531548990, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5578950426582075946, guid: 0e96ec089d452d14781215f1770cfd5f, type: 3}
       propertyPath: m_Pivot.x

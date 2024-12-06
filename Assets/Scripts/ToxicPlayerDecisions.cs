@@ -212,7 +212,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
 
     private IEnumerator CoroutDecisionA_Remind()
     {
-        _chatManager.SendMessageToChat("BlameTheTank(me): @casualcrasher ur supposed to be mid", "message", true, 4);
+        _chatManager.SendMessageToChat("BlameTheTank(me): @casualcrasher ur supposed to be mid", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
         secondInteractionPanel.SetActive(true);
@@ -226,7 +226,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled); 
         
 
-        _chatManager.SendMessageToChat("BlameTheTank(me): @casualcrasher go back stop inting", "message", true, 4);
+        _chatManager.SendMessageToChat("BlameTheTank(me): @casualcrasher go back stop inting", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(0.5f);
 
@@ -245,7 +245,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _chatManager.SendMessageToChat("whiffedmyUlt: fkg n00b", "message", false, 0);
         yield return new WaitForSeconds(2.0f);
 
-        _chatManager.SendMessageToChat("BlameTheTank(me): go delete ur game honey", "message", true, 4);
+        _chatManager.SendMessageToChat("BlameTheTank(me): go delete ur game honey", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
 
         yield return new WaitForSeconds(5.0f);
@@ -260,7 +260,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled); 
 
 
-        _chatManager.SendMessageToChat("BlameTheTank(me): r u a girl and cant follow orders? ", "message", true, 4);
+        _chatManager.SendMessageToChat("BlameTheTank(me): r u a girl and cant follow orders? ", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(1.0f);
 
@@ -285,7 +285,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _chatManager.SendMessageToChat("whiffedmyUlt: fkg n00b", "message", false, 0);
         yield return new WaitForSeconds(2.0f);
 
-        _chatManager.SendMessageToChat("BlameTheTank(me): go delete ur game honey", "message", true, 4);
+        _chatManager.SendMessageToChat("BlameTheTank(me): go delete ur game honey", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(5.0f);
 
@@ -352,7 +352,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _chatManager.SendMessageToChat("whiffedmyUlt: go bungee jumping w/o parachute", "message", false, 0);
         yield return new WaitForSeconds(2.0f);
 
-        _chatManager.SendMessageToChat("BlameTheTank(me): stfu theyre the potato not me", "message", true, 4);
+        _chatManager.SendMessageToChat("BlameTheTank(me): stfu theyre the potato not me", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(2.0f);
 
@@ -366,7 +366,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         yield return new WaitUntil(() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
 
-        _chatManager.SendMessageToChat("BlameTheTank(me): delulu is not always the solulu", "message", true, 4);
+        _chatManager.SendMessageToChat("BlameTheTank(me): delulu is not always the solulu", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(2.0f);
 
@@ -379,7 +379,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _chatManager.SendMessageToChat("king9791!: @casualcrasher have u tried tetris its easier", "message", false, 0);
         yield return new WaitForSeconds(2.0f);
 
-        _chatManager.SendMessageToChat("BlameTheTank(me): go bungee jumping w/o parachute", "message", true, 4);
+        _chatManager.SendMessageToChat("BlameTheTank(me): go bungee jumping w/o parachute", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(3.0f);
 
