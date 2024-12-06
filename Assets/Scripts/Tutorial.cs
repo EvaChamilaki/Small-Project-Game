@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Tutorial : MonoBehaviour
     public bool isTutorialshown;
     public bool isTutorialActive;
 
+    public GameObject tutorialPanel;
+    private Image tutorialBkg;
+
     private List<KeyCode> skipKeys = new List<KeyCode>
     {
         KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.R
@@ -22,6 +26,8 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
+        tutorialBkg = tutorialPanel.GetComponent<Image>();
+
         Scene scene = SceneManager.GetActiveScene();
         if(scene.name == "Scene2") 
         {
@@ -48,20 +54,28 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-
-    public void ShowTutorial(string message, string key)
-    {
+      public void ShowTutorial(string message, string key, string hexColor = "#000000", float alpha = 0.7f)
+      { 
         tutorialkey = key;
         if (!notfirstTimeShown(tutorialkey))
         {
             tutorialText.text = message;
             tutorial.SetActive(true);
             isTutorialActive = true;
+            Color color;
+            if(ColorUtility.TryParseHtmlString(hexColor, out color))
+            {
+                color.a = alpha;
+                tutorialPanel.GetComponent<Image>().color = color;
+                
+            }
+            
+           
         }
         Time.timeScale = 0; //pauses the game so no input can be done until the next button is pressed
 
 
-    }
+      }
 
     public void HideTutorial()
     {

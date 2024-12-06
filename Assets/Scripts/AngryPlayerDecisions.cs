@@ -6,9 +6,9 @@ using System.Linq;
 public class AngryPlayerDecisions : MonoBehaviour
 {
     public Animator animController;
-    public GameObject currentScreen;
-    
+        
     [Header("Decision Screens")]
+    public GameObject currentScreen;
     public GameObject question;
 
     public GameObject decisionB1;
@@ -51,7 +51,7 @@ public class AngryPlayerDecisions : MonoBehaviour
     {
         if (!tutorial.notfirstTimeShown("emotion2"))
         {
-            tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion2");
+            tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion2", "#000000", 0.7f);
         }
 
         question.SetActive(false); //how does that make you feel question

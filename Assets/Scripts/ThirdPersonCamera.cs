@@ -44,7 +44,6 @@ public class ThirdPersonCamera : MonoBehaviour
     public GameObject monitor_InteractableGO;
     private ComputerScreenColDetection csColDetectionScript;
 
-
     void Start()
     {
         canvasClick.SetActive(false);
@@ -71,7 +70,7 @@ public class ThirdPersonCamera : MonoBehaviour
             }
             else
             {
-                tutorial.ShowTutorial("Move your character with the WASD keys or the arrow keys, interact with objects with left mouse click, inspect with the V key", "start");
+                tutorial.ShowTutorial("Move your character with the WASD keys or the arrow keys, interact with objects with left mouse click, inspect with the V key", "start", "#000000", 0.7f);
             }
 
         }
@@ -260,13 +259,13 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private IEnumerator ShowEmotionTutorials()
     {
-        tutorial.ShowTutorial("Press the B key to go back to the computer screen. \n Press the Space key to go back to the room", "screens");
+        tutorial.ShowTutorial("Press the B key to go back to the computer screen. \n Press the Space key to go back to the room", "screens", "#000000", 0.7f);
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.Space));
 
-        tutorial.ShowTutorial("Notice your emotions on the left! When you make certain choices, these emotions will change", "bars");
+        tutorial.ShowTutorial("Notice your emotions on the left! When you make certain choices, these emotions will change.", "bars", "#173317", 0.7f);
         yield return new WaitUntil(() => !tutorial.isTutorialActive);
 
-        tutorial.ShowTutorial("On the top of your emotions, you see the toximeter. It shows your toxicity level. It can increase throughout the game!", "toximeterbar");
+        tutorial.ShowTutorial("On the top of your emotions, you see the toximeter. It shows your toxicity level. It can increase throughout the game!", "toximeterbar", "#791C1C", 0.7f);
         yield return new WaitUntil(() => !tutorial.isTutorialActive);
     }
 

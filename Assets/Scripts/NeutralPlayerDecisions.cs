@@ -65,7 +65,7 @@ public class NeutralPlayerDecisions : MonoBehaviour
     {
         if (!tutorial.notfirstTimeShown("emotion2"))
         {
-            tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion2");
+            tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion2", "#000000", 0.7f);
         }
 
         question.SetActive(false); //how does that make you feel question
