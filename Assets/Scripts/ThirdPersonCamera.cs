@@ -50,9 +50,11 @@ public class ThirdPersonCamera : MonoBehaviour
         firstScreen.SetActive(false);
         currentScreen = firstScreen;
 
-        writingText.GetComponent<TextWriting>().enabled = false;
+        if(writingText != null)
+        {
+            writingText.GetComponent<TextWriting>().enabled = false;
+        }
         csColDetectionScript = monitor_InteractableGO.GetComponent<ComputerScreenColDetection>();
-
         main_camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         computer_camera = GameObject.FindWithTag("ComputerCamera").GetComponent<Camera>();
         emotions_camera = GameObject.FindWithTag("EmotionsCamera").GetComponent<Camera>();
