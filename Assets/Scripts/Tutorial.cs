@@ -17,7 +17,7 @@ public class Tutorial : MonoBehaviour
 
     private List<KeyCode> skipKeys = new List<KeyCode>
     {
-        KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.R, KeyCode.B, KeyCode.Space
+        KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D, KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.Mouse0, KeyCode.Mouse1, KeyCode.R
     };
 
     void Start()

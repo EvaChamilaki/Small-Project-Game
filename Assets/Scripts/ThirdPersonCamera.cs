@@ -26,7 +26,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private bool computerHit = false;
     private bool charControlActive = true;
-    private bool hasClicked = false;
+    public bool hasClicked = false;
 
     [Header("Cameras")]
     private Camera active_camera;
@@ -138,7 +138,16 @@ public class ThirdPersonCamera : MonoBehaviour
 
         if (!charControlActive && Input.GetKeyDown(KeyCode.Space))
         {
-            SwitchToMainCamera();
+            if(tutorial.isTutorialActive)
+            {
+                tutorial.HideTutorial();
+            }
+
+            if(!tutorial.isTutorialActive)
+            {
+                SwitchToMainCamera();
+            }
+            
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -149,7 +158,9 @@ public class ThirdPersonCamera : MonoBehaviour
 
         if (emotions_camera.enabled && hasClicked && Input.GetKeyDown(KeyCode.B))
         {
-            SwitchToComputerCamera();
+           
+                SwitchToComputerCamera();
+                                    
         }
 
     }
@@ -164,7 +175,6 @@ public class ThirdPersonCamera : MonoBehaviour
         instructions.SetActive(false);
         username.SetActive(false);
 
-        // firstScreen.SetActive(true);
         if (currentScreen != null)
         {
             currentScreen.SetActive(true);
@@ -224,9 +234,10 @@ public class ThirdPersonCamera : MonoBehaviour
         instructions.SetActive(true);
         username.SetActive(true);
 
-        if (!tutorial.notfirstTimeShown("screens"))
+        if (!tutorial.notfirstTimeShown("screens") && !tutorial.notfirstTimeShown("bars") && !tutorial.notfirstTimeShown("toximeterbar"))
         {
             StartCoroutine(ShowEmotionTutorials());
+          
         }
         else
         {
@@ -250,7 +261,7 @@ public class ThirdPersonCamera : MonoBehaviour
     private IEnumerator ShowEmotionTutorials()
     {
         tutorial.ShowTutorial("Press the B key to go back to the computer screen. \n Press the Space key to go back to the room", "screens");
-        yield return new WaitUntil(() => !tutorial.isTutorialActive);
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.Space));
 
         tutorial.ShowTutorial("Notice your emotions on the left! When you make certain choices, these emotions will change", "bars");
         yield return new WaitUntil(() => !tutorial.isTutorialActive);
