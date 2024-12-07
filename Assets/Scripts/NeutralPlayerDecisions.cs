@@ -63,6 +63,11 @@ public class NeutralPlayerDecisions : MonoBehaviour
 
     public void DecisionA_Choice() //chooses the Calm emotion
     {
+        StartCoroutine(DecisionA_ChoiceEnum());
+    }
+
+    public IEnumerator DecisionA_ChoiceEnum()
+    {
         if (!tutorial.notfirstTimeShown("emotion2"))
         {
             tutorial.ShowTutorial("Press the R key to see your emotional state", "emotion2", "#000000", 0.7f);
@@ -72,10 +77,11 @@ public class NeutralPlayerDecisions : MonoBehaviour
         StartCoroutine(EmotionUpdateText());
         ChangeEmotionalState("Calm");
 
-        StartCoroutine(ChangeLightColor(lights[0], new Color(0.95f, 0.85f, 0.4f),1.5f, 2.0f));  //pale yellow
+        StartCoroutine(ChangeLightColor(lights[0], new Color(0.95f, 0.85f, 0.4f), 1.5f, 2.0f));  //pale yellow
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.5f, 0.6f, 0.7f), 1.5f, 2.0f)); // graysih blue
         _bHandler.emotionBarCalmValue = 1;
 
+        yield return new WaitUntil(() => !tutorial.isTutorialActive);
         decisionA1.SetActive(true); //you don't react to the mistake panel
 
         storeData.StoreData("Toxic_Scene2", "FirstDecision", "CalmDecision");

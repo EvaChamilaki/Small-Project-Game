@@ -70,9 +70,11 @@ public class AutomaticTextWriting : MonoBehaviour
         currentCharIdx += 1;
 
         yield return new WaitForSeconds(timeBetweenCharacters);
-        }
 
-        isWriting = false;
+        
+        }
+        if (currentCharIdx == totalVisibleCharacters)
+            GetComponent<AudioSource>().Stop();
 
         foreach (GameObject button in buttons)
         {

@@ -68,6 +68,9 @@ public class TextWriting : MonoBehaviour
         if (currentCharIdx == totalVisibleCharacters)
         {
             textCompleted = true;
+
+            GetComponent<AudioSource>().Stop();
+           
         }
 
         isWriting = false;
