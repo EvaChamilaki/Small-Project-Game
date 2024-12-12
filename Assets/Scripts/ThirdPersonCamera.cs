@@ -14,7 +14,6 @@ public class ThirdPersonCamera : MonoBehaviour
     public GameObject instructions;
     public GameObject username;
 
-
     [Header("Character Control")]
     public CharacterController charcontroller;
     public Transform camera;
@@ -76,7 +75,6 @@ public class ThirdPersonCamera : MonoBehaviour
             }
 
         }
-
 
     }
 
@@ -258,11 +256,10 @@ public class ThirdPersonCamera : MonoBehaviour
         active_camera = emotions_camera;
 
     }
-
     private IEnumerator ShowEmotionTutorials()
     {
         tutorial.ShowTutorial("Press the B key to go back to the computer screen. \n Press the Space key to go back to the room", "screens", "#000000", 0.7f);
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.Space));
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.Space) || !tutorial.isTutorialActive);
 
         tutorial.ShowTutorial("Notice your emotions on the left! When you make certain choices, these emotions will change.", "bars", "#173317", 0.7f);
         yield return new WaitUntil(() => !tutorial.isTutorialActive);

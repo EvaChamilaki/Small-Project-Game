@@ -2620,7 +2620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08134958, y: -0.00000003509338, z: 0.0000000028643248, w: 0.9966857}
+  m_LocalRotation: {x: 0.08134958, y: -0.000000035093375, z: 0.0000000028643243, w: 0.9966857}
   m_LocalPosition: {x: 2.716, y: 0.771, z: -0.912}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4015,7 +4015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164620674}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08134956, y: -0.000000017149356, z: 0.0000000013997317, w: 0.9966857}
+  m_LocalRotation: {x: 0.08134956, y: -0.000000017149352, z: 0.0000000013997313, w: 0.9966857}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4230,7 +4230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3317959381031922013, guid: 89fe14b9ee032c24a84c373c0853e3de, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4300192156290789801, guid: 89fe14b9ee032c24a84c373c0853e3de, type: 3}
       propertyPath: _camera
@@ -6760,7 +6760,7 @@ PrefabInstance:
     - target: {fileID: 2860752572795965700, guid: f8204c48ee50e8647bd59dc0f31efb1a, type: 3}
       propertyPath: firstScreen
       value: 
-      objectReference: {fileID: 1255784156}
+      objectReference: {fileID: 2392734218742300541}
     - target: {fileID: 2860752572795965700, guid: f8204c48ee50e8647bd59dc0f31efb1a, type: 3}
       propertyPath: writingText
       value: 
