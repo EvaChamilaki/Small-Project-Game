@@ -16538,6 +16538,10 @@ PrefabInstance:
       propertyPath: m_text
       value: '[V] Interact'
       objectReference: {fileID: 0}
+    - target: {fileID: 6331468786298832312, guid: f2be17800adeb0e48969a7220a621efd, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 567
+      objectReference: {fileID: 0}
     - target: {fileID: 7301381303925414176, guid: f2be17800adeb0e48969a7220a621efd, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -16897,6 +16901,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2478591283047651423}
         m_TargetAssemblyTypeName: CustomEventTrigger, Assembly-CSharp
         m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1436570638}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

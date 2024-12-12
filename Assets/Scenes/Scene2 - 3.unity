@@ -3300,7 +3300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &505404155
 Transform:
   m_ObjectHideFlags: 0
@@ -13184,6 +13184,10 @@ PrefabInstance:
     - target: {fileID: 6232789994825083991, guid: f2be17800adeb0e48969a7220a621efd, type: 3}
       propertyPath: m_text
       value: '[V] Interact'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331468786298832312, guid: f2be17800adeb0e48969a7220a621efd, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 567
       objectReference: {fileID: 0}
     - target: {fileID: 7301381303925414176, guid: f2be17800adeb0e48969a7220a621efd, type: 3}
       propertyPath: m_UiScaleMode
