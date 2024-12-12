@@ -224,7 +224,8 @@ public class VictimDecision2 : MonoBehaviour
 
     public void SceneSwitch()
     {
-        StartCoroutine(SwitchScreensWithDelay(2.0f));
+        endingPanel.SetActive(true);
+        // StartCoroutine(SwitchScreensWithDelay(2.0f));
     }
     
     public IEnumerator chatMessagesCorout() 

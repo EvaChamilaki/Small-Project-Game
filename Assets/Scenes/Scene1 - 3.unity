@@ -1159,7 +1159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209501426}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.003064645, y: 5.4753018e-11, z: 1.6779948e-13, w: 0.9999953}
+  m_LocalRotation: {x: -0.0030646443, y: -2.328295e-10, z: -7.1354294e-13, w: 0.9999953}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2219,7 +2219,7 @@ MonoBehaviour:
   animController: {fileID: 2077741599}
   tutorial: {fileID: 847663041}
   character: {fileID: 460498340}
-  endingPanel: {fileID: 0}
+  endingPanel: {fileID: 1953554391}
   toxicityUpdate: {fileID: 778349935}
 --- !u!1 &489146329 stripped
 GameObject:
@@ -5238,7 +5238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142197896}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.024988133, y: -0.000000017201009, z: -4.299553e-10, w: 0.9996878}
+  m_LocalRotation: {x: -0.024988156, y: 0.00000001720101, z: 4.299557e-10, w: 0.9996878}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
