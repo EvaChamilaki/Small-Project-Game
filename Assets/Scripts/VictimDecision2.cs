@@ -205,7 +205,7 @@ public class VictimDecision2 : MonoBehaviour
         }
         else if (emotion == "Frustrated")
         {
-            ChangeEmotionalState("Frustrated");
+            ChangeEmotionalState("Angry");
             storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Frustrated");
             _bHandler.emotionBarFrustratedValue = 1;
             

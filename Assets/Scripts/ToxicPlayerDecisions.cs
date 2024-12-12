@@ -106,7 +106,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         if(isAngry)
         {
             _bHandler.emotionBarFrustratedValue = 1;
-            ChangeEmotionalState("Frustrated");
+            ChangeEmotionalState("Angry");
         }
         else
         {
@@ -148,7 +148,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
     public void DecisionB_Angry()
     {
         StartCoroutine(EmotionUpdateText());
-        ChangeEmotionalState("Frustrated");
+        ChangeEmotionalState("Angry");
         _bHandler.emotionBarFrustratedValue = 1;
         _bHandler.emotionBarHappyValue = 0;
         _bHandler.emotionBarCalmValue = 0;
