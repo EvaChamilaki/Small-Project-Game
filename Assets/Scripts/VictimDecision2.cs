@@ -41,7 +41,7 @@ public class VictimDecision2 : MonoBehaviour
     void Start()
     {
         _bHandler = emotionBarsCanvas.GetComponent<BarsHandler>();
-        storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
+        // storeData = GameObject.Find("StoreDataGO").GetComponent<StoreJsonData>();
 
         if(!PlayerPrefs.HasKey("victim_toximeter"))
         {
@@ -75,22 +75,27 @@ public class VictimDecision2 : MonoBehaviour
             firstPanel.GetComponent<TextWriting>().StartTextTyping(0);
 
         }
+    }
 
-        if(currentScreen.name == "BlockedScreen1" && !hasStartedTyping)
-        {
-            secondPanel.SetActive(true);
-        }
+    public void reportBackYes()
+    {
+        storeData.StoreData("Victim_Scene1-4", "WillYouReportThemBack", "Yes");
+    }
+
+    public void reportBackNo()
+    {
+        storeData.StoreData("Victim_Scene1-4", "WillYouReportThemBack", "No");
     }
 
     public void endPanelYes()
     {
-        storeData.StoreData("Toxic_Scene1-4", "WasItFair", "Yes");
+        storeData.StoreData("Victim_Scene1-4", "WasItFair", "Yes");
         endingPanel.SetActive(true);
     }
 
     public void endPanelNo()
     {
-        storeData.StoreData("Toxic_Scene1-4", "WasItFair", "No");
+        storeData.StoreData("Victim_Scene1-4", "WasItFair", "No");
         endingPanel.SetActive(true);
     }
 
@@ -206,7 +211,7 @@ public class VictimDecision2 : MonoBehaviour
         else if (emotion == "Frustrated")
         {
             ChangeEmotionalState("Angry");
-            storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Frustrated");
+            // storeData.StoreData("Victim_Scene1-4", "HowDoYouFeel", "Frustrated");
             _bHandler.emotionBarFrustratedValue = 1;
             
             StartCoroutine(ChangeLightColor(lights[0], new Color(0.3f, 0.0f, 0.0f),1.5f, 2.0f));  //dark red
