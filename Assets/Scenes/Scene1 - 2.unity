@@ -2620,7 +2620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08134958, y: -0.000000035093375, z: 0.0000000028643243, w: 0.9966857}
+  m_LocalRotation: {x: 0.08134958, y: 0.00000003509338, z: -0.0000000028643248, w: 0.9966857}
   m_LocalPosition: {x: 2.716, y: 0.771, z: -0.912}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4015,7 +4015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164620674}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.08134956, y: -0.000000017149352, z: 0.0000000013997313, w: 0.9966857}
+  m_LocalRotation: {x: 0.08134956, y: 0.000000017149356, z: -0.0000000013997317, w: 0.9966857}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7085,6 +7085,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9138897867230323757, guid: 4861240c673230843818d829b5355819, type: 3}
+      propertyPath: computerCollider
+      value: 
+      objectReference: {fileID: 94307697}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -8384,6 +8388,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8234538933117133111, guid: 87151a854c9cd564c8c8eca7b9d78375, type: 3}
+      propertyPath: computerCollider
+      value: 
+      objectReference: {fileID: 94307697}
     - target: {fileID: 8360385299590558451, guid: 87151a854c9cd564c8c8eca7b9d78375, type: 3}
       propertyPath: m_text
       value: Still haven't started anything, I might have artist block..
@@ -9211,6 +9219,10 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5684865086005771340, guid: efaee27195ed1d94bb120adfae80976d, type: 3}
+      propertyPath: computerCollider
+      value: 
+      objectReference: {fileID: 94307697}
     - target: {fileID: 6141632357287421126, guid: efaee27195ed1d94bb120adfae80976d, type: 3}
       propertyPath: m_Name
       value: uploads_files_2412131_Dance+Picture+Frames

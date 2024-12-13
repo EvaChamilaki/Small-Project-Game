@@ -155,7 +155,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
         }
 
-        if (emotions_camera.enabled && hasClicked && Input.GetKeyDown(KeyCode.B))
+        if (emotions_camera.enabled && csColDetectionScript.isInRange &&hasClicked && Input.GetKeyDown(KeyCode.B))
         {
            
                 SwitchToComputerCamera();

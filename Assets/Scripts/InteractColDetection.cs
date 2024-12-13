@@ -9,6 +9,7 @@ public class InteractColDetection : MonoBehaviour
     public GameObject inspectText;
     public bool isInRange;
     public GameObject inspectCamera;
+    public GameObject computerCollider;
 
     void Start()
     {
@@ -37,6 +38,10 @@ public class InteractColDetection : MonoBehaviour
             isInRange = true;
             EnableOutline();
             inspectText.SetActive(true);
+            if (computerCollider != null)
+            {
+                Physics.IgnoreCollision(other, computerCollider.GetComponent<Collider>(), true);
+            }
         }
     }
 
@@ -47,6 +52,10 @@ public class InteractColDetection : MonoBehaviour
             isInRange = false;
             DisableOutline();
             inspectText.SetActive(false);
+            if (computerCollider != null)
+            {
+                Physics.IgnoreCollision(other, computerCollider.GetComponent<Collider>(), false);
+            }
         }
     }
 

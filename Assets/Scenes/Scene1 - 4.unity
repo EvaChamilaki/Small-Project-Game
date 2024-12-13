@@ -966,7 +966,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209501426}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0012097531, y: -5.3769905e-10, z: -6.504835e-13, w: 0.9999993}
+  m_LocalRotation: {x: -0.0012097531, y: 5.3769905e-10, z: 6.504835e-13, w: 0.9999993}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8719,6 +8719,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9138897867230323757, guid: 4861240c673230843818d829b5355819, type: 3}
+      propertyPath: computerCollider
+      value: 
+      objectReference: {fileID: 2206307416688555718}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -9618,6 +9622,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8234538933117133111, guid: 87151a854c9cd564c8c8eca7b9d78375, type: 3}
+      propertyPath: computerCollider
+      value: 
+      objectReference: {fileID: 2206307416688555718}
     - target: {fileID: 8360385299590558451, guid: 87151a854c9cd564c8c8eca7b9d78375, type: 3}
       propertyPath: m_text
       value: I am not in the mood for something like this. . .
@@ -10292,6 +10300,10 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5684865086005771340, guid: efaee27195ed1d94bb120adfae80976d, type: 3}
+      propertyPath: computerCollider
+      value: 
+      objectReference: {fileID: 2206307416688555718}
     - target: {fileID: 6141632357287421126, guid: efaee27195ed1d94bb120adfae80976d, type: 3}
       propertyPath: m_Name
       value: uploads_files_2412131_Dance+Picture+Frames
