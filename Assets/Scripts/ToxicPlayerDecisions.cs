@@ -349,7 +349,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         StartCoroutine(ChangeLightColor(lights[1], new Color(0.8f, 0.4f, 0.0f), 1.5f, 2.0f)); // orange
 
         yield return new WaitUntil (() => !character.GetComponent<ThirdPersonCamera>().emotions_camera.enabled);
-        _chatManager.SendMessageToChat("whiffedmyUlt: go bungee jumping w/o parachute", "message", false, 0);
+        _chatManager.SendMessageToChat("whiffedmyUlt: go bungee jumping w/o rope", "message", false, 0);
         yield return new WaitForSeconds(2.0f);
 
         _chatManager.SendMessageToChat("BlameTheTank(me): stfu theyre the potato not me", "message", true, 18);
@@ -379,7 +379,7 @@ public class ToxicPlayerDecisions : MonoBehaviour
         _chatManager.SendMessageToChat("king9791!: @casualcrasher have u tried tetris its easier", "message", false, 0);
         yield return new WaitForSeconds(2.0f);
 
-        _chatManager.SendMessageToChat("BlameTheTank(me): go bungee jumping w/o parachute", "message", true, 18);
+        _chatManager.SendMessageToChat("BlameTheTank(me): go bungee jumping w/o rope", "message", true, 18);
         yield return new WaitUntil(() => _chatManager.messageList.Last().textObj.GetComponent<TextWriting>().textCompleted);
         yield return new WaitForSeconds(3.0f);
 
